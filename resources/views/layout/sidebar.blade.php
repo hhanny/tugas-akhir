@@ -14,8 +14,8 @@
                             <img src="virtual/assets/img/faces/6.png" alt="user-img" class="rounded-circle mCS_img_loaded">
                         </div>
                         <div class="user-info">
-                            <h6 class=" mb-0 text-dark">Username</h6>
-                            <span class="text-muted app-sidebar__user-name text-sm">Role</span>
+                            <h6 class=" mb-0 text-dark">{{ auth()->user()->username }}</h6>
+                            <span class="text-muted app-sidebar__user-name text-sm">{{ auth()->user()->email }}</span>
                         </div>
                     </div>
                 </div>

@@ -13,6 +13,7 @@
 		<!-- Title -->
 		<title> @yield('title', 'Virtual Technopark') </title>
 
+
 		<!-- Bootstrap css -->
 		<link href="{{ asset('virtual/assets/plugins/bootstrap/css/bootstrap.css') }}" rel="stylesheet" id="style"/>
 
