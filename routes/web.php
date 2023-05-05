@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,5 +27,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/', function () {
         return view('contents.dashboard');
     })->name('landing');
+
+    Route::get('admin/datatable', [AdminController::class, 'datatable'])->name('admin.datatable');
+    Route::resource('/admin', AdminController::class);
 });
 

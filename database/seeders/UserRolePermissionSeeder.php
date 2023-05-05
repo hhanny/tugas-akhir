@@ -2,13 +2,13 @@
 
 namespace Database\Seeders;
 
+use App\Models\Role;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
+use App\Models\Permission;
 use Illuminate\Support\Str;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class UserRolePermissionSeeder extends Seeder
 {
@@ -22,8 +22,8 @@ class UserRolePermissionSeeder extends Seeder
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
         ];
-        DB::beginTransaction(); 
-        try {
+        // DB::beginTransaction(); 
+        // try {
             $superAdmin = User::create(array_merge([
                 'email' => 'superAdmin@gmail.com',
                 'username' => 'superAdmin',
@@ -44,25 +44,25 @@ class UserRolePermissionSeeder extends Seeder
                 'username' => 'mahasiswa',
             ], $default_user_value));
     
-            $role_superAdmin = Role::create(['name' => 'superAdmin']);
-            $role_admin = Role::create(['name' => 'admin']);
-            $role_pegawai = Role::create(['name' => 'pegawai']);
-            $role_mahasiswa = Role::create(['name' => 'mahasiswa']);
+            $role_superAdmin = Role::updateOrCreate(['name' => 'superAdmin']);
+            $role_admin = Role::updateOrCreate(['name' => 'admin']);
+            $role_pegawai = Role::updateOrCreate(['name' => 'pegawai']);
+            $role_mahasiswa = Role::updateOrCreate(['name' => 'mahasiswa']);
     
-            $permission =  Permission::create(['name' => 'read role']);
-            $permission =  Permission::create(['name' =>'create role']);
-            $permission =  Permission::create(['name' =>'update role']);
-            $permission =  Permission::create(['name' =>'delete role']);
+            $permission =  Permission::updateOrCreate(['name' => 'read role']);
+            $permission =  Permission::updateOrCreate(['name' =>'create role']);
+            $permission =  Permission::updateOrCreate(['name' =>'update role']);
+            $permission =  Permission::updateOrCreate(['name' =>'delete role']);
     
             $superAdmin->assignRole('superAdmin');
             $admin->assignRole('admin');
             $pegawai->assignRole('pegawai');
             $mahasiswa->assignRole('mahasiswa');
             
-            DB::commit();
-        } catch (\Throwable $th) {
-            DB::rollBack();
-        }
+        //     DB::commit();
+        // } catch (\Throwable $th) {
+        //     DB::rollBack();
+        // }
 
         
 
