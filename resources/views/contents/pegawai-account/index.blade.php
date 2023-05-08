@@ -1,6 +1,6 @@
 @extends('layout.main')
 
-@section('title', 'Akun Admin')
+@section('title', 'Akun Pegawai')
 
 @section('css')
     {{-- Custom CSS --}}
@@ -13,7 +13,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a   href="javascript:void(0);"></a></li>
-                <li class="breadcrumb-item active" aria-current="page"> Akun Admin</li>
+                <li class="breadcrumb-item active" aria-current="page"> Akun Pegawai</li>
             </ol>
         </nav>
     </div>
@@ -27,7 +27,7 @@
     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">List Akun Admin</h3>
+                <h3 class="card-title">List Akun Pegawai</h3>
             </div>
             <div class="card-body">
                 <a class="btn btn-primary modal-effect mb-3 data-table-btn ms-4" data-bs-effect="effect-super-scaled" onclick="create()">
@@ -111,7 +111,7 @@
             processing: true,
             serverSide: true,
             autoWidth: false,
-            ajax: "{{ route('admin.datatable') }}",
+            ajax: "{{ route('pegawai.datatable') }}",
             columnDefs: [
             {
                 targets: 0,
@@ -163,7 +163,7 @@
         submit_method = 'edit';
 
         $('#form')[0].reset();
-        var url = "{{ route('admin.edit',":id") }}";
+        var url = "{{ route('pegawai.edit',":id") }}";
         url = url.replace(':id', id);
         
         $.get(url, function (response) {
@@ -173,7 +173,7 @@
             $('#username').val(response.username);
             $('#email').val(response.email);
             $('#modal_form').modal('show');
-            $('.modal-title').text('Edit data akun admin');
+            $('.modal-title').text('Edit data akun pegawai');
 
             $('#name').val(response.name);
         });
@@ -184,13 +184,13 @@
         var username        = $('#username').val();
         var email        = $('#email').val();
         // console.log();
-        var url = "{{ route('admin.store') }}";
+        var url = "{{ route('pegawai.store') }}";
     
         $('#btnSave').text('Menyimpan...');
         $('#btnSave').attr('disabled', true);
 
         if(submit_method == 'edit'){
-            url = "{{ route('admin.update',":id") }}";
+            url = "{{ route('pegawai.update',":id") }}";
             url = url.replace(':id', id);
         }
 
@@ -255,12 +255,12 @@
     }
     
     function destroy(id) {
-        var url = "{{ route('admin.destroy',":id") }}";
+        var url = "{{ route('pegawai.destroy',":id") }}";
         url = url.replace(':id', id);
     
         Swal.fire({
             title: "Yakin ingin menghapus data ini?",
-            text: "Ketika data terhapus, anda tidak bisa mengembalikan data tersbut!",
+            text: "Ketika data terhapus, anda tidak bisa mengembalikan data tersebut!",
             icon: "warning",
             showCancelButton  : true,
             confirmButtonColor: "#3085d6",

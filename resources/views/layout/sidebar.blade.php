@@ -38,7 +38,7 @@
                         </a>
                     </li>
                     <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Logout">
-                        <a class="nav-link text-center m-2">
+                        <a class="nav-link text-center m-2" href="{{ route('logout') }}">
                             <i class="fe fe-power"></i>
                         </a>
                     </li>
@@ -53,13 +53,19 @@
                     </a>
                 </li>
                 <li class="slide">
-                    <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><i class="side-menu__icon fe fe-layers"></i><span class="side-menu__label">Master Data</span><i class="angle fe fe-chevron-down"></i></a>
+                    @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('superAdmin'))
+                        <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><i class="side-menu__icon fe fe-layers">
+                            </i><span class="side-menu__label">Akun</span><i class="angle fe fe-chevron-down"></i>
+                        </a>
+                    @endif
                     <ul class="slide-menu">
-                        <li><a class="slide-item" data-sidebar="member-category" href="javascript:void(0)">Member Category</a></li>
-                        <li><a class="slide-item" data-sidebar="product-category" href="javascript:void(0)">Product Category</a></li>
-                        <li><a class="slide-item" data-sidebar="blog-category" href="javascript:void(0)">Blog Category</a></li>
-                        <li><a class="slide-item" data-sidebar="event-category"href="javascript:void(0)">Event Category</a></li>
-                        <li><a class="slide-item" data-sidebar="gallery-category"href="javascript:void(0)">Gallery Category</a></li>
+                        @if(auth()->user()->hasRole('superAdmin'))
+                            <li><a class="slide-item" data-sidebar="admin" href="{{ route('admin.index') }}">Akun Admin</a></li>
+                        @endif
+                        @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('superAdmin'))
+                            <li><a class="slide-item" data-sidebar="pegawai" href="{{ route('pegawai.index') }}">Pegawai</a></li>
+                            <li><a class="slide-item" data-sidebar="mahasiswa" href="{{ route('mahasiswa.index') }}">Mahasiswa</a></li>
+                        @endif
                     </ul>
                 </li>
                 

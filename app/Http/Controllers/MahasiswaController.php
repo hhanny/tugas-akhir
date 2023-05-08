@@ -6,15 +6,15 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
-class AdminController extends Controller
+class MahasiswaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $this->authorize('superAdmin');
-        return view('contents.admin-account.index');
+        $this->authorize(['superAdmin','admin']);
+        return view('contents.mahasiswa-account.index');
     }
 
     /**
@@ -42,11 +42,11 @@ class AdminController extends Controller
             'username'          => $request->username,
             'email'             => $request->email,
             'password'          => bcrypt('password'),
-        ])->assignRole('admin');
+        ])->assignRole('mahasiswa');
 
         return response()->json([
             'status'    => true,
-            'message'   => 'Success add admin account!',
+            'message'   => 'Success add mahasiswa account!',
         ]);
     }
 
@@ -94,7 +94,7 @@ class AdminController extends Controller
 
         return response()->json([
             'status'    => true,
-            'message'   => 'Success update admin account!',
+            'message'   => 'Success update mahasiswa account!',
         ]);
     }
 
@@ -112,7 +112,7 @@ class AdminController extends Controller
     }
 
     public function datatable(Request $request){
-        $data = User::role('admin')->get();
+        $data = User::role('mahasiswa')->get();
 
         return DataTables::of($data)->make();
     }
