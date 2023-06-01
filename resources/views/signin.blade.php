@@ -61,10 +61,15 @@
 						<form action="{{ route('login-proccess') }}" method="post">
 							@csrf
 							<div class="form-group">
-								<label>Email</label><input class="form-control" placeholder="Enter your email" name="email" type="text" value="">
+								<label>Email</label><input class="form-control @error('email') is-invalid @enderror" placeholder="Enter your email" name="email" type="text" value="">
+								@error('email')
+									<div class="invalid-feedback">
+										{{ $message }}
+									</div>
+								@enderror
 							</div>
 							<div class="form-group">
-								<label>Password</label> <input class="form-control" placeholder="Enter your password" name="password" type="password" value="">
+								<label>Password</label> <input class="form-control" placeholder="Enter your password" name="password" type="password" value="" required>
 							</div><button class="btn btn-primary btn-block" type="submit">Sign In</button>
 						</form>
 					</div>
@@ -100,6 +105,60 @@
 
 		<!--- Custom js --->
 		<script src="{{ asset('virtual/assets/js/custom.js') }}"></script>
+
+
+		<!-- SHOW PASSWORD JS -->
+		<script src="{{ asset('assets/js/show-password.min.js') }}"></script>
+
+		<!-- GENERATE OTP JS -->
+		<script src="{{ asset('assets/js/generate-otp.js') }}"></script>
+
+		<!-- Perfect SCROLLBAR JS-->
+		<script src="{{ asset('assets/plugins/p-scroll/perfect-scrollbar.js') }}"></script>
+
+		<!-- Color Theme js -->
+		<script src="{{ asset('assets/js/themeColors.js') }}"></script>
+
+
+		<!-- INTERNAL Notifications js -->
+		<script src="{{ asset('assets/plugins/notify/js/rainbow.js') }}"></script>
+		<script src="{{ asset('assets/plugins/notify/js/sample.js') }}"></script>
+		<script src="{{ asset('assets/plugins/notify/js/jquery.growl.js') }}"></script>
+		<script src="{{ asset('assets/plugins/notify/js/notifIt.js') }}"></script>
+		<script src="{{ asset('landingpage/js/wow.min.js') }}"></script>
+		<script src="{{ asset('landingpage/js/paralax.min.js') }}"></script>
+		<script src="{{ asset('landingpage/js/swiper.min.js') }}"></script>
+		<script src="{{ asset('landingpage/js/time-circle.js') }}"></script>
+		<script src="{{ asset('landingpage/js/skill.bars.jquery.js') }}"></script>
+		<script src="{{ asset('landingpage/js/waypoints.min.js') }}"></script>
+		<script src="{{ asset('landingpage/js/jquery.counterup.min.js') }}"></script>
+		<script src="{{ asset('landingpage/js/jquery.magnific-popup.min.js') }}"></script>
+		<script src="{{ asset('landingpage/js/main.js') }}"></script>
+		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+		<script src="{{asset('landingpage/js/sweetalert/sweetalert.min.js')}}"></script>
+
+		<script>
+			$(document).ready(function () {
+				let type = false;
+				if('{{session()->has("success")}}' == true) type = "success";
+				if('{{session()->has("warning")}}' == true) type = "warning";
+				if('{{session()->has("error")}}' == true) type = "error";
+
+				if(type === "success"){
+					$.growl.notice1({
+						message: `{{ Session::get('success') }}`
+					});
+				}else if(type === "warning") {
+					$.growl.warning({
+						message: `{{ Session::get('warning') }}`
+					});
+				}else if(type === "error") {
+					$.growl.error({
+						message: `{{ Session::get('error') }}`
+					});
+				}
+			});
+		</script>
 
 	</body>
 </html>

@@ -13,7 +13,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $this->authorize('superAdmin');
+        $this->authorize('read admin');
         return view('contents.admin-account.index');
     }
 

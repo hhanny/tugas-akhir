@@ -13,7 +13,7 @@ class PegawaiController extends Controller
      */
     public function index()
     {
-        $this->authorize(['admin', 'superAdmin']);
+        $this->authorize('read');
         return view('contents.pegawai-account.index');
     }
 

@@ -13,7 +13,7 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        $this->authorize(['superAdmin','admin']);
+        $this->authorize('read');
         return view('contents.mahasiswa-account.index');
     }
 

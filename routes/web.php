@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ParkController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PegawaiController;
@@ -39,6 +40,11 @@ Route::middleware('auth')->group(function () {
 
     Route::get('mahasiswa/datatable', [MahasiswaController::class, 'datatable'])->name('mahasiswa.datatable');
     Route::resource('/mahasiswa', MahasiswaController::class);
+    Route::get('/data-parkir', [ParkController::class, 'index'])->name('park.index');
+    Route::get('/riwayat-parkir', [ParkController::class, 'parkHistory'])->name('park-history.index');
+    Route::get('data-parkir/datatable', [ParkController::class, 'datatable'])->name('park.datatable');
+    Route::get('data-parkir/{id?}', [ParkController::class, 'show'])->name('park.show');
+    Route::get('riwayat-parkir/datatable', [ParkController::class, 'parkHistoryDatatable'])->name('park-history.datatable');
 
 
 });

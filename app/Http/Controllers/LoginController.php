@@ -23,11 +23,11 @@ class LoginController extends Controller
             $request->session()->regenerate();
             return redirect()->intended('/dashboard');
         }else{
-            $message = [
-                'required' => 'Login Gagal',
-            ];
+            // $message = [
+            //     'required' => 'Login Gagal',
+            // ];
 
-            return redirect()->back()->withErrors($message)->with('error', $message);
+            return redirect()->back()->withErrors('Email atau Password Salah!')->with('error', 'Email atau Password Salah!');
         }
     }
 

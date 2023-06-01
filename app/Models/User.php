@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Traits\Uuid;
+use App\Models\Vehycle;
+use App\Models\UserProfile;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
@@ -39,4 +41,14 @@ class User extends Authenticatable
     public $incrementing = false;
     
     protected $keyType = 'string';
+
+    public function user_profile()
+    {
+        return $this->hasOne(UserProfile::class);
+    }
+
+    public function vehycles()
+    {
+        return $this->hasMany(Vehycle::class);
+    }
 }

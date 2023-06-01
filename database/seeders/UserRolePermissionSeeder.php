@@ -2,9 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\Park;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\Vehycle;
 use App\Models\Permission;
+use App\Models\UserProfile;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -43,17 +46,89 @@ class UserRolePermissionSeeder extends Seeder
                 'email' => 'mahasiswa@gmail.com',
                 'username' => 'mahasiswa',
             ], $default_user_value));
+
+            UserProfile::create([
+                'user_id' => $mahasiswa->id,
+                'name' => 'Hanny Berlianty',
+                'address' => 'Lobener lor, Blok Kebon Kopi, RT/W 15/04, No.59',
+                'phone_number' => '0822523572537',
+                'nip_nim' => '2003072',
+                'image' => 'images/pict_profile.jpg',
+                'gender' => 'Perempuan',
+                'card_id' => Str::random(15)
+            ]);
+
+            UserProfile::create([
+                'user_id' => $pegawai->id,
+                'name' => 'Willy PP',
+                'address' => 'Politeknik Negeri Indramayu',
+                'phone_number' => '0822523887',
+                'nip_nim' => '-',
+                'image' => 'images/jeoBgRed.jpg',
+                'gender' => 'Laki-laki',
+                'card_id' => Str::random(15)
+            ]);
+
+            // $motorMhs = Vehycle::create([
+            //     'user_id' => $mahasiswa->id,
+            //     'brand' => 'Honda',
+            //     'type' => 'Vario 125',
+            //     'image' => 'images/vario125.jpg',
+            //     'vehycle_number' => 'E 1927 EF',
+            // ]);
+
+            $motorPgw = Vehycle::create([
+                'user_id' => $pegawai->id,
+                'brand' => 'Honda',
+                'type' => 'Beat',
+                'image' => 'images/beat.jpg',
+                'vehycle_number' => 'E 1981 EF',
+            ]);
+
+            // Park::create([
+            //     'vehycle_id' => $motorMhs->id,
+            //     'status' => 'Masuk',
+            //     'time_in' => now(),
+            //     'time_out' => now(),
+            // ]);
+            
+            // Park::create([
+            //     'vehycle_id' => $motorMhs->id,
+            //     'status' => 'Masuk',
+            //     'time_in' => now(),
+            //     'time_out' => now(),
+            // ]);
+
+            Park::create([
+                'vehycle_id' => $motorPgw->id,
+                'status' => 'Masuk',
+                'time_in' => now(),
+                'time_out' => now(),
+            ]);
+
+            $permissions = [ 'create admin','read admin', 'update admin', 'delete admin', 'create','read', 'update', 'delete' ];
     
             $role_superAdmin = Role::updateOrCreate(['name' => 'superAdmin']);
             $role_admin = Role::updateOrCreate(['name' => 'admin']);
             $role_pegawai = Role::updateOrCreate(['name' => 'pegawai']);
             $role_mahasiswa = Role::updateOrCreate(['name' => 'mahasiswa']);
     
-            $permission =  Permission::updateOrCreate(['name' => 'read role']);
-            $permission =  Permission::updateOrCreate(['name' =>'create role']);
-            $permission =  Permission::updateOrCreate(['name' =>'update role']);
-            $permission =  Permission::updateOrCreate(['name' =>'delete role']);
+            $permission =  Permission::updateOrCreate(['name' => 'superAdmin']);
+            $permission =  Permission::updateOrCreate(['name' =>'admin']);
+            $permission =  Permission::updateOrCreate(['name' =>'pegawai']);
+            $permission =  Permission::updateOrCreate(['name' =>'mahasiswa']);
     
+            foreach ($permissions as $item) {
+                Permission::create([
+                    'name' => $item,
+                ]);
+            }
+
+            $role_superAdmin->givePermissionTo([ 'create admin','read admin', 'update admin', 'delete admin', 'create','read', 'update', 'delete' ]);
+            $role_admin->givePermissionTo(['create','read', 'update', 'delete' ]);
+            $role_pegawai->givePermissionTo('pegawai');
+            $role_mahasiswa->givePermissionTo('mahasiswa');
+
             $superAdmin->assignRole('superAdmin');
             $admin->assignRole('admin');
             $pegawai->assignRole('pegawai');
