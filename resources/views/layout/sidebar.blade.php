@@ -1,10 +1,10 @@
 <div class="sticky">
     <aside class="app-sidebar sidebar-scroll">
         <div class="main-sidebar-header active">
-            <a class="desktop-logo logo-light active" href="index.html"><img src="{{ asset('virtual/assets/img/brand/logo.png') }}" class="main-logo" alt="logo"></a>
-            <a class="desktop-logo logo-dark active" href="index.html"><img src="{{ asset('virtual/assets/img/brand/logo-white.png') }}" class="main-logo" alt="logo"></a>
-            <a class="logo-icon mobile-logo icon-light active" href="index.html"><img src="{{ asset('virtual/assets/img/brand/favicon.png') }}" alt="logo"></a>
-            <a class="logo-icon mobile-logo icon-dark active" href="index.html"><img src="{{ asset('virtual/assets/img/brand/favicon-white.png') }}" alt="logo"></a>
+            <a class="desktop-logo logo-light active" href="index.html"><img src="{{ asset('virtual/assets/img/brand/polindra.png') }}" class="main-logo" alt="logo"></a>
+            <a class="desktop-logo logo-dark active" href="index.html"><img src="{{ asset('virtual/assets/img/brand/pol-icon.png') }}" class="main-logo" alt="logo"></a>
+            <a class="logo-icon mobile-logo icon-light active" href="index.html"><img src="{{ asset('virtual/assets/img/brand/pol-icon.png') }}" alt="logo"></a>
+            <a class="logo-icon mobile-logo icon-dark active" href="index.html"><img src="{{ asset('virtual/assets/img/brand/pol-icon.png') }}" alt="logo"></a>
         </div>
         <div class="main-sidemenu">
             <div class="main-sidebar-loggedin">
@@ -33,7 +33,7 @@
                         </a>
                     </li>
                     <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Followers">
-                        <a class="nav-link text-center m-2">
+                        <a class="nav-link text-center m-2" href="{{ route('profile.index') }}">
                             <i class="fe fe-user"></i>
                         </a>
                     </li>

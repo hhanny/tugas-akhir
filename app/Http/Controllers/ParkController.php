@@ -21,14 +21,15 @@ class ParkController extends Controller
     {
 
         return response()->json([
-            'data' => User::where('id', $id)->with(['user_profile', 'vehycles'])->first(),
+            'data' => User::where('id', $id)->with(['user_profile', 'vehycle'])->first(),
         ]);
     }
 
     public function datatable(){
 
-        $data = Park::with(['vehycles', 'vehycles.user.user_profile'])->get();
+        $data = Park::with(['vehycle', 'vehycle.user.user_profile', 'vehycle.user'])->get();
 
+        // return response()->json($data);
         return DataTables::of($data)->make();
     }
 
@@ -40,7 +41,9 @@ class ParkController extends Controller
     public function parkHistoryDatatable(){
         
         $id = Auth::user()->id;
+        // dd($id);
         $vehycle = Vehycle::where('user_id', $id)->first();
+        // dd($vehycle);
         $data = Park::where('vehycle_id', $vehycle->id)->get();
 
         return DataTables::of($data)->make();

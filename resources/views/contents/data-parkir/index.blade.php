@@ -4,6 +4,15 @@
 
 @section('css')
     {{-- Custom CSS --}}
+    <link rel="stylesheet" href="{{ asset('virtual/assets/plugins/datatable/datatables.min.css') }}">
+    <style>
+        .dataTables_wrapper .dt-buttons {
+            float:none;  
+            margin-bottom: 1vh;
+            margin-left: 2vh;
+            position: static;
+        }
+    </style>
 @endsection
 
 @section('breadcumb')
@@ -24,20 +33,60 @@
 @section('content')
 <!-- Row -->
 <div class="row">
+    <div class="col">
+        <div class="card mb-2">
+            <div class="card-body">
+                <h5 class="card-title">Filter</h5>
+                <div class="row">
+                    <div class="col-3">
+                        <select class="form-control form-select " data-column="2" id="year">
+                            <option value="">Pilih tahun..</option>
+                            @for ($i = (date('Y') - 10); $i <= date('Y'); $i++)
+                                <option value={{ $i }}>{{ $i }}</option>
+                            @endfor
+                        </select>
+                    </div>
+                    <div class="col-3">
+                        <select class="form-control form-select mb-3" data-column="3" id="month">
+                            <option value="">Pilih bulan..</option>
+                            @for ($i = 1; $i <= 12; $i++)
+                                <option value="{{ date('M', strtotime(date('Y'.($i < 10 ? '0'.$i : $i).'d')))}}"> {{ date("F", strtotime(date("Y".($i < 10 ? '0'.$i : $i)."d")))}} </option>
+                            @endfor
+                        </select>
+                    </div>
+                    <div class="col-3">
+                        <select class="form-control form-select mb-3" data-column="4" id="week">
+                            <option value="">Pilih minggu..</option>
+                            @for ($i = 1; $i <= 5; $i++)
+                            <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
+                        </select>
+                    </div>
+                    <div class="col-3">
+                        <button type="button" id="button-filter" class="btn btn-primary"><i class="ti ti-filter me-1"></i> Filter</button>
+                        <button type="button" id="button-reset" class="btn btn-secondary" title="refresh"><i class="fe fe-refresh-cw"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">List Data Parkir</h3>
             </div>
             <div class="card-body">
-                {{-- <a class="btn btn-primary modal-effect mb-3 data-table-btn ms-4" data-bs-effect="effect-super-scaled" onclick="create()">
-                    <span class="fe fe-plus"> </span>Add new data
-                </a> --}}
                 <table id="datatable" class="table table-bordered text-nowrap border-bottom">
                     <thead>
                         <tr>
                             <th style="width: 5%">No</th>
                             <th>Tanggal</th>
+                            <th>Tahun</th>
+                            <th>Bulan</th>
+                            <th>Week</th>
                             <th>Waktu Masuk</th>
                             <th>Waktu Keluar</th>
                             <th>Pemilik</th>
@@ -136,7 +185,7 @@
                     <h6 class="modal-title">Data Kendaraan</h6>
                     <div class="row">
                         <div class="col-md-12">
-                            <table class="table table-bordered text-center">
+                            <table id="detail" class="table table-bordered text-center">
                                 <thead>
                                     <tr>
                                         <th scope="col">No</th>
@@ -167,17 +216,18 @@
 
 <!-- DATA TABLE JS-->
 <script src="{{ asset('virtual/assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('virtual/assets/plugins/datatable/js/dataTables.bootstrap5.js') }}"></script>
-<script src="{{ asset('virtual/assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
-<script src="{{ asset('virtual/assets/plugins/datatable/js/buttons.bootstrap5.min.js') }}"></script>
-<script src="{{ asset('virtual/assets/plugins/datatable/js/jszip.min.js') }}"></script>
-<script src="{{ asset('virtual/assets/plugins/datatable/pdfmake/pdfmake.min.js') }}"></script>
-<script src="{{ asset('virtual/assets/plugins/datatable/pdfmake/vfs_fonts.js') }}"></script>
-<script src="{{ asset('virtual/assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
-<script src="{{ asset('virtual/assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
-<script src="{{ asset('virtual/assets/plugins/datatable/js/buttons.colVis.min.js') }}"></script>
+<script src="{{ asset('virtual/assets/plugins/datatable/dataTables.min.js') }}"></script>
 <script src="{{ asset('virtual/assets/plugins/datatable/dataTables.responsive.min.js') }}"></script>
 <script src="{{ asset('virtual/assets/plugins/datatable/responsive.bootstrap5.min.js') }}"></script>
+<script src="{{ asset('virtual/assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('virtual/assets/plugins/datatable/js/jszip.min.js') }}"></script>
+{{-- <script src="{{ asset('virtual/assets/plugins/datatable/pdfmake/pdfmake.min.js') }}"></script> --}}
+{{-- <script src="{{ asset('virtual/assets/plugins/datatable/pdfmake/vfs_fonts.js') }}"></script> --}}
+<script src="{{ asset('virtual/assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('virtual/assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
+<script src="{{ asset('virtual/assets/plugins/datatable/js/dataTables.bootstrap5.js') }}"></script>
+<script src="{{ asset('virtual/assets/plugins/datatable/js/buttons.bootstrap5.min.js') }}"></script>
+<script src="{{ asset('virtual/assets/plugins/datatable/js/buttons.colVis.min.js') }}"></script>
 
 <!--moment JS -->
 <script src="{{ asset('virtual/assets/plugins/moment/moment.js') }}"></script>
@@ -185,16 +235,47 @@
 <script src="{{ asset('virtual/assets/js/script.js') }}"></script>
 
 <script>
-    var $table;
 
     $(document).ready(function() {
         // Contoh Inisiator datatable severside
-        table = $("#datatable").DataTable({
+        var table = $("#datatable").DataTable({
             responsive: true,
             processing: true,
             serverSide: true,
+            searchable:true,
             autoWidth: false,
             ajax: "{{ route('park.datatable') }}",
+            dom: 'lBfrtip',
+            buttons: [
+                
+                {
+                    extend: 'csv',
+                    className: 'btn btn-info',
+                    text: `<i class="fe fe-file-text me-1"></i>
+                        <span>CSV</span>`,
+                        exportOptions: {
+                        columns: [0,1,5,6,7]
+                    }
+                },
+                {
+                    extend: 'excel',
+                    className: 'btn btn-success',
+                    text: `<i class="si si-layers me-1"></i>
+                        <span>Excel</span>`,
+                    exportOptions: {
+                        columns: [0,1,5,6,7]
+                    }
+                },
+                {
+                    extend: 'pdf',
+                    className: 'btn btn-danger',
+                    text: `<i class="si si-printer me-1"></i>
+                        <span>PDF</span>`,
+                        exportOptions: {
+                        columns: [0,1,5,6,7]
+                    }
+                },
+            ],
             columnDefs: [
                 {
                     targets: 0,
@@ -204,16 +285,24 @@
                 }, 
                 {
                     targets: 2,
+                    visible:false,
                     render: function(data, type, full, meta) {
-                        if(data != null ){
-                            return moment(data).format('H:mm:ss');
-                        }else{
-                            return '-';
-                        }
+                        return moment(data).format('YYYY');
                     }
                 },
                 {
                     targets: 3,
+                    visible:false,
+                    render: function(data, type, full, meta) {
+                        return moment(data).format('MM');
+                    }
+                },
+                {
+                    targets: 4,
+                    // visible: false,
+                },
+                {
+                    targets: [5,6],
                     render: function(data, type, full, meta) {
                         if(data != null ){
                             return moment(data).format('H:mm:ss');
@@ -223,12 +312,10 @@
                     }
                 },
                 {
-                    targets: 4,
+                    targets: 7,
                     render: function(data, type, full, meta) {
                         let owner = '';
-                        data.map(function(item){
-                            owner += `<span class="badge bg-primary me-1" href="javascript:void(0);">${item.user.user_profile.name}</span>`;
-                        })
+                            owner += `<span class="badge bg-primary me-1" href="javascript:void(0);">${data}</span>`;
                         return owner;
                     }
                 },
@@ -251,12 +338,48 @@
             columns: [
                 { data: null },
                 { data: 'date'},
+                { data: 'date'},
+                { data: 'date'},
+                { data: 'week'},
                 { data: 'time_in'},
                 { data: 'time_out'}, 
-                { data: 'vehycles' }, 
-                { data: 'vehycles' }, 
-            ]
+                { data: 'name' }, 
+                { data: 'vehycle' }, 
+            ],
         });
+
+        $('#year').change(function(){
+            table.column($(this).data('column')).search($(this).val());
+        });
+
+        $('#month').change(function(){
+            table.column($(this).data('column')).search($(this).val());
+        });
+
+        $('#week').change(function(){
+            // console.log($(this).data('column'));
+            // console.log(table.column(4)[0][0]);
+            table.column($(this).data('column')).search($(this).val());
+        });
+
+        $('#button-filter').click(function(){
+            table.draw();
+        });
+
+        $('#button-reset').click(function(){
+            $('#year').val('').trigger('change');
+            $('#month').val('').trigger('change');
+            $('#week').val('').trigger('change');
+            table.draw();
+        });
+
+        // $('#month').change(function(){
+        //     table.column($('#year').data('column')).search($('#year').val());
+        //     table.column($('#month').data('column')).search($('#month').val());
+        //     table.draw();
+        // });
+            
+        
 
     });
 
@@ -270,7 +393,7 @@
 
             response = response.data;
 
-            console.log(response.user_profile.image);
+            // console.log(response);
             
             $('#foto_user').html(`<img src="{{ asset('${response.user_profile.image}') }}" width="150px" height="200px" style="border-radius: 5px;" alt="">`);
             $('#name').text(response.user_profile.name);
@@ -280,7 +403,7 @@
             $('#address').text(response.user_profile.address);
             $('#no_hp').text(response.user_profile.phone_number);
 
-            response.vehycles.map(function(item){
+            response.vehycle.map(function(item){
                 $('#t-body').html(`
                     <tr>
                         <td>1</td>
@@ -293,12 +416,13 @@
                     </tr>
                 `);
             })
-
             $('#modal_detail').modal('show');
 
         });
 
     }
+
+    
     
 </script>
 @endsection

@@ -69,13 +69,13 @@ class UserRolePermissionSeeder extends Seeder
                 'card_id' => Str::random(15)
             ]);
 
-            // $motorMhs = Vehycle::create([
-            //     'user_id' => $mahasiswa->id,
-            //     'brand' => 'Honda',
-            //     'type' => 'Vario 125',
-            //     'image' => 'images/vario125.jpg',
-            //     'vehycle_number' => 'E 1927 EF',
-            // ]);
+            $motorMhs = Vehycle::create([
+                'user_id' => $mahasiswa->id,
+                'brand' => 'Honda',
+                'type' => 'Vario 125',
+                'image' => 'images/vario125.jpg',
+                'vehycle_number' => 'E 1927 EF',
+            ]);
 
             $motorPgw = Vehycle::create([
                 'user_id' => $pegawai->id,

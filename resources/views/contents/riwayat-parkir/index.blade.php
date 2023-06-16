@@ -125,7 +125,11 @@
                 {
                     targets: [2,3],
                     render: function(data, type, full, meta) {
-                        return moment(data).format('HH:MM:SS');
+                        if(data != null ){
+                            return moment(data).format('H:mm:ss');
+                        }else{
+                            return '-';
+                        }
                     }
                 },
                 // {

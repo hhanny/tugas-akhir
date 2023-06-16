@@ -18,9 +18,9 @@ class Park extends Model
 
     protected $guarded = [];
 
-    protected $appends = ['date'];
+    protected $appends = ['date', 'name', 'week'];
 
-    public function vehycles()
+    public function vehycle()
     {
         return $this->hasMany(Vehycle::class, 'id', 'vehycle_id');
     }
@@ -29,5 +29,16 @@ class Park extends Model
     {
         return Carbon::parse($this->time_in)->format('D, d M Y');
     }
+
+    protected function getWeekAttribute($value)
+    {
+        return Carbon::parse($this->time_in)->weekNumberInMonth;
+    }
+
+    protected function getNameAttribute($value)
+    {
+        return $this->vehycle[0]->user->user_profile->name;
+    }
+    
 
 }

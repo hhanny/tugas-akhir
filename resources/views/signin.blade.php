@@ -13,7 +13,7 @@
 		<title> Sign In </title>
 
 		<!--- Favicon --->
-		<link rel="icon" href="{{ asset('virtual/assets/img/brand/favicon.png') }}" type="image/x-icon"/>
+		<link rel="icon" href="{{ asset('virtual/assets/img/brand/pol-icon.png') }}" type="image/x-icon"/>
 
 		<!-- Bootstrap css -->
 		<link href="{{ asset('virtual/assets/plugins/bootstrap/css/bootstrap.css') }}" rel="stylesheet" id="style"/>
@@ -44,13 +44,14 @@
 		<div class="my-auto page page-h">
 			<div class="main-signin-wrapper">
 				<div class="main-card-signin d-md-flex">
-				<div class="wd-md-50p login d-none d-md-block page-signin-style p-5 text-white" >
+				<div class="wd-md-50p page-signin-style p-5 text-white" background-image="https://mdbootstrap.com/img/Photos/Others/images/76.jpg">
 					<div class="my-auto authentication-pages">
 						<div>
-							<img src="{{ asset('virtual/assets/img/brand/logo-white.png') }}" class=" m-0 mb-4" alt="logo">
-							<h5 class="mb-4">Responsive Modern Dashboard &amp; Admin Template</h5>
-							<p class="mb-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-							<a href="index.html" class="btn btn-success">Learn More</a>
+							<img src="{{ asset('virtual/assets/img/brand/polindra.png') }}" class=" m-0 mb-3" alt="logo" width="90">
+							<h4 class="mb-1">Parking Barrier</h4>
+							<h4 class="mb-2">Monitoring System</h4>
+							<p class="text-justify" style="font-size: 16px">a system that provides information and report data related to parking data at the Politeknik Negeri Indramayu</p>
+							<!-- <a href="index.html" class="btn btn-success">Learn More</a> -->
 						</div>
 					</div>
 				</div>

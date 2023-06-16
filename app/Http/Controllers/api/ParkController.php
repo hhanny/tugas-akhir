@@ -52,15 +52,15 @@ class ParkController extends Controller
     public function in($id)
     {
         try {
-            $user = UserProfile::where('card_id', $id)->with(['user', 'user.vehycles'])->first();
-            if ($user->user->vehycles->count() == 0) {
+            $user = UserProfile::where('card_id', $id)->with(['user', 'user.vehycle'])->first();
+            if ($user->user->vehycle->count() == 0) {
                 return response()->json([
                     'status' => false,
                     'message' => 'Data kendaraan belum terdaftar',
                 ], 400);
             }
             $data = Park::create([
-                'vehycle_id' => $user->user->vehycles[0]->id,
+                'vehycle_id' => $user->user->vehycle[0]->id,
                 'status' => 'Masuk',
                 'time_in' => now()
             ]);
@@ -82,10 +82,10 @@ class ParkController extends Controller
     public function out($id)
     {
         try {
-            $user = UserProfile::where('card_id', $id)->with(['user', 'user.vehycles'])->first();
+            $user = UserProfile::where('card_id', $id)->with(['user', 'user.vehycle'])->first();
 
             $data =Park::where([
-                ['vehycle_id', '=', $user->user->vehycles[0]->id],
+                ['vehycle_id', '=', $user->user->vehycle[0]->id],
                 ['status', '=', 'Masuk'],
                 ['time_out', '=', null]
             ])->update([

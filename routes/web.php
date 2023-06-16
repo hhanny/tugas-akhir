@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,7 @@ Route::middleware('auth')->group(function () {
     Route::get('data-parkir/{id?}', [ParkController::class, 'show'])->name('park.show');
     Route::get('riwayat-parkir/datatable', [ParkController::class, 'parkHistoryDatatable'])->name('park-history.datatable');
 
+    Route::resource('/profile', ProfileController::class);
 
 });
 
