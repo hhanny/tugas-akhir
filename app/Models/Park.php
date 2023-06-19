@@ -27,7 +27,7 @@ class Park extends Model
 
     protected function getDateAttribute($value)
     {
-        return Carbon::parse($this->time_in)->format('D, d M Y');
+        return Carbon::parse($this->time_in)->translatedFormat('l, d F Y');
     }
 
     protected function getWeekAttribute($value)

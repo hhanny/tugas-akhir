@@ -10,7 +10,7 @@
 		<meta name="Keywords" content="admin,admin dashboard,admin dashboard template,admin panel template,admin template,admin theme,bootstrap 4 admin template,bootstrap 4 dashboard,bootstrap admin,bootstrap admin dashboard,bootstrap admin panel,bootstrap admin template,bootstrap admin theme,bootstrap dashboard,bootstrap form template,bootstrap panel,bootstrap ui kit,dashboard bootstrap 4,dashboard design,dashboard html,dashboard template,dashboard ui kit,envato templates,flat ui,html,html and css templates,html dashboard template,html5,jquery html,premium,premium quality,sidebar bootstrap 4,template admin bootstrap 4"/>
 
 		<!-- Title -->
-		<title> Sign In </title>
+		<title> Masuk </title>
 
 		<!--- Favicon --->
 		<link rel="icon" href="{{ asset('virtual/assets/img/brand/pol-icon.png') }}" type="image/x-icon"/>
@@ -48,21 +48,21 @@
 					<div class="my-auto authentication-pages">
 						<div>
 							<img src="{{ asset('virtual/assets/img/brand/polindra.png') }}" class=" m-0 mb-3" alt="logo" width="90">
-							<h4 class="mb-1">Parking Barrier</h4>
-							<h4 class="mb-2">Monitoring System</h4>
-							<p class="text-justify" style="font-size: 16px">a system that provides information and report data related to parking data at the Politeknik Negeri Indramayu</p>
+							<h4 class="mb-1">Sistem Monitoring</h4>
+							<h4 class="mb-2.5">Barrier Pintu Parkir</h4>
+							<p class="text-justify" style="font-size: 16px">Sebuah sistem yang menyediakan informasi dan laporan terkait data parkir di kampus Politeknik Negeri Indramayu</p>
 							<!-- <a href="index.html" class="btn btn-success">Learn More</a> -->
 						</div>
 					</div>
 				</div>
 				<div class="sign-up-body wd-md-50p">
 					<div class="main-signin-header">
-						<h2>Welcome back!</h2>
-						<h4>Please sign in to continue</h4>
+						<h2>Selamat datang!</h2>
+						<h4>Silahkan masuk untuk melanjutkan</h4>
 						<form action="{{ route('login-proccess') }}" method="post">
 							@csrf
 							<div class="form-group">
-								<label>Email</label><input class="form-control @error('email') is-invalid @enderror" placeholder="Enter your email" name="email" type="text" value="">
+								<label>Email</label><input class="form-control @error('email') is-invalid @enderror" placeholder="Masukan email anda" name="email" type="text" value="">
 								@error('email')
 									<div class="invalid-feedback">
 										{{ $message }}
@@ -70,12 +70,12 @@
 								@enderror
 							</div>
 							<div class="form-group">
-								<label>Password</label> <input class="form-control" placeholder="Enter your password" name="password" type="password" value="" required>
-							</div><button class="btn btn-primary btn-block" type="submit">Sign In</button>
+								<label>Kata sandi</label> <input class="form-control" placeholder="Masukan kata sandi anda" name="password" type="password" value="" required>
+							</div><button class="btn btn-primary btn-block" type="submit">Masuk</button>
 						</form>
 					</div>
 					<div class="main-signin-footer mt-3 mg-t-5">
-						<p><a href="">Forgot password?</a></p>
+						<p><a href="">Lupa kata sandi?</a></p>
 					</div>
 				</div>
 			</div>

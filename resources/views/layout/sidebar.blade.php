@@ -20,9 +20,9 @@
                     </div>
                 </div>
             </div>
-            <div class="sidebar-navs">
-                <ul class="nav  nav-pills-circle">
-                    <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Settings" aria-describedby="tooltip365540">
+            <div class="sidebar-navs ">
+                <ul class="nav mx-5 nav-pills-circle">
+                    <!-- <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Settings" aria-describedby="tooltip365540">
                         <a class="nav-link text-center m-2">
                             <i class="fe fe-settings"></i>
                         </a>
@@ -31,7 +31,7 @@
                         <a class="nav-link text-center m-2">
                             <i class="fe fe-mail"></i>
                         </a>
-                    </li>
+                    </li> -->
                     <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Followers">
                         <a class="nav-link text-center m-2" href="{{ route('profile.index') }}">
                             <i class="fe fe-user"></i>
@@ -47,9 +47,9 @@
             <div class="slide-left disabled" id="slide-left"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewBox="0 0 24 24"><path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"/></svg></div>
             <ul class="side-menu ">
                 <li class="slide">
-                    <a class="side-menu__item" href="{{ route('dashboard') }}" data-sidebar="dashboard">
+                    <a class="side-menu__item" href="{{ route('dashboard.index') }}" data-sidebar="dashboard">
                         <i class="side-menu__icon fe fe-airplay"></i>
-                        <span class="side-menu__label">Dashboard</span>
+                        <span class="side-menu__label">Dasbor</span>
                     </a>
                 </li>
                 <li class="slide">

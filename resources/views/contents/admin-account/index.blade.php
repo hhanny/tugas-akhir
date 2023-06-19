@@ -27,11 +27,11 @@
     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">List Akun Admin</h3>
+                <h3 class="card-title">Daftar Akun Admin</h3>
             </div>
             <div class="card-body">
                 <a class="btn btn-primary modal-effect mb-3 data-table-btn ms-4" data-bs-effect="effect-super-scaled" onclick="create()">
-                    <span class="fe fe-plus"> </span>Add new data
+                    <span class="fe fe-plus"> </span>Tambah data baru
                 </a>
                 <table id="datatable" class="table table-bordered text-nowrap border-bottom">
                     <thead>
@@ -39,7 +39,7 @@
                             <th style="width: 5%">No</th>
                             <th>Username</th>
                             <th>Email</th>
-                            <th>Action</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody></tbody>
@@ -53,7 +53,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content modal-content-demo">
                 <div class="modal-header">
-                    <h6 class="modal-title">Add new data</h6>
+                    <h6 class="modal-title">Tambah data baru</h6>
                     <button aria-label="Close" class="btn-close" data-bs-dismiss="modal"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
@@ -73,7 +73,7 @@
                     </div>
                 </form>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Tutup</button>
                         <button  id="btnSave" class="btn btn-primary">Simpan</button>
                     </div>
             </div>
@@ -265,7 +265,8 @@
             showCancelButton  : true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor : "#d33",
-            confirmButtonText : "Ya, Hapus!"
+            confirmButtonText : "Ya, Hapus!",
+            cancelButtonText : "Batal"
         }).then((result) => {
             if (result.value) {
                 $.ajax({

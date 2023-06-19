@@ -42,16 +42,28 @@
                         <select class="form-control form-select " data-column="2" id="year">
                             <option value="">Pilih tahun..</option>
                             @for ($i = (date('Y') - 10); $i <= date('Y'); $i++)
-                                <option value={{ $i }}>{{ $i }}</option>
+                                <option value="{{ $i }}">{{ $i }}</option>
                             @endfor
                         </select>
                     </div>
                     <div class="col-3">
                         <select class="form-control form-select mb-3" data-column="3" id="month">
                             <option value="">Pilih bulan..</option>
-                            @for ($i = 1; $i <= 12; $i++)
+                            <option value="Januari">Januari</option>
+                            <option value="Februari">Februari</option>
+                            <option value="Maret">Maret</option>
+                            <option value="April">April</option>
+                            <option value="Mei">Mei</option>
+                            <option value="Juni">Juni</option>
+                            <option value="Juli">Juli</option>
+                            <option value="Agustus">Agustus</option>
+                            <option value="September">September</option>
+                            <option value="Oktober">Oktober</option>
+                            <option value="November">November</option>
+                            <option value="Desember">Desember</option>
+                            <!-- @for ($i = 1; $i <= 12; $i++)
                                 <option value="{{ date('M', strtotime(date('Y'.($i < 10 ? '0'.$i : $i).'d')))}}"> {{ date("F", strtotime(date("Y".($i < 10 ? '0'.$i : $i)."d")))}} </option>
-                            @endfor
+                            @endfor -->
                         </select>
                     </div>
                     <div class="col-3">
@@ -76,7 +88,7 @@
     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">List Data Parkir</h3>
+                <h3 class="card-title">Daftar Data Parkir</h3>
             </div>
             <div class="card-body">
                 <table id="datatable" class="table table-bordered text-nowrap border-bottom">
@@ -283,23 +295,23 @@
                         return (meta.row + 1);
                     }
                 }, 
+                // {
+                //     targets: 2,
+                //     visible:false,
+                //     render: function(data, type, full, meta) {
+                //         return moment(data).format('YYYY');
+                //     }
+                // },
+                // {
+                //     targets: 3,
+                //     visible:false,
+                //     render: function(data, type, full, meta) {
+                //         return moment(data).format('MM');
+                //     }
+                // },
                 {
-                    targets: 2,
-                    visible:false,
-                    render: function(data, type, full, meta) {
-                        return moment(data).format('YYYY');
-                    }
-                },
-                {
-                    targets: 3,
-                    visible:false,
-                    render: function(data, type, full, meta) {
-                        return moment(data).format('MM');
-                    }
-                },
-                {
-                    targets: 4,
-                    // visible: false,
+                    targets: [2,3,4],
+                    visible: false,
                 },
                 {
                     targets: [5,6],

@@ -5,8 +5,9 @@ use App\Http\Controllers\ParkController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PegawaiController;
-use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MahasiswaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +26,7 @@ Route::post('/sign-in', [LoginController::class, 'auth'])->name('login-proccess'
 
 Route::middleware('auth')->group(function () {
     Route::get('/sign-out', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
-    Route::get('/dashboard', function () {
-        return view('contents.dashboard');
-    })->name('dashboard');
+    Route::resource('/dashboard', DashboardController::class);
 
     Route::get('/', function () {
         return view('contents.dashboard');
