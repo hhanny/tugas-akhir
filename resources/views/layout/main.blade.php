@@ -13,6 +13,10 @@
 		<!-- Title -->
 		<title> @yield('title', 'Virtual Technopark') </title>
 
+		<!--- Favicon --->
+		<link rel="icon" href="{{ asset('virtual/assets/img/brand/pol-icon.png') }}" type="image/x-icon"/>
+
+
 
 		<!-- Bootstrap css -->
 		<link href="{{ asset('virtual/assets/plugins/bootstrap/css/bootstrap.css') }}" rel="stylesheet" id="style"/>
