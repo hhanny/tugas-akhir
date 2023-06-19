@@ -9,7 +9,7 @@
 @section('breadcumb')
 <div class="breadcrumb-header justify-content-between">
     <div>
-        <h4 class="content-title mb-2">Hai, selamat datang kembali!</h4>
+        <h4 class="content-title mb-2">Hai, selamat datang kembali {{ auth()->user()->username }} !</h4>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a   href="javascript:void(0);"></a></li>
@@ -55,6 +55,7 @@
 <!-- main-content-body -->
 <div class="main-content-body auth">
     <div class="row row-sm">
+    @if(auth()->user()->hasRole('admin'))
         <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
             <div class="card overflow-hidden project-card">
                 <div class="card-body py-4">
@@ -86,17 +87,14 @@
                                     <strong class="fs-6">Pengguna Mobil</strong>
                                     <span class="counter fs-6 number-font">6</span>
                                 </li>
-
-                                <!-- <li>
-                                    <strong class="fs-6">Not-Permission</strong>
-                                    <span class="fs-6">0</span>
-                                </li> -->
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    @endif
+    @if(auth()->user()->hasRole('admin'))
         <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
             <div class="card  overflow-hidden project-card">
                 <div class="card-body py-4">
@@ -140,6 +138,8 @@
                 </div>
             </div>
         </div>
+        @endif
+        @if(auth()->user()->hasRole('superAdmin'))
         <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
             <div class="card  overflow-hidden project-card">
                 <div class="card-body py-4">
@@ -178,6 +178,8 @@
                 </div>
             </div>
         </div>
+        @endif
+        @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('superAdmin'))
         <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
             <div class="card overflow-hidden project-card">
                 <div class="card-body py-4">
@@ -243,6 +245,8 @@
                 </div>
             </div>
         </div>
+        @endif
+        @if(auth()->user()->hasRole('pegawai'))
         <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
             <div class="card overflow-hidden project-card">
                 <div class="card-body py-4">
@@ -264,7 +268,7 @@
                             </svg>
                         </div>
                         <div class="project-content">
-                            <h4>Data Akun Mahasiswa</h4>
+                            <h4>Data Parkir Anda (pgw)</h4>
                             <ul>
                                 <li>
                                     <strong class="fs-6">Terdaftar</strong>
@@ -276,6 +280,8 @@
                 </div>
             </div>
         </div>
+        @endif
+        @if(auth()->user()->hasRole('mahasiswa'))
         <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
             <div class="card overflow-hidden project-card">
                 <div class="card-body py-4">
@@ -297,7 +303,7 @@
                             </svg>
                         </div>
                         <div class="project-content">
-                            <h4>Data Akun Mahasiswa</h4>
+                            <h4>Data Parkir Anda (mhs)</h4>
                             <ul>
                                 <li>
                                     <strong class="fs-6">Terdaftar</strong>
@@ -309,6 +315,7 @@
                 </div>
             </div>
         </div>
+        @endif
     </div>
 </div>
 <!-- <div></div> -->

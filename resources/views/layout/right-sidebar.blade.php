@@ -7,7 +7,7 @@
                     <p class="animated ">Sat,October 1st 2029</p>
                 </li>
             </ul>
-            <div class="card-body latest-tasks">
+            <!-- <div class="card-body latest-tasks">
                 <h3 class="events-title"><span>Upcoming Events </span></h3>
                 <div class="event">
                     <div class="Day">Monday 20 Jan</div>
@@ -120,20 +120,20 @@
                     <a   href="javascript:void(0);">Previous</a>
                     <a   href="javascript:void(0);" class="ms-auto">Next</a>
                 </div>
-            </div>
-            <div class="card-body border-top border-bottom">
+            </div> -->
+            <div class="card-body border-top border-bottom center">
                 <div class="row">
-                    <div class="col-4 text-center">
+                    <!-- <div class="col-4 text-center">
                         <a class="" href=""><i class="dropdown-icon mdi  mdi-message-outline fs-20 m-0 leading-tight"></i></a>
                         <div>Inbox</div>
-                    </div>
-                    <div class="col-4 text-center">
+                    </div> -->
+                    <!-- <div class="col-4 text-center">
                         <a class="" href=""><i class="dropdown-icon mdi mdi-tune fs-20 m-0 leading-tight"></i></a>
-                        <div>Settings</div>
-                    </div>
+                        <div>Pengaturan</div>
+                    </div> -->
                     <div class="col-4 text-center">
-                        <a class="" href=""><i class="dropdown-icon mdi mdi-logout-variant fs-20 m-0 leading-tight"></i></a>
-                        <div>Sign out</div>
+                        <a class="" href=" {{ route('logout') }}"><i class="dropdown-icon mdi mdi-logout-variant fs-20 m-0 leading-tight"></i></a>
+                        <div>Keluar</div>
                     </div>
                 </div>
             </div>

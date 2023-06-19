@@ -34,6 +34,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('admin/datatable', [AdminController::class, 'datatable'])->name('admin.datatable');
     Route::resource('/admin', AdminController::class);
+    Route::get('/admin/create', function (){
+        return view('contents.admin-account.create');
+    });
 
     Route::get('pegawai/datatable', [PegawaiController::class, 'datatable'])->name('pegawai.datatable');
     Route::resource('/pegawai', PegawaiController::class);

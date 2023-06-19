@@ -41,77 +41,13 @@
           <div class="card-body">
             <div class="ps-0">
               <div class="main-profile-overview">
-                <div class="main-img-user profile-user"><img alt="" src="{{ asset($data->user_profile->image) }}"><a href="JavaScript:void(0);" class="fas fa-camera profile-edit"></a></div>
+                <div class="main-img-user profile-user"><img alt="" src="{{ asset($data->user_profile->image ?? 'assets/images/default-profile.jpg') }}"><a href="JavaScript:updateImage();" class="ion-ios-brush fs-5 profile-edit"></a></div>
                 <div class="d-flex justify-content-between mg-b-20">
                   <div>
-                    <h5 class="main-profile-name">{{ $data->user_profile->name }}</h5>
-                    <p class="main-profile-name-text">{{ $data->getRoleNames()->first() }}</p>
+                    <h5 class="main-profile-name">{{ $data->user_profile->name ?? '' }}</h5>
+                    <p class="main-profile-name-text">{{ $data->getRoleNames()->first() ?? ''}}</p>
                   </div>
                 </div>
-                <!-- <h6>Bio</h6>
-                <div class="main-profile-bio">
-                  pleasure rationally encounter but because pursue consequences that are extremely painful.occur in which toil and pain can procure him some great pleasure.. <a href="">More</a>
-                </div> -->
-
-                <!-- main-profile-bio -->
-                <!-- <div class="main-profile-work-list">
-                  <div class="media">
-                    <div class="media-logo bg-success-transparent text-success">
-                      <i class="icon ion-logo-whatsapp"></i>
-                    </div>
-                    <div class="media-body">
-                      <h6>Web Designer at <a href="">Spruko</a></h6><span>2018 - present</span>
-                      <p>Past Work: Spruko, Inc.</p>
-                    </div>
-                  </div>
-                  <div class="media">
-                    <div class="media-logo bg-primary-transparent text-primary">
-                      <i class="icon ion-logo-buffer"></i>
-                    </div>
-                    <div class="media-body">
-                      <h6>Studied at <a href="">University</a></h6><span>2004-2008</span>
-                      <p>Graduation: Bachelor of Science in Computer Science</p>
-                    </div>
-                  </div>
-                </div> -->
-                <!-- main-profile-work-list -->
-
-                <!-- <hr class="mg-y-30">
-                <label class="main-content-label tx-13 mg-b-20">Social</label>
-                <div class="main-profile-social-list">
-                  <div class="media">
-                    <div class="media-icon bg-primary-transparent text-primary">
-                      <i class="icon ion-logo-github"></i>
-                    </div>
-                    <div class="media-body">
-                      <span>Github</span> <a href="">github.com/spruko</a>
-                    </div>
-                  </div>
-                  <div class="media">
-                    <div class="media-icon bg-success-transparent text-success">
-                      <i class="icon ion-logo-twitter"></i>
-                    </div>
-                    <div class="media-body">
-                      <span>Twitter</span> <a href="">twitter.com/spruko.me</a>
-                    </div>
-                  </div>
-                  <div class="media">
-                    <div class="media-icon bg-info-transparent text-info">
-                      <i class="icon ion-logo-linkedin"></i>
-                    </div>
-                    <div class="media-body">
-                      <span>Linkedin</span> <a href="">linkedin.com/in/spruko</a>
-                    </div>
-                  </div>
-                  <div class="media">
-                    <div class="media-icon bg-danger-transparent text-danger">
-                      <i class="icon ion-md-link"></i>
-                    </div>
-                    <div class="media-body">
-                      <span>My Portfolio</span> <a href="">spruko.com/</a>
-                    </div>
-                  </div>
-                </div>main-profile-social-list -->
               </div><!-- main-profile-overview -->
             </div>
           </div>
@@ -129,7 +65,7 @@
                 <div class="media-body">
                   <span>Mobile</span>
                   <div>
-                    {{ $data->user_profile->phone_number }}
+                    {{ $data->user_profile->phone_number ?? '' }}
                   </div>
                 </div>
               </div>
@@ -140,7 +76,7 @@
                 <div class="media-body">
                   <span>Current Address</span>
                   <div>
-                    San Francisco, CA
+                    {{ $data->user_profile->address ?? '' }}
                   </div>
                 </div>
               </div>
@@ -154,30 +90,17 @@
       <div class="col-lg-8">
         <div class="card">
           <div class="card-body">
-            <!-- <div class="mb-4 main-content-label">Personal Information</div>
-            <form class="form-horizontal">
-              <div class="form-group ">
-                <div class="row">
-                  <div class="col-md-3">
-                    <label class="form-label">Language</label>
-                  </div>
-                  <div class="col-md-9">
-                    <select class="form-control select2">
-                      <option>Us English</option>
-                      <option>Arabic</option>
-                      <option>Korean</option>
-                    </select>
-                  </div>
-                </div>
-              </div> -->
+            <form class="form-horizontal" id="form" method="POST">
+              @csrf
+              <input type="hidden" name="id" id="id" value="{{ $data->id }}">
               <div class="mb-4 main-content-label">Name</div>
               <div class="form-group ">
                 <div class="row">
                   <div class="col-md-3">
-                    <label class="form-label">User Name</label>
+                    <label class="form-label">Username</label>
                   </div>
                   <div class="col-md-9">
-                    <input type="text" class="form-control"  placeholder="User Name" value="{{ $data->username }}">
+                    <input type="text" class="form-control" id="username" name="username"  placeholder="Username" value="{{ $data->username ?? ''}}">
                   </div>
                 </div>
               </div>
@@ -187,37 +110,7 @@
                     <label class="form-label">Name</label>
                   </div>
                   <div class="col-md-9">
-                    <input type="text" class="form-control"  placeholder="First Name" value="{{ $data->user_profile->name }}">
-                  </div>
-                </div>
-              </div>
-              <!-- <div class="form-group ">
-                <div class="row">
-                  <div class="col-md-3">
-                    <label class="form-label">last Name</label>
-                  </div>
-                  <div class="col-md-9">
-                    <input type="text" class="form-control"  placeholder="Last Name" value="Redashna">
-                  </div>
-                </div>
-              </div> -->
-              <!-- <div class="form-group ">
-                <div class="row">
-                  <div class="col-md-3">
-                    <label class="form-label">Nick Name</label>
-                  </div>
-                  <div class="col-md-9">
-                    <input type="text" class="form-control"  placeholder="Nick Name" value="Redash">
-                  </div>
-                </div>
-              </div> -->
-              <div class="form-group ">
-                <div class="row">
-                  <div class="col-md-3">
-                    <label class="form-label">Status</label>
-                  </div>
-                  <div class="col-md-9">
-                    <input type="text" class="form-control"  placeholder="Designation" value="{{ $data->username }}">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" value="{{ $data->user_profile->name ?? ''}}">
                   </div>
                 </div>
               </div>
@@ -228,27 +121,17 @@
                     <label class="form-label">Email<i>(required)</i></label>
                   </div>
                   <div class="col-md-9">
-                    <input type="text" class="form-control"  placeholder="Email" value="{{ $data->email }}">
+                    <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="{{ $data->email ?? ''}}">
                   </div>
                 </div>
               </div>
-              <!-- <div class="form-group ">
-                <div class="row">
-                  <div class="col-md-3">
-                    <label class="form-label">Website</label>
-                  </div>
-                  <div class="col-md-9">
-                    <input type="text" class="form-control"  placeholder="Website" value="@spruko.w">
-                  </div>
-                </div>
-              </div> -->
               <div class="form-group ">
                 <div class="row">
                   <div class="col-md-3">
                     <label class="form-label">Phone</label>
                   </div>
                   <div class="col-md-9">
-                    <input type="text" class="form-control"  placeholder="phone number" value="{{ $data->user_profile->phone_number }}">
+                    <input type="text" class="form-control" id="phone_number" name="phone_number"  placeholder="phone number" value="{{ $data->user_profile->phone_number ?? '' }}">
                   </div>
                 </div>
               </div>
@@ -258,95 +141,19 @@
                     <label class="form-label">Address</label>
                   </div>
                   <div class="col-md-9">
-                    <textarea class="form-control" name="example-textarea-input" rows="2"  placeholder="Address">San Francisco, CA</textarea>
-                  </div>
-                </div>
-              </div>
-              <!-- <div class="mb-4 main-content-label">Social Info</div>
-              <div class="form-group ">
-                <div class="row">
-                  <div class="col-md-3">
-                    <label class="form-label">Twitter</label>
-                  </div>
-                  <div class="col-md-9">
-                    <input type="text" class="form-control"  placeholder="twitter" value="twitter.com/spruko.me">
-                  </div>
-                </div>
-              </div>
-              <div class="form-group ">
-                <div class="row">
-                  <div class="col-md-3">
-                    <label class="form-label">Facebook</label>
-                  </div>
-                  <div class="col-md-9">
-                    <input type="text" class="form-control"  placeholder="facebook" value="https://www.facebook.com/Redash">
-                  </div>
-                </div>
-              </div>
-              <div class="form-group ">
-                <div class="row">
-                  <div class="col-md-3">
-                    <label class="form-label">Google+</label>
-                  </div>
-                  <div class="col-md-9">
-                    <input type="text" class="form-control"  placeholder="google" value="spruko.com">
-                  </div>
-                </div>
-              </div>
-              <div class="form-group ">
-                <div class="row">
-                  <div class="col-md-3">
-                    <label class="form-label">Linked in</label>
-                  </div>
-                  <div class="col-md-9">
-                    <input type="text" class="form-control"  placeholder="linkedin" value="linkedin.com/in/spruko">
-                  </div>
-                </div>
-              </div>
-              <div class="form-group ">
-                <div class="row">
-                  <div class="col-md-3">
-                    <label class="form-label">Github</label>
-                  </div>
-                  <div class="col-md-9">
-                    <input type="text" class="form-control" placeholder="github" value="github.com/sprukos">
-                  </div>
-                </div>
-              </div>
-              <div class="mb-4 main-content-label">About Yourself</div> -->
-              <!-- <div class="form-group ">
-                <div class="row">
-                  <div class="col-md-3">
-                    <label class="form-label">Biographical Info</label>
-                  </div>
-                  <div class="col-md-9">
-                    <textarea class="form-control" name="example-textarea-input" rows="4" placeholder="">pleasure rationally encounter but because pursue consequences that are extremely painful.occur in which toil and pain can procure him some great pleasure..</textarea>
-                  </div>
-                </div>
-              </div> -->
-              <!-- <div class="mb-4 main-content-label">Email Preferences</div>
-              <div class="form-group mb-0">
-                <div class="row">
-                  <div class="col-md-3">
-                    <label class="form-label">Verified User</label>
-                  </div>
-                  <div class="col-md-9">
-                    <div class="custom-controls-stacked">
-                      <label class="ckbox mg-b-10"><input checked="" type="checkbox"><span> Accept to receive post or page notification emails</span></label>
-                      <label class="ckbox"><input checked="" type="checkbox"><span> Accept to receive email sent to multiple recipients</span></label>
-                    </div>
+                    <textarea class="form-control" id="address"  name="address" rows="2"  placeholder="Address">{{ $data->user_profile->address ?? '' }}</textarea>
                   </div>
                 </div>
               </div>
             </form>
-          </div> -->
-          <div class="card-footer">
-            <button type="submit" class="btn btn-primary waves-effect waves-light">Update Profile</button>
-          </div>
+            <div class="card-footer">
+              <button type="button" id="btnSave" class="btn btn-primary waves-effect waves-light">Update Profile</button>
+            </div>
         </div>
-      </div>
+        </div>
       <!-- /Col -->
-    </div>
+      </div>
+  </div>
     <!-- row closed -->
 
 @endsection
@@ -371,5 +178,124 @@
 <!--moment JS -->
 <script src="{{ asset('virtual/assets/plugins/moment/moment.js') }}"></script>
 
+<script src="{{ asset('virtual/assets/plugins/fileuploads/js/fileupload.js') }}"></script>
+
 <script src="{{ asset('virtual/assets/js/script.js') }}"></script>
+<script>
+  $(document).ready(function(){
+
+    $('#btnSave').on('click', function () {
+        submit();
+    })
+    
+    $('#form').on('submit', function(e){
+        e.preventDefault();
+
+        submit();
+    })
+  });
+
+  function updateImage(){
+    var html = `
+    <form id="form-image" enctype="multipart/form-data" method="POST" >
+      @csrf
+      <input id="image" class="dropify" type="file" name="image" data-allowed-file-extensions="jpeg jpg png webp svg" />
+    </form>
+    <button type="button" class="btn btn-info mt-3">Unggah</button>
+    `;
+    
+    $('.main-profile-overview').append(html);
+    
+    $('.dropify').dropify();
+
+    $('.profile-edit').hide();
+  };
+
+  function submit() {
+        var id          = $('#id').val();
+        var username        = $('#username').val();
+        var name        = $('#name').val();
+        var phone_number        = $('#phone_number').val();
+        var address        = $('#address').val();
+        var email        = $('#email').val();
+    
+        $('#btnSave').text('Menyimpan...');
+        $('#btnSave').attr('disabled', true);
+
+        var url = "{{ route('profile.update',":id") }}";
+        url = url.replace(':id', id);
+
+        $.ajax({
+            url: url,
+            type: 'PUT',
+            dataType: 'json',
+            data: {
+                id: id,
+                username: username,
+                name: name,
+                address: address,
+                phone_number: phone_number,
+                email: email,
+            },
+            success: function (data) {
+                if(data.status) {
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'success',
+                        title: data.message,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    window.location.reload();
+
+                    $('#btnSave').text('Simpan');
+                    $('#btnSave').attr('disabled', false);
+                }else{
+                  Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'error',
+                        title: 'ERROR !',
+                        text: data.message,
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                }
+            }, 
+            error: function(data){
+                var error_message = "";
+                error_message += " ";
+                
+                $.each( data.responseJSON.errors, function( key, value ) {
+                    error_message +=" "+value+" ";
+                });
+
+                let errors = data.responseJSON?.errors
+
+                if(errors){
+                    for(const [key, value] of Object.entries(errors)){
+                        $(`[name='${key}']`).parent().append(`<sp class="text-danger text-small">${value}</sp>`)
+                        $(`[name='${key}']`).addClass('is-invalid')
+                    }
+                }
+
+                error_message +=" ";
+                Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'error',
+                        title: 'ERROR !',
+                        text: error_message,
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                $('#btnSave').text('Simpan');
+                $('#btnSave').attr('disabled', false);
+            },
+        });
+    }
+
+  
+</script>
 @endsection
