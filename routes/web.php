@@ -49,6 +49,8 @@ Route::middleware('auth')->group(function () {
     Route::get('data-parkir/{id?}', [ParkController::class, 'show'])->name('park.show');
     Route::get('riwayat-parkir/datatable', [ParkController::class, 'parkHistoryDatatable'])->name('park-history.datatable');
 
+    Route::put('/profile/{id?}/update-image', [ProfileController::class, 'updateImage'])->name('profile-image.update');
+    Route::delete('/profile/{id?}/delete-image', [ProfileController::class, 'destroyImage'])->name('profile-image.delete');
     Route::resource('/profile', ProfileController::class);
 
 });

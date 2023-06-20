@@ -1,17 +1,22 @@
 <div class="sticky">
     <aside class="app-sidebar sidebar-scroll">
         <div class="main-sidebar-header active">
-            <a class="desktop-logo logo-light active" href="index.html"><img src="{{ asset('virtual/assets/img/brand/polindra.png') }}" class="main-logo" alt="logo"></a>
-            <a class="desktop-logo logo-dark active" href="index.html"><img src="{{ asset('virtual/assets/img/brand/pol-icon.png') }}" class="main-logo" alt="logo"></a>
+
+            <a class="desktop-logo logo-light active" href="index.html"><img src="{{ asset('images/SIMBAPAR-BLACK.png') }}" class="main-logo" alt="logo"></a>
+
+            <a class="desktop-logo logo-dark active" href="index.html"><img src="{{ asset('images/SIMBAPAR-WHITE.png') }}" class="main-logo" alt="logo"></a>
+
             <a class="logo-icon mobile-logo icon-light active" href="index.html"><img src="{{ asset('virtual/assets/img/brand/pol-icon.png') }}" alt="logo"></a>
+
             <a class="logo-icon mobile-logo icon-dark active" href="index.html"><img src="{{ asset('virtual/assets/img/brand/pol-icon.png') }}" alt="logo"></a>
+
         </div>
         <div class="main-sidemenu">
             <div class="main-sidebar-loggedin">
                 <div class="app-sidebar__user">
                     <div class="dropdown user-pro-body text-center">
                         <div class="user-pic">
-                            <img src="{{ asset(auth()->user()->user_profile->image ?? 'assets/images/default-profile.jpg')}}" alt="user-img" class="rounded-circle mCS_img_loaded">
+                            <img src="{{ asset(auth()->user()->user_profile->image ? 'storage/' . auth()->user()->user_profile->image :'assets/images/default-profile.jpg')}}" alt="user-img" class="rounded-circle mCS_img_loaded">
                         </div>
                         <div class="user-info">
                             <h6 class=" mb-0 text-dark">{{ auth()->user()->username }}</h6>

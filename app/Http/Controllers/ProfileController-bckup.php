@@ -6,7 +6,6 @@ use App\Models\User;
 use App\Models\UserProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -52,46 +51,6 @@ class ProfileController extends Controller
         //
     }
 
-    function updateImage(Request $request, string $id) {
-        // dd($request);
-
-        $request->validate([
-            'image'             => 'required|image|file|max:1024|mimes:jpeg,jpg,png,webp,svg',
-        ]);
-
-        try {
-            if($request->old_image){
-                Storage::delete($request->old_image);
-            }
-    
-            $file = $request->file('image')->store('users-image');
-    
-            $userProfile = UserProfile::where('user_id', $id)->first();
-            UserProfile::updateorCreate(
-                ['id'   => optional($userProfile)->id ?? null],
-                [
-                    'image' => $file,
-                ]
-            );
-
-            // return response()->json([
-            //     'status'    => true,
-            //     'message'   => 'Foto profil berhasil diperbarui!',
-            // ]);
-
-            return redirect()->back()->with('success', 'Foto profil berhasil diperbarui!');
-            
-        } catch (\Throwable $th) {
-            return redirect()->back()->with('error', 'Something went wrong!');
-            // return response()->json([
-            //     'status'    => false,
-            //     'message'   => 'Something went wrong!',
-            // ]);
-        }
-
-
-    }
-
     /**
      * Update the specified resource in storage.
      */
@@ -99,7 +58,7 @@ class ProfileController extends Controller
     {
         $rules = [
             'name' => 'required|min:6|max:100',
-            'phone_number' => 'required|min:11|numeric',
+            'phone_number' => 'required|min:11|max:15|numeric',
             'address' => 'required',
         ];
         $user = User::find($request->id);
@@ -151,29 +110,5 @@ class ProfileController extends Controller
     public function destroy(string $id)
     {
         //
-    }
-
-    public function destroyImage(string $id)
-    {
-        try {
-            $userProfile = UserProfile::where('user_id', $id)->first();
-            $image = $userProfile->image;
-            if($image != null){
-                Storage::delete($image);
-            }
-            $userProfile->update([
-                'image' => null
-            ]);
-    
-            return response()->json([
-                'status'    => true,
-                'message'   => 'Berhasil menghapus foto!',
-            ]);
-        } catch (\Throwable $th) {
-            return response()->json([
-                'status'    => false,
-                'message'   => 'Somthing went wrong!',
-            ]);
-        }
     }
 }

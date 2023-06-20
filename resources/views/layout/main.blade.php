@@ -190,10 +190,13 @@
 
 			if (type) {
 				Swal.fire({
-					title: type == 'success' ? "Success !" : 'Error !',
-					html: type == 'success' ? "{{ session()->get('success') }}" : "{!! session()->get('error') !!}",
+					toast: true,
+                    position: 'top-end',
+					title: type == 'success' ? "{{ session()->get('success') }}" : "{{ session()->get('error') }}",
 					icon: `${type}`,
-					confirmButtonColor: "#556ee6",
+                    showConfirmButton: false,
+					timer: 2500,
+
 				})
 			}
 

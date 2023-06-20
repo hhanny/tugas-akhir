@@ -41,10 +41,7 @@
           <div class="card-body">
             <div class="ps-0">
               <div class="main-profile-overview">
-                <div class="main-img-user profile-user"><img alt="" src="{{ asset($data->user_profile->image ? 'storage/' . $data->user_profile->image :'assets/images/default-profile.jpg') }}">
-                  <a href="JavaScript:updateImage();" id="btnEdit" class="ion-ios-brush fs-5 profile-edit"></a>
-                  <a href="JavaScript:deleteForm();" id="btnClose" class="zmdi zmdi-close bg-danger fs-5 profile-edit"></a>
-                </div>
+                <div class="main-img-user profile-user"><img alt="" src="{{ asset($data->user_profile->image ?? 'assets/images/default-profile.jpg') }}"><a href="JavaScript:updateImage();" class="ion-ios-brush fs-5 profile-edit"></a></div>
                 <div class="d-flex justify-content-between mg-b-20">
                   <div>
                     <h5 class="main-profile-name">{{ $data->user_profile->name ?? '' }}</h5>
@@ -190,8 +187,6 @@
     $('#btnSave').on('click', function () {
         submit();
     })
-
-    $('#btnClose').hide();
     
     $('#form').on('submit', function(e){
         e.preventDefault();
@@ -202,115 +197,19 @@
 
   function updateImage(){
     var html = `
-    <form id="form-image" action="{{ route('profile-image.update', $data->id)  }}" enctype="multipart/form-data" method="POST" >
+    <form id="form-image" enctype="multipart/form-data" method="POST" >
       @csrf
-      @method('put')
-      <input type="hidden" name="old_image" id="old_image" value="{{ $data->user_profile->image }}">
-      <input id="image" class="dropify" type="file" accept=".jpg,.png,.svg,.jpeg,.webp" name="image" data-allowed-file-extensions="jpeg jpg png webp svg" />
-      <small class="text-danger">Ukuran foto maksimal 1MB</small>
+      <input id="image" class="dropify" type="file" name="image" data-allowed-file-extensions="jpeg jpg png webp svg" />
     </form>
-    <div class="mt-3">
-      <button type="button" id="btnUpload" onclick="uploadImage()" class="btn btn-info ">Unggah</button>
-      @if($data->user_profile->image != null)
-        <button class="btn btn-danger" id="btnDelete" onclick="destroyImage('{{ $data->id }}')" type="button">Hapus Foto</button>
-      @endif
-    </div>
+    <button type="button" class="btn btn-info mt-3">Unggah</button>
     `;
     
     $('.main-profile-overview').append(html);
     
     $('.dropify').dropify();
 
-    $('#btnEdit').hide();
-    $('#btnClose').show();
+    $('.profile-edit').hide();
   };
-
-  
-  function uploadImage() {
-    $('#form-image').submit();
-  }
-
-  // function uploadImage() {
-
-  //   $('#btnUpload').text('Mengunggah...');
-  //   $('#btnUpload').attr('disabled', true);
-
-  //   $('#form-image').submit();
-  //   $('#form-image').on('submit', function(e){
-  //     e.preventDefault();
-  //     $.ajax({
-  //       type: 'PUT',
-  //       url : `{{ route('profile-image.update', $data->id) }}`, // or whatever
-  //       data: new FormData(this),
-  //       dataType: 'json',
-  //       contentType: false,
-  //       cache: false,
-  //       processData:false,
-  //       success: function (data) {
-  //             if(data.status) {
-  //                 Swal.fire({
-  //                     toast: true,
-  //                     position: 'top-end',
-  //                     icon: 'success',
-  //                     title: data.message,
-  //                     showConfirmButton: false,
-  //                     timer: 1500
-  //                 });
-  //                 window.location.reload();
-
-  //                 $('#btnUpload').text('Unggah');
-  //                 $('#btnUpload').attr('disabled', false);
-  //             }else{
-  //               Swal.fire({
-  //                     toast: true,
-  //                     position: 'top-end',
-  //                     icon: 'error',
-  //                     title: 'ERROR !',
-  //                     text: data.message,
-  //                     showConfirmButton: false,
-  //                     timer: 2000
-  //                 });
-  //             }
-  //         }, 
-  //         error: function(data){
-  //             var error_message = "";
-  //             error_message += " ";
-              
-  //             $.each( data.responseJSON.errors, function( key, value ) {
-  //                 error_message +=" "+value+" ";
-  //             });
-
-  //             let errors = data.responseJSON?.errors
-
-  //             if(errors){
-  //                 for(const [key, value] of Object.entries(errors)){
-  //                     $(`[name='${key}']`).parent().append(`<sp class="text-danger text-small">${value}</sp>`)
-  //                     $(`[name='${key}']`).addClass('is-invalid')
-  //                 }
-  //             }
-
-  //             error_message +=" ";
-  //             Swal.fire({
-  //                     toast: true,
-  //                     position: 'top-end',
-  //                     icon: 'error',
-  //                     title: 'ERROR !',
-  //                     text: error_message,
-  //                     showConfirmButton: false,
-  //                     timer: 2000
-  //                 });
-  //             $('#btnUpload').text('Unggah');
-  //             $('#btnUpload').attr('disabled', false);
-  //         },
-  //     })
-  //   })
-  // }
-
-  function deleteForm() {
-    $('#form-image, #btnUpload, #btnCancel, #btnDelete').remove();
-    $('#btnEdit').show();
-    $('#btnClose').hide();
-  }
 
   function submit() {
         var id          = $('#id').val();
@@ -396,41 +295,6 @@
             },
         });
     }
-
-    function destroyImage(id) {
-        var url = "{{ route('profile-image.delete',":id") }}";
-        url = url.replace(':id', id);
-    
-        Swal.fire({
-            title: "Yakin ingin menghapus foto?",
-            text: "Ketika foto terhapus, anda tidak bisa mengembalikan foto tersbut!",
-            icon: "warning",
-            showCancelButton  : true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor : "#d33",
-            confirmButtonText : "Ya, Hapus!"
-        }).then((result) => {
-            if (result.value) {
-                $.ajax({
-                    url    : url,
-                    type   : "delete",
-                    data: { "id":id },
-                    dataType: "JSON",
-                    success: function(data) {
-                        window.location.reload();
-                        Swal.fire({
-                            toast: true,
-                            position: 'top-end',
-                            icon: 'success',
-                            title: 'Foto berhasil dihapus',
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                    }
-                })
-            }
-        })
-    } 
 
   
 </script>

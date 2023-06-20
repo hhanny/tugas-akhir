@@ -10,6 +10,7 @@
 <!-- PAGE-HEADER Breadcrumbs -->
 <div class="breadcrumb-header justify-content-between">
     <div>
+    <h4 class="content-title mb-2">Tambah data akun</h4>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a   href="javascript:void(0);"></a></li>
@@ -23,7 +24,105 @@
 
 @section('content')
 <!-- Row -->
+<div class="row">
+    <div class="col-md-12 col-xl-12 col-xs-12 col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row row-sm">
+                    <div class="col-lg">
+                        <div class="mb-3">
+                            <label for="idc"><b>ID Kartu</b></label>
+                            <input id="idc" class="form-control mg-b-20" placeholder="ID Kartu" type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <div class="card">
+            <div class="card-body">
+                <div class="main-content-label mg-b-5">Identitas diri</div>
+                <div class="row row-sm mt-3">
+                    <div class="col-lg">
+                    <div class="mb-3">
+                            <label for="usr">Username</label>
+                            <input id="usr" class="form-control mg-b-20" placeholder="Username" type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label for="nama">Nama</label>
+                            <input id="nama" class="form-control mg-b-20" placeholder="Nama" type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label for="nn">NIP/NIM</label>
+                            <input id="nn" class="form-control mg-b-20" placeholder="NIP/NIM" type="text">
+                        </div>
+                        <div class="row mg-t-10">
+                            <label for="usr">Gender</label>
+                            <div class="col-lg-3">
+                                <label class="rdiobox"><input name="rdio" type="radio"> <span>Laki-laki</span></label>
+                            </div>
+                            <div class="col-lg-3 mg-t-20 mg-lg-t-0">
+                                <label class="rdiobox"><input checked name="rdio" type="radio"> <span>Perempuan</span></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+            <div class="main-content-label mg-b-5">Informasi diri</div>
+                <div class="row row-sm mt-3">
+                    <div class="col-lg">
+                        <div class="mb-3">
+                            <label for="eml">Email</label>
+                            <input id="eml" class="form-control mg-b-20" placeholder="Email" type="text">
+                        </div>
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        Phone:
+                                    </div>
+                                </div><!-- input-group-prepend -->
+                                <input class="form-control" id="phoneMask" placeholder="" type="number">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="alm">Alamat</label>
+                            <input id="alm" class="form-control mg-b-20" placeholder="Alamat" type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+            <div class="main-content-label mg-b-5">Detail Kendaraan</div>
+                <div class="row row-sm mt-3">
+                    <div class="col-lg">
+                        <div class="mb-3">
+                            <label for="mrk">Merek</label>
+                            <input id="mrk" class="form-control mg-b-20" placeholder="Merek" type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label for="tp">Tipe</label>
+                            <input id="tp" class="form-control mg-b-20" placeholder="Tipe" type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label for="nk">Nomor Kendaraan</label>
+                            <input id="nk" class="form-control mg-b-20" placeholder="Nomor Kendaraan" type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+    </div>
+</div>
 <!-- End Row -->
 @endsection
 
