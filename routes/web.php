@@ -28,9 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/sign-out', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
     Route::resource('/dashboard', DashboardController::class);
 
-    Route::get('/', function () {
-        return view('contents.dashboard');
-    })->name('landing');
+    Route::get('/',[DashboardController::class , 'index']);
 
     Route::get('admin/datatable', [AdminController::class, 'datatable'])->name('admin.datatable');
     Route::resource('/admin', AdminController::class);

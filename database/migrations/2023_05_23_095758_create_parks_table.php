@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('parks', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('vehycle_id');
-            $table->string('status')->nullable();
+            $table->enum('status',['Masuk','Keluar'])->nullable();
+            $table->string('image', 100)->nullable();
             $table->dateTime('time_in')->nullable();
             $table->dateTime('time_out')->nullable();
             $table->timestamps();

@@ -49,7 +49,7 @@ class ParkController extends Controller
         //
     }
 
-    public function in($id)
+    public function in(Request $request, string $id)
     {
         try {
             $user = UserProfile::where('card_id', $id)->with(['user', 'user.vehycle'])->first();
@@ -61,6 +61,7 @@ class ParkController extends Controller
             }
             $data = Park::create([
                 'vehycle_id' => $user->user->vehycle[0]->id,
+                'image' => $request->image,
                 'status' => 'Masuk',
                 'time_in' => now()
             ]);

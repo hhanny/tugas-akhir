@@ -280,11 +280,11 @@
                         </div> -->
                         <div class="dropdown main-profile-menu nav nav-item nav-link">
 
-                            <a class="profile-user d-flex" href=""><img src="{{ asset(auth()->user()->user_profile->image ? 'storage/' . auth()->user()->user_profile->image :'assets/images/default-profile.jpg')}}" alt="user-img" class="rounded-circle mCS_img_loaded"><span></span></a>
+                            <a class="profile-user d-flex" href=""><img src="{{  asset(auth()->user()->user_profile ? auth()->user()->user_profile->image ? 'storage/' . auth()->user()->user_profile->image :'assets/images/default-profile.jpg' : 'assets/images/default-profile.jpg') }}" alt="user-img" class="rounded-circle mCS_img_loaded"><span></span></a>
 
                             <div class="dropdown-menu">
                                 <div class="main-header-profile header-img">
-                                    <div class="main-img-user"><img src="{{ asset(auth()->user()->user_profile->image ? 'storage/' . auth()->user()->user_profile->image :'assets/images/default-profile.jpg')}}"></div>
+                                    <div class="main-img-user"><img src="{{ asset(auth()->user()->user_profile ? auth()->user()->user_profile->image ? 'storage/' . auth()->user()->user_profile->image :'assets/images/default-profile.jpg' : 'assets/images/default-profile.jpg') }}"></div>
                                     <h6 class="px-4">{{ auth()->user()->username }}</h6><span>{{ auth()->user()->email }}</span>
                                 </div>
                                 <a class="dropdown-item" href="{{ route('profile.index') }}"><i class="far fa-user"></i> Profil Saya</a>

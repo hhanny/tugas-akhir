@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('user_profiles', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('user_id')->constrained();
-            $table->string('name')->nullable();
-            $table->string('address')->nullable();
-            $table->string('phone_number')->nullable();
-            $table->string('nip_nim')->nullable();
+            $table->string('name', 50)->nullable();
+            $table->string('address', 100)->nullable();
+            $table->string('phone_number', 15)->nullable();
+            $table->string('nip_nim', 10)->nullable();
             $table->string('image')->nullable();
             $table->string('card_id')->nullable();
             $table->enum('gender', ['Laki-laki', 'Perempuan'])->nullable();

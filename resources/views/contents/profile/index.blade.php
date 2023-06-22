@@ -41,7 +41,7 @@
           <div class="card-body">
             <div class="ps-0">
               <div class="main-profile-overview">
-                <div class="main-img-user profile-user"><img alt="" src="{{ asset($data->user_profile->image ? 'storage/' . $data->user_profile->image :'assets/images/default-profile.jpg') }}">
+                <div class="main-img-user profile-user"><img alt="" src="{{ asset(auth()->user()->user_profile ? auth()->user()->user_profile->image ? 'storage/' . auth()->user()->user_profile->image :'assets/images/default-profile.jpg' : 'assets/images/default-profile.jpg') }}">
                   <a href="JavaScript:updateImage();" id="btnEdit" class="ion-ios-brush fs-5 profile-edit"></a>
                   <a href="JavaScript:deleteForm();" id="btnClose" class="zmdi zmdi-close bg-danger fs-5 profile-edit"></a>
                 </div>
@@ -103,7 +103,17 @@
                     <label class="form-label">Username</label>
                   </div>
                   <div class="col-md-9">
-                    <input type="text" class="form-control" id="username" name="username"  placeholder="Username" value="{{ $data->username ?? ''}}">
+                    <input type="text" class="form-control" disabled id="username" name="username"  placeholder="Username" value="{{ $data->username ?? ''}}">
+                  </div>
+                </div>
+              </div>
+              <div class="form-group ">
+                <div class="row">
+                  <div class="col-md-3">
+                    <label class="form-label">NIP/NIM</label>
+                  </div>
+                  <div class="col-md-9">
+                    <input type="text" class="form-control" id="nip_nim" name="nip_nim" placeholder="Your id" value="{{ $data->user_profile->nip_nim ?? ''}}">
                   </div>
                 </div>
               </div>
@@ -205,13 +215,13 @@
     <form id="form-image" action="{{ route('profile-image.update', $data->id)  }}" enctype="multipart/form-data" method="POST" >
       @csrf
       @method('put')
-      <input type="hidden" name="old_image" id="old_image" value="{{ $data->user_profile->image }}">
+      <input type="hidden" name="old_image" id="old_image" value="{{ $data->user_profile ? $data->user_profile->image : ''}}">
       <input id="image" class="dropify" type="file" accept=".jpg,.png,.svg,.jpeg,.webp" name="image" data-allowed-file-extensions="jpeg jpg png webp svg" />
       <small class="text-danger">Ukuran foto maksimal 1MB</small>
     </form>
     <div class="mt-3">
       <button type="button" id="btnUpload" onclick="uploadImage()" class="btn btn-info ">Unggah</button>
-      @if($data->user_profile->image != null)
+      @if($data->user_profile != null && $data->user_profile->image != null)
         <button class="btn btn-danger" id="btnDelete" onclick="destroyImage('{{ $data->id }}')" type="button">Hapus Foto</button>
       @endif
     </div>
@@ -316,6 +326,7 @@
         var id          = $('#id').val();
         var username        = $('#username').val();
         var name        = $('#name').val();
+        var nip_nim        = $('#nip_nim').val();
         var phone_number        = $('#phone_number').val();
         var address        = $('#address').val();
         var email        = $('#email').val();
@@ -334,6 +345,7 @@
                 id: id,
                 username: username,
                 name: name,
+                nip_nim: nip_nim,
                 address: address,
                 phone_number: phone_number,
                 email: email,

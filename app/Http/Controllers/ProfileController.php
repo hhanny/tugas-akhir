@@ -71,6 +71,7 @@ class ProfileController extends Controller
                 ['id'   => optional($userProfile)->id ?? null],
                 [
                     'image' => $file,
+                    'user_id' => $id,
                 ]
             );
 
@@ -82,6 +83,7 @@ class ProfileController extends Controller
             return redirect()->back()->with('success', 'Foto profil berhasil diperbarui!');
             
         } catch (\Throwable $th) {
+            // dd($th);
             return redirect()->back()->with('error', 'Something went wrong!');
             // return response()->json([
             //     'status'    => false,
@@ -98,17 +100,18 @@ class ProfileController extends Controller
     public function update(Request $request, string $id)
     {
         $rules = [
-            'name' => 'required|min:6|max:100',
+            'name' => 'required|min:6|max:50',
+            'nip_nim' => 'required|max:10',
             'phone_number' => 'required|min:11|numeric',
             'address' => 'required',
         ];
         $user = User::find($request->id);
         $userProfile = UserProfile::where('user_id', $user->id)->first();
         if($request->username != $user->username){
-            $rules['username'] = 'required|min:6|max:100|unique:users';
+            $rules['username'] = 'required|min:6|max:50|unique:users';
         }
         if($request->email != $user->email){
-            $rules['email'] = 'required|email:dns|unique:users';
+            $rules['email'] = 'required|email|unique:users';
         }
         $request->validate($rules);
 
@@ -125,6 +128,7 @@ class ProfileController extends Controller
                 ['id'   => optional($userProfile)->id ?? null],
                 [
                     'name' => $request->name,
+                    'nip_nim' => $request->nip_nim,
                     'user_id' => $user->id,
                     'phone_number' => $request->phone_number,
                     'address' => $request->address,

@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('vehycles', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('user_id')->constrained();
-            $table->string('brand')->nullable();
+            $table->string('brand', 50)->nullable();
             $table->string('image')->nullable();
-            $table->string('type')->nullable();
-            $table->string('vehycle_number')->nullable();
+            $table->string('type', 50)->nullable();
+            $table->string('vehycle_number', 10)->nullable();
             $table->timestamps();
         });
     }
