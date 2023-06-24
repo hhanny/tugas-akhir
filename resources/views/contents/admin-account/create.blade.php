@@ -75,6 +75,7 @@
             <div class="main-content-label mg-b-5">Informasi diri</div>
                 <div class="row row-sm mt-3">
                     <div class="col-lg">
+                        
                         <div class="mb-3">
                             <label for="eml">Email</label>
                             <input id="eml" class="form-control mg-b-20" placeholder="Email" type="text">

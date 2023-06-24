@@ -50,7 +50,7 @@
     <!-- COL END -->
 
     <div class="modal fade" id="modal_form">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
             <div class="modal-content modal-content-demo">
                 <div class="modal-header">
                     <h6 class="modal-title">Tambah data baru</h6>
@@ -61,14 +61,44 @@
                             @csrf
                         <div class="form-group">
                             <input type="hidden" id="id" name="id">
+                            <h6>ID KARTU</h6>
                             <div class="mb-3">
-                                <label for="username" class="form-label">Username</label>
+                                <input type="text" placeholder="Id kartu.." value="" name="card_id" class="form-control" id="card_id">
+                            </div>
+                            <hr class="mt-4">
+                            <h6>DATA AKUN</h6>
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Id Kartu</label>
                                 <input type="text" placeholder="Username.." value="" name="username" class="form-control" id="username">
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="text" placeholder="email@example.com" value="" name="email" class="form-control" id="email">
                             </div>
+                            <hr class="mt-4">
+                            <h6>DATA KENDARAAN</h6>
+                            <div class="mb-3">
+                                <label for="brand" class="form-label">Merk</label>
+                                <input type="text" placeholder="Merk.." value="" name="brand" class="form-control" id="brand">
+                            </div>
+                            <div class="mb-3">
+                                <label for="type" class="form-label">Tipe</label>
+                                <input type="text" placeholder="Tipe.." value="" name="type" class="form-control" id="type">
+                            </div>
+                            <div class="mb-3">
+                                <label for="vehycle_number" class="form-label">Nomor Kedaraan</label>
+                                <input type="text" placeholder="Ex: E 1234 EF" value="" name="vehycle_number" class="form-control" id="vehycle_number">
+                            </div>
+                            <div class="mb-3">
+                                <label for="chassis_number" class="form-label">Nomor Rangka</label>
+                                <input type="text" placeholder="Ex: E 1234 EF" value="" name="chassis_number" class="form-control" id="chassis_number">
+                            </div>
+                            <div class="mb-3">
+                                <label for="image" class="form-label">Foto Kendaraan</label>
+                                <input id="image" class="dropify" type="file" accept=".jpg,.png,.svg,.jpeg,.webp" name="image" data-allowed-file-extensions="jpeg jpg png webp svg" />
+                                <small class="text-danger">Ukuran foto maksimal 1MB</small>
+                            </div>
+
                         </div>
                     </div>
                 </form>
@@ -101,10 +131,14 @@
 
 <script src="{{ asset('virtual/assets/js/script.js') }}"></script>
 
+<script src="{{ asset('virtual/assets/plugins/fileuploads/js/fileupload.js') }}"></script>
+
+
 <script>
     var $table;
 
     $(document).ready(function() {
+        $('.dropify').dropify();
         // Contoh Inisiator datatable severside
         table = $("#datatable").DataTable({
             responsive: true,
@@ -183,6 +217,10 @@
         var id          = $('#id').val();
         var username        = $('#username').val();
         var email        = $('#email').val();
+        var card_id        = $('#card_id').val();
+        var brand        = $('#brand').val();
+        var type        = $('#type').val();
+        var type        = $('#type').val();
         // console.log();
         var url = "{{ route('admin.store') }}";
     
