@@ -59,6 +59,17 @@ class ParkController extends Controller
                     'message' => 'Data kendaraan belum terdaftar',
                 ], 400);
             }
+            $park = Park::where([
+                ['vehycle_id','=' ,$user->user->vehycle[0]->id],
+                ['status', '=', 'Masuk'],
+                ['time_out', '=', null],
+                ])->first();
+            if ($park != null) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Anda Belum Keluar Parkir',
+                ], 400);
+            }
             $data = Park::create([
                 'vehycle_id' => $user->user->vehycle[0]->id,
                 'image' => $request->image,

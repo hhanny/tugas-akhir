@@ -204,6 +204,7 @@
                                         <th scope="col">Gambar</th>
                                         <th scope="col">Brand</th>
                                         <th scope="col">Tipe</th>
+                                        <th scope="col">Nomor Rangka</th>
                                         <th scope="col">Nomor Kendaraan</th>
                                     </tr>
                                 </thead>
@@ -407,7 +408,7 @@
 
             // console.log(response);
             
-            $('#foto_user').html(`<img src="{{ asset('${response.user_profile.image}') }}" width="150px" height="200px" style="border-radius: 5px;" alt="">`);
+            $('#foto_user').html(`<img src="{{ asset('storage/${response.user_profile.image}') }}" width="150px" height="200px" style="border-radius: 5px;" alt="">`);
             $('#name').text(response.user_profile.name);
             $('#nip_nim').text(response.user_profile.nip_nim);
             $('#gender').text(response.user_profile.gender);
@@ -420,10 +421,11 @@
                     <tr>
                         <td>1</td>
                         <td>
-                            <img src="{{ asset('${item.image}') }}" width="150">
+                            <img src="{{ asset('storage/${item.image}') }}" width="150">
                         </td>
                         <td>${item.brand}</td>
                         <td>${item.type}</td>
+                        <td>${item.chassis_number}</td>
                         <td>${item.vehycle_number}</td>
                     </tr>
                 `);

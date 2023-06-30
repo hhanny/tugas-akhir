@@ -1,6 +1,6 @@
 @extends('layout.main')
 
-@section('title', 'Akun Admin')
+@section('title', 'Akun Mahasiswa')
 
 @section('css')
     {{-- Custom CSS --}}
@@ -10,11 +10,10 @@
 <!-- PAGE-HEADER Breadcrumbs -->
 <div class="breadcrumb-header justify-content-between">
     <div>
-    <h4 class="content-title mb-2">Tambah data akun</h4>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a   href="javascript:void(0);"></a></li>
-                <li class="breadcrumb-item active" aria-current="page"> Akun Admin</li>
+                <li class="breadcrumb-item active" aria-current="page"> Akun Mahasiswa</li>
             </ol>
         </nav>
     </div>
@@ -25,102 +24,59 @@
 @section('content')
 <!-- Row -->
 <div class="row">
-    <div class="col-md-12 col-xl-12 col-xs-12 col-sm-12">
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
         <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Daftar Akun Mahasiswa</h3>
+            </div>
             <div class="card-body">
-                <div class="row row-sm">
-                    <div class="col-lg">
-                        <div class="mb-3">
-                            <label for="idc"><b>ID Kartu</b></label>
-                            <input id="idc" class="form-control mg-b-20" placeholder="ID Kartu" type="text">
-                        </div>
-                    </div>
-                </div>
+                <a class="btn btn-primary modal-effect mb-3 data-table-btn ms-4" data-bs-effect="effect-super-scaled" onclick="create()">
+                    <span class="fe fe-plus"> </span>Tambah data baru
+                </a>
+                <table id="datatable" class="table table-bordered text-nowrap border-bottom">
+                    <thead>
+                        <tr>
+                            <th style="width: 5%">No</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
             </div>
         </div>
+    </div>
+    <!-- COL END -->
 
-        <div class="card">
-            <div class="card-body">
-                <div class="main-content-label mg-b-5">Identitas diri</div>
-                <div class="row row-sm mt-3">
-                    <div class="col-lg">
-                    <div class="mb-3">
-                            <label for="usr">Username</label>
-                            <input id="usr" class="form-control mg-b-20" placeholder="Username" type="text">
-                        </div>
-                        <div class="mb-3">
-                            <label for="nama">Nama</label>
-                            <input id="nama" class="form-control mg-b-20" placeholder="Nama" type="text">
-                        </div>
-                        <div class="mb-3">
-                            <label for="nn">NIP/NIM</label>
-                            <input id="nn" class="form-control mg-b-20" placeholder="NIP/NIM" type="text">
-                        </div>
-                        <div class="row mg-t-10">
-                            <label for="usr">Gender</label>
-                            <div class="col-lg-3">
-                                <label class="rdiobox"><input name="rdio" type="radio"> <span>Laki-laki</span></label>
-                            </div>
-                            <div class="col-lg-3 mg-t-20 mg-lg-t-0">
-                                <label class="rdiobox"><input checked name="rdio" type="radio"> <span>Perempuan</span></label>
-                            </div>
-                        </div>
-                    </div>
+    <div class="modal fade" id="modal_form">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content modal-content-demo">
+                <div class="modal-header">
+                    <h6 class="modal-title">Add new data</h6>
+                    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal"><span aria-hidden="true">&times;</span></button>
                 </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-body">
-            <div class="main-content-label mg-b-5">Informasi diri</div>
-                <div class="row row-sm mt-3">
-                    <div class="col-lg">
-                        
-                        <div class="mb-3">
-                            <label for="eml">Email</label>
-                            <input id="eml" class="form-control mg-b-20" placeholder="Email" type="text">
-                        </div>
-                        <div class="mb-3">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        Phone:
-                                    </div>
-                                </div><!-- input-group-prepend -->
-                                <input class="form-control" id="phoneMask" placeholder="" type="number">
+                <div class="modal-body">
+                        <form id="form" method="POST">
+                            @csrf
+                        <div class="form-group">
+                            <input type="hidden" id="id" name="id">
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" placeholder="Username.." value="" name="username" class="form-control" id="username">
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="text" placeholder="email@example.com" value="" name="email" class="form-control" id="email">
                             </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="alm">Alamat</label>
-                            <input id="alm" class="form-control mg-b-20" placeholder="Alamat" type="text">
-                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-body">
-            <div class="main-content-label mg-b-5">Detail Kendaraan</div>
-                <div class="row row-sm mt-3">
-                    <div class="col-lg">
-                        <div class="mb-3">
-                            <label for="mrk">Merek</label>
-                            <input id="mrk" class="form-control mg-b-20" placeholder="Merek" type="text">
-                        </div>
-                        <div class="mb-3">
-                            <label for="tp">Tipe</label>
-                            <input id="tp" class="form-control mg-b-20" placeholder="Tipe" type="text">
-                        </div>
-                        <div class="mb-3">
-                            <label for="nk">Nomor Kendaraan</label>
-                            <input id="nk" class="form-control mg-b-20" placeholder="Nomor Kendaraan" type="text">
-                        </div>
+                </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Tutup</button>
+                        <button  id="btnSave" class="btn btn-primary">Simpan</button>
                     </div>
-                </div>
             </div>
-        </div>
-
         </div>
     </div>
 </div>
@@ -155,7 +111,7 @@
             processing: true,
             serverSide: true,
             autoWidth: false,
-            ajax: "{{ route('admin.datatable') }}",
+            ajax: "{{ route('mahasiswa.datatable') }}",
             columnDefs: [
             {
                 targets: 0,
@@ -207,7 +163,7 @@
         submit_method = 'edit';
 
         $('#form')[0].reset();
-        var url = "{{ route('admin.edit',":id") }}";
+        var url = "{{ route('mahasiswa.edit',":id") }}";
         url = url.replace(':id', id);
         
         $.get(url, function (response) {
@@ -217,7 +173,7 @@
             $('#username').val(response.username);
             $('#email').val(response.email);
             $('#modal_form').modal('show');
-            $('.modal-title').text('Edit data akun admin');
+            $('.modal-title').text('Edit data akun mahasiswa');
 
             $('#name').val(response.name);
         });
@@ -228,13 +184,13 @@
         var username        = $('#username').val();
         var email        = $('#email').val();
         // console.log();
-        var url = "{{ route('admin.store') }}";
+        var url = "{{ route('mahasiswa.store') }}";
     
         $('#btnSave').text('Menyimpan...');
         $('#btnSave').attr('disabled', true);
 
         if(submit_method == 'edit'){
-            url = "{{ route('admin.update',":id") }}";
+            url = "{{ route('mahasiswa.update',":id") }}";
             url = url.replace(':id', id);
         }
 
@@ -299,7 +255,7 @@
     }
     
     function destroy(id) {
-        var url = "{{ route('admin.destroy',":id") }}";
+        var url = "{{ route('mahasiswa.destroy',":id") }}";
         url = url.replace(':id', id);
     
         Swal.fire({

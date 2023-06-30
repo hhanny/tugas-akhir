@@ -15,7 +15,7 @@ class LoginController extends Controller
     
     public function auth(Request $request){
         $loginData = $request->validate([
-            'email' => 'required|email:dns',
+            'email' => 'required|email',
             'password' => 'required',
         ]);
 
@@ -35,7 +35,7 @@ class LoginController extends Controller
     {
         Auth::logout();
 
-        Session::flash('warning', 'Logout success!');
+        Session::flash('warning', 'Logout berhasil!');
 
         return redirect()->route('login');
     }

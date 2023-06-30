@@ -74,10 +74,18 @@
                     </ul>
                 </li>
                 @if (auth()->user()->hasRole('admin'))
+                    <li class="slide">
+                        <a class="side-menu__item" href="{{ route('kendaraan.index') }}" data-sidebar="kendaraan">
+                            <i class="side-menu__icon fe fe-layers"></i>
+                            <span class="side-menu__label">Data Kendaraan</span>
+                        </a>
+                    </li>
+                @endif
+                @if (auth()->user()->hasRole('admin'))
                 {{-- @if (auth()->user()->hasRole('superAdmin') || auth()->user()->hasRole('admin')) --}}
                     <li class="slide">
                         <a class="side-menu__item" href="{{ route('park.index') }}" data-sidebar="data-parkir">
-                            <i class="side-menu__icon fe fe-list"></i>
+                            <i class="side-menu__icon fe fe-menu"></i>
                             <span class="side-menu__label">Data Parkir</span>
                         </a>
                     </li>

@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\VehycleController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MahasiswaController;
 
@@ -30,10 +31,18 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/',[DashboardController::class , 'index']);
 
+    
     Route::get('admin/datatable', [AdminController::class, 'datatable'])->name('admin.datatable');
     Route::resource('/admin', AdminController::class);
-    Route::get('/admin/create', function (){
-        return view('contents.admin-account.create');
+
+    Route::post('kendaraan/{id?}/update', [VehycleController::class, 'update'])->name('kendaraan-update.update');
+    Route::post('kendaraan/store', [VehycleController::class, 'store'])->name('kendaraan-store.store');
+    Route::get('kendaraan/datatable', [VehycleController::class, 'datatable'])->name('kendaraan.datatable');
+    Route::get('kendaraan/select2', [VehycleController::class, 'select2'])->name('kendaraan.select2');
+    Route::resource('/kendaraan', VehycleController::class);
+
+    Route::get('/password/reset', function (){
+        return view('contents.password.reset');
     });
 
     Route::get('pegawai/datatable', [PegawaiController::class, 'datatable'])->name('pegawai.datatable');

@@ -3,12 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Vehycle;
-use App\Models\UserProfile;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
-class PegawaiController extends Controller
+class MahasiswaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +14,7 @@ class PegawaiController extends Controller
     public function index()
     {
         $this->authorize('read');
-        return view('contents.pegawai-account.index');
+        return view('contents.mahasiswa-account.index');
     }
 
     /**
@@ -32,57 +30,24 @@ class PegawaiController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-        
+        $data = User::get();
+
         $request->validate([
             'username' => 'required|unique:users|min:6',
-            'email' => 'required|unique:users|email:dns',
-            'card_id' => 'required',
-            'brand' => 'required|max:10',
-            'type' => 'required|max:10',
-            'vehycle_number' => 'required|max:10',
-            'vehycle_number' => 'required|max:12',
-            'chassis_number' => 'required|max:12',
-            'image' => 'required|image|file|max:1024|mimes:jpeg,jpg,png,webp,svg',
+            'email' => 'required|unique:users|email:dns'
         ]);
-
-        try {
-            $data = User::get();
-    
-            $user = User::create([
-                'username'          => $request->username,
-                'email'             => $request->email,
-                'password'          => bcrypt('password'),
-            ])->assignRole('pegawai');
-    
-            UserProfile::create([
-                'user_id' => $user->id,
-                'card_id' => $request->card_id,
-            ]);
-    
-            $file = $request->file('image')->store('vehycle-images');
-            
-            Vehycle::create([
-                'user_id' => $user->id,
-                'brand' => $request->brand,
-                'type' => $request->type,
-                'image' => $file,
-                'vehycle_number' => $request->vehycle_number,
-                'chassis_number' => $request->chassis_number,
-            ]);
-    
-    
-            return response()->json([
-                'status'    => true,
-                'message'   => 'Success add pegawai account!',
-            ]);
-        } catch (\Throwable $th) {
-            return response()->json([
-                'status'    => false,
-                'message'   => 'Something Went Wrong!',
-            ]);
-        }
         
+
+        User::create([
+            'username'          => $request->username,
+            'email'             => $request->email,
+            'password'          => bcrypt('password'),
+        ])->assignRole('mahasiswa');
+
+        return response()->json([
+            'status'    => true,
+            'message'   => 'Success add mahasiswa account!',
+        ]);
     }
 
     /**
@@ -99,7 +64,7 @@ class PegawaiController extends Controller
     public function edit($id)
     {
         return response()->json([
-            'data'  => User::with(['user_profile', 'vehycle'])->find($id)
+            'data'  => User::find($id)
         ]);
     }
 
@@ -108,7 +73,6 @@ class PegawaiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
         $data = User::findOrFail($id);
 
         $rules = [
@@ -130,7 +94,7 @@ class PegawaiController extends Controller
 
         return response()->json([
             'status'    => true,
-            'message'   => 'Success update pegawai account!',
+            'message'   => 'Success update mahasiswa account!',
         ]);
     }
 
@@ -148,7 +112,7 @@ class PegawaiController extends Controller
     }
 
     public function datatable(Request $request){
-        $data = User::role('pegawai')->get();
+        $data = User::role('mahasiswa')->get();
 
         return DataTables::of($data)->make();
     }

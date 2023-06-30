@@ -46,7 +46,7 @@ class AdminController extends Controller
 
         return response()->json([
             'status'    => true,
-            'message'   => 'Success add mahasiswa account!',
+            'message'   => 'Success add admin account!',
         ]);
     }
 
@@ -94,7 +94,7 @@ class AdminController extends Controller
 
         return response()->json([
             'status'    => true,
-            'message'   => 'Success update mahasiswa account!',
+            'message'   => 'Success update admin account!',
         ]);
     }
 

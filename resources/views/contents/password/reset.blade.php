@@ -11,7 +11,7 @@
 		<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
 		<!-- Title -->
-		<title> Masuk </title>
+		<title> Reset Password </title>
 
 		<!--- Favicon --->
 		<link rel="icon" href="{{ asset('virtual/assets/img/brand/pol-icon.png') }}" type="image/x-icon"/>
@@ -39,50 +39,46 @@
 		<!-- /Loader -->
 
 		<!-- page -->
-	<div class="page">
+		<div class="page">
 
-		<!-- main-signin-wrapper -->
-		<div class="my-auto page page-h">
-			<div class="main-signin-wrapper">
-				<div class="main-card-signin d-md-flex">
-				<div class="wd-md-50p page-signin-style p-5 text-white" background-image="https://mdbootstrap.com/img/Photos/Others/images/76.jpg">
-					<div class="my-auto authentication-pages">
-						<div>
-							<img src="{{ asset('virtual/assets/img/brand/polindra.png') }}" class=" m-0 mb-3" alt="logo" width="90">
-							<h4 class="mb-1">Sistem Monitoring</h4>
-							<h4 class="mb-2.5">Barrier Pintu Parkir</h4>
-							<p class="text-justify" style="font-size: 16px">Sebuah sistem yang menyediakan informasi dan laporan terkait data parkir di kampus Politeknik Negeri Indramayu</p>
-							<!-- <a href="index.html" class="btn btn-success">Learn More</a> -->
-						</div>
-					</div>
+<!-- main-signin-wrapper -->
+<div class="my-auto page page-h">
+	<div class="main-signin-wrapper">
+		<div class="main-card-signin d-md-flex wd-100p">
+		<div class="wd-md-50p login d-none d-md-block page-signin-style p-5 text-white" >
+			<div class="my-auto authentication-pages">
+				<div>
+				<img src="{{ asset('virtual/assets/img/brand/polindra.png') }}" class=" m-0 mb-3" alt="logo" width="90">
+				<h4 class="mb-1">Sistem Monitoring</h4>
+				<h4 class="mb-2.5">Barrier Pintu Parkir</h4>
+				<p class="text-justify" style="font-size: 16px">Sebuah sistem yang menyediakan informasi dan laporan terkait data parkir di kampus Politeknik Negeri Indramayu</p>	
 				</div>
-				<div class="sign-up-body wd-md-50p">
-					<div class="main-signin-header">
-						<h2>Selamat datang!</h2>
-						<h4>Silahkan masuk untuk melanjutkan</h4>
-						<form action="{{ route('login-proccess') }}" method="post">
-							@csrf
-							<div class="form-group">
-								<label>Email</label><input class="form-control @error('email') is-invalid @enderror" placeholder="Masukan email anda" name="email" type="text" value="">
-								@error('email')
-									<div class="invalid-feedback">
-										{{ $message }}
-									</div>
-								@enderror
-							</div>
-							<div class="form-group">
-								<label>Password</label> <input class="form-control" placeholder="Masukan password anda" name="password" type="password" value="" required>
-							</div><button class="btn btn-primary btn-block" type="submit">Masuk</button>
-						</form>
-					</div>
-					<div class="main-signin-footer mt-3 mg-t-5">
-						<p><a href="">Lupa kata sandi?</a></p>
-					</div>
+			</div>
+		</div>
+		<div class="sign-up-body wd-md-50p">
+			<div class="main-signin-header">
+				<div class="">
+					<h2>Selamat datang kembali!</h2>
+					<h4 class="text-start">Reset Password Anda</h4>
+					<form>
+						<div class="form-group text-start">
+							<label for="pb">Password Baru</label>
+							<input class="form-control" placeholder="Masukan Password Baru Anda" type="password" id="pb">
+						</div>
+						<div class="form-group text-start">
+							<label for="kp">Konfirmasi Password</label>
+							<input class="form-control" placeholder="Masukan Ulang Password Baru Anda" type="password" id="kp">
+						</div>
+						<button class="btn ripple btn-primary btn-block">Reset Password</button>
+					</form>
 				</div>
 			</div>
 			</div>
 		</div>
 	</div>
+</div>
+<!-- /main-signin-wrapper -->
+</div>
 		<!-- page closed -->
 		<!-- /main-signin-wrapper -->
 

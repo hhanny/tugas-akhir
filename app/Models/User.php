@@ -23,7 +23,7 @@ class User extends Authenticatable
      */
     protected $guarded = [];
 
-    // protected $appends = ['name'];
+    protected $appends = ['name'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -54,8 +54,8 @@ class User extends Authenticatable
         return $this->hasMany(Vehycle::class);
     }
 
-    // protected function getNameAttribute($value)
-    // {
-    //     return $this->user_profile->name;
-    // }
+    protected function getNameAttribute($value)
+    {
+        return $this->user_profile->name;
+    }
 }

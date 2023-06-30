@@ -17,16 +17,17 @@ class Vehycle extends Model
 
     protected $guarded = [];
 
-    // protected $appends = ['name'];
+    protected $appends = ['name'];
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    // protected function getNameAttribute($value)
-    // {
-    //     return $this->user->name;
-    // }
+    protected function getNameAttribute($value)
+    {
+        return $this->user->name;
+    }
     
 }
+

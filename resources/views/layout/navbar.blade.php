@@ -287,8 +287,8 @@
                                     <div class="main-img-user"><img src="{{ asset(auth()->user()->user_profile ? auth()->user()->user_profile->image ? 'storage/' . auth()->user()->user_profile->image :'assets/images/default-profile.jpg' : 'assets/images/default-profile.jpg') }}"></div>
                                     <h6 class="px-4">{{ auth()->user()->username }}</h6><span>{{ auth()->user()->email }}</span>
                                 </div>
-                                <a class="dropdown-item" href="{{ route('profile.index') }}"><i class="far fa-user"></i> Profil Saya</a>
-                                <a class="dropdown-item" href=" {{ route('logout') }}"><i class="fas fa-sign-out-alt"></i> Keluar</a>
+                                <a class="dropdown-item" href="{{ route('profile.index') }}"><i class="fa fa-user"></i> Profil Saya</a>
+                                <a class="dropdown-item" href=" {{ route('logout') }}"><i class="fa fa-sign-out-alt"></i> Keluar</a>
                             </div>
                         </div>
                         <div class="dropdown main-header-message right-toggle">

@@ -27,7 +27,7 @@ class ParkController extends Controller
 
     public function datatable(){
 
-        $data = Park::with(['vehycle', 'vehycle.user.user_profile', 'vehycle.user'])->get();
+        $data = Park::with(['vehycle', 'vehycle.user.user_profile', 'vehycle.user'])->orderBy('time_in', 'DESC')->get();
 
         // return response()->json($data);
         return DataTables::of($data)->make();
@@ -44,7 +44,7 @@ class ParkController extends Controller
         // dd($id);
         $vehycle = Vehycle::where('user_id', $id)->first();
         // dd($vehycle);
-        $data = Park::where('vehycle_id', $vehycle->id)->get();
+        $data = Park::where('vehycle_id', $vehycle->id)->orderBy('time_in', 'DESC')->get();
 
         return DataTables::of($data)->make();
     }

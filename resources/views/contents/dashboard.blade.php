@@ -77,15 +77,11 @@
                             </svg>
                         </div>
                         <div class="project-content">
-                            <h4>Parkir Masuk (hari ini)</h4>
+                            <h4>Data Kendaraan</h4>
                             <ul>
                                 <li>
-                                    <strong class="fs-6">Pengguna Motor</strong>
-                                    <span class="counter fs-6 number-font">6</span>
-                                </li>
-                                <li>
-                                    <strong class="fs-6">Pengguna Mobil</strong>
-                                    <span class="counter fs-6 number-font">6</span>
+                                    <strong class="fs-6">Terdaftar</strong>
+                                    <span class="counter fs-6 number-font">404</span>
                                 </li>
                             </ul>
                         </div>
@@ -272,7 +268,7 @@
                             <ul>
                                 <li>
                                     <strong class="fs-6">Terdaftar</strong>
-                                    <span class="counter fs-6 number-font">{{ $user2->count() }}</span>
+                                    <span class="counter fs-6 number-font">404</span>
                                 </li>
                             </ul>
                         </div>
@@ -307,7 +303,7 @@
                             <ul>
                                 <li>
                                     <strong class="fs-6">Terdaftar</strong>
-                                    <span class="counter fs-6 number-font">{{ $user2->count() }}</span>
+                                    <span class="counter fs-6 number-font">404</span>
                                 </li>
                             </ul>
                         </div>
