@@ -53,7 +53,7 @@ class UserRolePermissionSeeder extends Seeder
                 'address' => 'Lobener lor, Blok Kebon Kopi, RT/W 15/04, No.59',
                 'phone_number' => '0822523572537',
                 'nip_nim' => '2003072',
-                'image' => 'images/pict_profile.jpg',
+                'image' => 'users-image/pict_profile.jpg',
                 'gender' => 'Perempuan',
                 'card_id' => Str::random(15)
             ]);
@@ -64,7 +64,7 @@ class UserRolePermissionSeeder extends Seeder
                 'address' => 'Politeknik Negeri Indramayu',
                 'phone_number' => '0822523887',
                 'nip_nim' => '-',
-                'image' => 'images/jeoBgRed.jpg',
+                'image' => 'users-image/jeoBgRed.jpg',
                 'gender' => 'Laki-laki',
                 'card_id' => Str::random(15)
             ]);

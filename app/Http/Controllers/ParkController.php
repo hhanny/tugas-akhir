@@ -40,11 +40,19 @@ class ParkController extends Controller
 
     public function parkHistoryDatatable(){
         
-        $id = Auth::user()->id;
-        // dd($id);
-        $vehycle = Vehycle::where('user_id', $id)->first();
-        // dd($vehycle);
-        $data = Park::where('vehycle_id', $vehycle->id)->orderBy('time_in', 'DESC')->get();
+        try {
+            $data = [];
+            $id = Auth::user()->id;
+            $vehycle = Vehycle::where('user_id', $id)->first();
+            if ($vehycle != null) {
+                $data = Park::where('vehycle_id', $vehycle->id)->orderBy('time_in', 'DESC')->get();
+            }
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status'    => false,
+                'message'   => $th->getMessage(),
+            ]);
+        }
 
         return DataTables::of($data)->make();
     }

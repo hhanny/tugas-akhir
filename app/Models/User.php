@@ -57,6 +57,6 @@ class User extends Authenticatable
 
     protected function getNameAttribute($value)
     {
-        return $this->user_profile->name;
+        return $this->user_profile->name ?? '';
     }
 }
