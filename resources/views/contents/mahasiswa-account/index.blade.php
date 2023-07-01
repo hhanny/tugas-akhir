@@ -72,6 +72,10 @@
                                 <input type="text" placeholder="Username.." value="" name="username" class="form-control" id="username">
                             </div>
                             <div class="mb-3">
+                                <label for="name" class="form-label">Nama</label>
+                                <input type="text" placeholder="nama.." value="" name="name" class="form-control" id="name">
+                            </div>
+                            <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="text" placeholder="email@example.com" value="" name="email" class="form-control" id="email">
                             </div>
@@ -104,6 +108,37 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-light" data-bs-dismiss="modal">Tutup</button>
                         <button  id="btnSave" class="btn btn-primary">Simpan</button>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal_edit">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content modal-content-demo">
+                <div class="modal-header">
+                    <h6 class="modal-title">Edit data</h6>
+                    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                        <form id="formEdit" method="POST">
+                            @csrf
+                        <div class="form-group">
+                            <input type="hidden" id="idEdit" name="id">
+                            <div class="mb-3">
+                                <label for="usernameEdit" class="form-label">Username</label>
+                                <input type="text" placeholder="Username.." value="" name="username" class="form-control" id="usernameEdit">
+                            </div>
+                            <div class="mb-3">
+                                <label for="emailEdit" class="form-label">Email</label>
+                                <input type="text" placeholder="email@example.com" value="" name="email" class="form-control" id="emailEdit">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Tutup</button>
+                        <button  id="btnSaveEdit" class="btn btn-primary">Simpan</button>
                     </div>
             </div>
         </div>
@@ -145,37 +180,6 @@
             serverSide: true,
             autoWidth: false,
             ajax: "{{ route('mahasiswa.datatable') }}",
-            dom: 'lBfrtip',
-            buttons: [
-                
-                {
-                    extend: 'csv',
-                    className: 'btn btn-info',
-                    text: `<i class="fe fe-file-text me-1"></i>
-                        <span>CSV</span>`,
-                        exportOptions: {
-                        columns: [0,1,5,6,7]
-                    }
-                },
-                {
-                    extend: 'excel',
-                    className: 'btn btn-success',
-                    text: `<i class="si si-layers me-1"></i>
-                        <span>Excel</span>`,
-                    exportOptions: {
-                        columns: [0,1,5,6,7]
-                    }
-                },
-                {
-                    extend: 'pdf',
-                    className: 'btn btn-danger',
-                    text: `<i class="si si-printer me-1"></i>
-                        <span>PDF</span>`,
-                        exportOptions: {
-                        columns: [0,1,5,6,7]
-                    }
-                },
-            ],
             columnDefs: [
             {
                 targets: 0,
@@ -206,6 +210,16 @@
             $('#form').submit();
         })
         
+        $('#btnSaveEdit').on('click', function () {
+            submit();
+        })
+
+        $('#formEdit').on('submit', function(e){
+            e.preventDefault();
+            
+            submit();
+        });
+        
         $('#form').on('submit', function(e){
             e.preventDefault();
             const _form = this
@@ -216,14 +230,9 @@
             $('#btnSave').text('Menyimpan...');
             $('#btnSave').attr('disabled', true);
 
-            if(submit_method == 'edit'){
-                url = "{{ route('mahasiswa.update',":id") }}";
-                url = url.replace(':id', id);
-            }
-
             $.ajax({
                 url: url,
-                type: submit_method == 'create' ? 'POST' : 'PUT',
+                type: 'POST',
                 dataType: 'json',
                 data: data,
                 processData: false,
@@ -300,6 +309,8 @@
         df = df.data('dropify');
 
         $('#id').val('');
+        $('#form').find('.text-danger.text-small').remove();
+        $('#form').find('input,select').removeClass('is-invalid');
         $('#form')[0].reset();
 
         $('#brand, #type, #card_id, #chassis_number, .label ,#vehycle_number, .title, hr').show();
@@ -313,149 +324,148 @@
     }
     
     function edit(id){
-        submit_method = 'edit';
-
-        $('#form')[0].reset();
-        var url = "{{ route('mahasiswa.edit',":id") }}";
+        $('#formEdit').find('.text-danger.text-small').remove();
+        $('#formEdit').find('input,select').removeClass('is-invalid');
+        $('#formEdit')[0].reset();
+        var url = "{{ route('mahasiswa.edit',':id') }}";
         url = url.replace(':id', id);
-
-        var df = "";
-        df = $('#image').dropify();
         
-        df = df.data('dropify');
-        df.destroy();
-
         $.get(url, function (response) {
             response = response.data;
             
-            $('#id').val(response.id);
-            $('#username').val(response.username);
-            $('#email').val(response.email);
-            $('#brand, #type, #card_id, #chassis_number, .label ,#vehycle_number, #image, .title, hr').hide();
-            $('#card_id').parent().hide();
-            $('#modal_form').modal('show');
+            $('#formEdit')[0].reset();
+            $('#idEdit').val(response.id);
+            $('#usernameEdit').val(response.username);
+            $('#emailEdit').val(response.email);
+            $('#modal_edit').modal('show');
             $('.modal-dialog').removeClass('modal-dialog-scrollable');
-            $('.modal-dialog').removeClass('modal-lg');
             $('.modal-dialog').addClass('modal-dialog-centered');
+            $('.modal-dialog').removeClass('modal-lg');
             $('.modal-title').text('Edit data akun mahasiswa');
-
         });
+
     }
 
-    // function submit() {
-    //     var id          = $('#id').val();
-    //     var username        = $('#username').val();
-    //     var email        = $('#email').val();
-    //     var card_id        = $('#card_id').val();
-    //     var brand        = $('#brand').val();
-    //     var type        = $('#type').val();
-    //     var type        = $('#type').val();
-    //     // console.log();
-    //     var url = "{{ route('mahasiswa.store') }}";
+    function submit() {
+        
+        var id          = $('#idEdit').val();
+        var username       = $('#usernameEdit').val();
+        var email      = $('#emailEdit').val();
+
+        var url = "{{ route('mahasiswa.update',":id") }}";
+        url = url.replace(':id', id);
     
-    //     $('#btnSave').text('Menyimpan...');
-    //     $('#btnSave').attr('disabled', true);
+        $('#btnSaveEdit').text('Menyimpan...');
+        $('#btnSaveEdit').attr('disabled', true);
 
-    //     if(submit_method == 'edit'){
-    //         url = "{{ route('mahasiswa.update',":id") }}";
-    //         url = url.replace(':id', id);
-    //     }
 
-    //     $.ajax({
-    //         url: url,
-    //         type: submit_method == 'create' ? 'POST' : 'PUT',
-    //         dataType: 'json',
-    //         data: {
-    //             id: id,
-    //             username: username,
-    //             email: email
-    //         },
-    //         success: function (data) {
-    //             if(data.status) {
-    //                 $('#modal_form').modal('hide');
-    //                 Swal.fire({
-    //                     toast: true,
-    //                     position: 'top-end',
-    //                     icon: 'success',
-    //                     title: data.message,
-    //                     showConfirmButton: false,
-    //                     timer: 1500
-    //                 });
-    //                 table.ajax.reload();
+        $.ajax({
+            url: url,
+            type: 'PUT',
+            dataType: 'json',
+            data: {
+                id: id,
+                username: username,
+                email: email,
+            },
+            success: function (data) {
+                if(data.status) {
+                    $('#modal_edit').modal('hide');
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'success',
+                        title: data.message,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    table.ajax.reload();
 
-    //                 $('#btnSave').text('Simpan');
-    //                 $('#btnSave').attr('disabled', false);
-    //             }
-    //             else{
-    //                 for (var i = 0; i < data.inputerror.length; i++) 
-    //                 {
-    //                     $('[name="'+data.inputerror[i]+'"]').parent().parent().addClass('has-error'); //select parent twice to select div form-group class and add has-error class
-    //                     $('[name="'+data.inputerror[i]+'"]').next().text(data.error_string[i]); //select span help-block class set text error string
-    //                 }
-    //             }
+                    $('#btnSaveEdit').text('Simpan');
+                    $('#btnSaveEdit').attr('disabled', false);
+                }
+                else{
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'error',
+                        title: 'ERROR !',
+                        text: data.message,
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                }
                 
-    //             $('#btnSave').text('Simpan');
-    //             $('#btnSave').attr('disabled',false); //set button enable 
-    //         }, 
-    //         error: function(data){
-    //             var error_message = "";
-    //             error_message += " ";
+                $('#btnSaveEdit').text('Simpan');
+                $('#btnSaveEdit').attr('disabled',false); //set button enable 
+            }, 
+            error: function(data){
+                var error_message = "";
+                error_message += " ";
                 
-    //             $.each( data.responseJSON.errors, function( key, value ) {
-    //                 error_message +=" "+value+" ";
-    //             });
+                $.each( data.responseJSON.errors, function( key, value ) {
+                    error_message +=" "+value+" ";
+                });
 
-    //             error_message +=" ";
-    //             Swal.fire({
-    //                     toast: true,
-    //                     position: 'top-end',
-    //                     icon: 'error',
-    //                     title: 'ERROR !',
-    //                     text: error_message,
-    //                     showConfirmButton: false,
-    //                     timer: 2000
-    //                 });
-    //             $('#btnSave').text('Simpan');
-    //             $('#btnSave').attr('disabled', false);
-    //         },
-    //     });
-    // }
+                let errors = data.responseJSON?.errors
+                if(errors){
+                    for(const [key, value] of Object.entries(errors)){
+                        $(`[name='${key}']`).parent().append(`<sp class="text-danger text-small">${value}</sp>`)
+                        $(`[name='${key}']`).addClass('is-invalid')
+                    }
+                }
+
+                error_message +=" ";
+                Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'error',
+                        title: 'ERROR !',
+                        text: error_message,
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                $('#btnSaveEdit').text('Simpan');
+                $('#btnSaveEdit').attr('disabled', false);
+            },
+        });
+    }
     
-    // function destroy(id) {
-    //     var url = "{{ route('mahasiswa.destroy',":id") }}";
-    //     url = url.replace(':id', id);
+    function destroy(id) {
+        var url = "{{ route('mahasiswa.destroy',":id") }}";
+        url = url.replace(':id', id);
     
-    //     Swal.fire({
-    //         title: "Yakin ingin menghapus data ini?",
-    //         text: "Ketika data terhapus, anda tidak bisa mengembalikan data tersbut!",
-    //         icon: "warning",
-    //         showCancelButton  : true,
-    //         confirmButtonColor: "#3085d6",
-    //         cancelButtonColor : "#d33",
-    //         confirmButtonText : "Ya, Hapus!",
-    //         cancelButtonText : "Batal"
-    //     }).then((result) => {
-    //         if (result.value) {
-    //             $.ajax({
-    //                 url    : url,
-    //                 type   : "delete",
-    //                 data: { "id":id },
-    //                 dataType: "JSON",
-    //                 success: function(data) {
-    //                     table.ajax.reload();
-    //                     Swal.fire({
-    //                         toast: true,
-    //                         position: 'top-end',
-    //                         icon: 'success',
-    //                         title: 'Data berhasil dihapus',
-    //                         showConfirmButton: false,
-    //                         timer: 1500
-    //                     });
-    //                 }
-    //             })
-    //         }
-    //     })
-    // } 
+        Swal.fire({
+            title: "Yakin ingin menghapus data ini?",
+            text: "Ketika data terhapus, anda tidak bisa mengembalikan data tersbut!",
+            icon: "warning",
+            showCancelButton  : true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor : "#d33",
+            confirmButtonText : "Ya, Hapus!",
+            cancelButtonText : "Batal"
+        }).then((result) => {
+            if (result.value) {
+                $.ajax({
+                    url    : url,
+                    type   : "delete",
+                    data: { "id":id },
+                    dataType: "JSON",
+                    success: function(data) {
+                        table.ajax.reload();
+                        Swal.fire({
+                            toast: true,
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Data berhasil dihapus',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    }
+                })
+            }
+        })
+    } 
 
 </script>
 @endsection

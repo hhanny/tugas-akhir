@@ -7,6 +7,7 @@ use App\Models\Vehycle;
 use App\Models\UserProfile;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\DB;
 
 class MahasiswaController extends Controller
 {
@@ -36,17 +37,18 @@ class MahasiswaController extends Controller
         
         $request->validate([
             'username' => 'required|unique:users|min:6',
+            'name' => 'required|string|max:50',
             'email' => 'required|unique:users|email:dns',
             'card_id' => 'required',
             'brand' => 'required|max:10',
             'type' => 'required|max:10',
-            'vehycle_number' => 'required|max:10',
-            'vehycle_number' => 'required|max:12',
-            'chassis_number' => 'required|max:12',
+            'vehycle_number' => 'required|unique:vehycles|max:10',
+            'chassis_number' => 'required|unique:vehycles|max:12',
             'image' => 'required|image|file|max:1024|mimes:jpeg,jpg,png,webp,svg',
         ]);
 
         try {
+            DB::beginTransaction();
             $data = User::get();
     
             $user = User::create([
@@ -57,6 +59,7 @@ class MahasiswaController extends Controller
     
             UserProfile::create([
                 'user_id' => $user->id,
+                'name' => $request->name,
                 'card_id' => $request->card_id,
             ]);
     
@@ -71,12 +74,14 @@ class MahasiswaController extends Controller
                 'chassis_number' => $request->chassis_number,
             ]);
     
+            DB::commit();
     
             return response()->json([
                 'status'    => true,
                 'message'   => 'Success add mahasiswa account!',
             ]);
         } catch (\Throwable $th) {
+            DB::rollback();
             return response()->json([
                 'status'    => false,
                 'message'   => 'Something Went Wrong!',
@@ -138,12 +143,25 @@ class MahasiswaController extends Controller
      */
     public function destroy($id)
     {
-        User::find($id)->delete();
-
-        return response()->json([
-            'status'    => true,
-            'message'   => 'Success delete account!',
-        ]);
+        try {
+            DB::beginTransaction();
+            UserProfile::where('user_id', $id)->delete();
+            Vehycle::where('user_id', $id)->delete();
+            User::find($id)->delete();
+            
+            DB::commit();
+            return response()->json([
+                'status'    => true,
+                'message'   => 'Success delete account!',
+            ]);
+        } catch (\Throwable $th) {
+            DB::rollback();
+            return response()->json([
+                'status'    => false,
+                'message'   => 'Something went wrong!',
+            ]);
+            //throw $th;
+        }
     }
 
     public function datatable(Request $request){

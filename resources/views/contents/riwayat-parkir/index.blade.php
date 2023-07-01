@@ -4,6 +4,15 @@
 
 @section('css')
     {{-- Custom CSS --}}
+    <link rel="stylesheet" href="{{ asset('virtual/assets/plugins/datatable/datatables.min.css') }}">
+    <style>
+        .dataTables_wrapper .dt-buttons {
+            float:none;  
+            margin-bottom: 1vh;
+            margin-left: 2vh;
+            position: static;
+        }
+    </style>
 @endsection
 
 @section('breadcumb')
@@ -115,6 +124,37 @@
             serverSide: true,
             autoWidth: false,
             ajax: "{{ route('park-history.datatable') }}",
+            dom: 'lBfrtip',
+            buttons: [
+                
+                {
+                    extend: 'csv',
+                    className: 'btn btn-info',
+                    text: `<i class="fe fe-file-text me-1"></i>
+                        <span>CSV</span>`,
+                        exportOptions: {
+                        columns: [0,1,5,6,7]
+                    }
+                },
+                {
+                    extend: 'excel',
+                    className: 'btn btn-success',
+                    text: `<i class="si si-layers me-1"></i>
+                        <span>Excel</span>`,
+                    exportOptions: {
+                        columns: [0,1,5,6,7]
+                    }
+                },
+                {
+                    extend: 'pdf',
+                    className: 'btn btn-danger',
+                    text: `<i class="si si-printer me-1"></i>
+                        <span>PDF</span>`,
+                        exportOptions: {
+                        columns: [0,1,5,6,7]
+                    }
+                },
+            ],
             columnDefs: [
                 {
                     targets: 0,

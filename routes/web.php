@@ -8,6 +8,7 @@ use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VehycleController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\MahasiswaController;
 
 /*
@@ -25,6 +26,21 @@ use App\Http\Controllers\MahasiswaController;
 Route::get('/sign-in', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/sign-in', [LoginController::class, 'auth'])->name('login-proccess')->middleware('guest');
 
+
+Route::get('/password/reset', function (){
+    return view('contents.password.reset');
+});
+// Route::get('forgot-password', [ForgotPasswordController::class, 'index'])->name('forgot-password.index');
+Route::get('/forgot-password', function () {
+    return view('auth.forgot-password');
+})->middleware('guest')->name('password.request');
+
+Route::post('/forgot-password', [ForgotPasswordController::class, 'forgotPassword'])->middleware('guest')->name('password.email');
+
+Route::get('/reset-password/{token}', function (string $token) {
+    return view('auth.reset-password', ['token' => $token]);
+})->middleware('guest')->name('password.reset');
+
 Route::middleware('auth')->group(function () {
     Route::get('/sign-out', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
     Route::resource('/dashboard', DashboardController::class);
@@ -40,10 +56,6 @@ Route::middleware('auth')->group(function () {
     Route::get('kendaraan/datatable', [VehycleController::class, 'datatable'])->name('kendaraan.datatable');
     Route::get('kendaraan/select2', [VehycleController::class, 'select2'])->name('kendaraan.select2');
     Route::resource('/kendaraan', VehycleController::class);
-
-    Route::get('/password/reset', function (){
-        return view('contents.password.reset');
-    });
 
     Route::get('pegawai/datatable', [PegawaiController::class, 'datatable'])->name('pegawai.datatable');
     Route::resource('/pegawai', PegawaiController::class);

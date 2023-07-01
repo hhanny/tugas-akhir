@@ -76,7 +76,7 @@
 						</form>
 					</div>
 					<div class="main-signin-footer mt-3 mg-t-5">
-						<p><a href="">Lupa kata sandi?</a></p>
+						<p><a href="{{ route('password.request') }}">Lupa kata sandi?</a></p>
 					</div>
 				</div>
 			</div>

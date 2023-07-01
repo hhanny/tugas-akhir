@@ -196,7 +196,7 @@
 					title: type == 'success' ? "{{ session()->get('success') }}" : "{{ session()->get('error') }}",
 					icon: `${type}`,
                     showConfirmButton: false,
-					timer: 2500,
+					timer: 3000,
 
 				})
 			}

@@ -120,12 +120,29 @@
               <div class="form-group ">
                 <div class="row">
                   <div class="col-md-3">
-                    <label class="form-label">Name</label>
+                    <label class="form-label">Nama</label>
                   </div>
                   <div class="col-md-9">
                     <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" value="{{ $data->user_profile->name ?? ''}}">
                   </div>
                 </div>
+              </div>
+              <div class="form-group">
+                <div class="row mg-t-10">
+                  <div class="col-md-3">
+                    <label class="form-label">Jenis Kelamin</label>
+                  </div>
+                  <div class="col-md-9">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label class="rdiobox"><input id="lk" name="gender" {{ $data->user_profile->gender  == 'Laki-laki' ? 'checked' : '' }}  value="Laki-laki" type="radio"> <span>Laki-laki</span></label>
+                      </div>
+                      <div class="col-md-6">
+                        <label class="rdiobox"><input id="pr" name="gender" {{ $data->user_profile->gender  == 'Perempuan' ? 'checked' : '' }} value="Perempuan" type="radio"> <span>Perempuan</span></label>
+                      </div>
+                    </div>
+                  </div>
+								</div>
               </div>
               <div class="mb-4 main-content-label">Contact Info</div>
               <div class="form-group ">
@@ -325,6 +342,7 @@
   function submit() {
         var id          = $('#id').val();
         var username        = $('#username').val();
+        var gender        = $('input[name=gender]:checked').val();
         var name        = $('#name').val();
         var nip_nim        = $('#nip_nim').val();
         var phone_number        = $('#phone_number').val();
@@ -344,6 +362,7 @@
             data: {
                 id: id,
                 username: username,
+                gender: gender,
                 name: name,
                 nip_nim: nip_nim,
                 address: address,

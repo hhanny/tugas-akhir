@@ -7,6 +7,7 @@ use App\Models\UserProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
@@ -55,9 +56,15 @@ class ProfileController extends Controller
     function updateImage(Request $request, string $id) {
         // dd($request);
 
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'image'             => 'required|image|file|max:1024|mimes:jpeg,jpg,png,webp,svg',
         ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+            ->with('error', $validator->errors()->first())
+            ->withInput();
+        }
 
         try {
             if($request->old_image){
@@ -104,6 +111,7 @@ class ProfileController extends Controller
             'nip_nim' => 'required|max:10',
             'phone_number' => 'required|min:11|numeric',
             'address' => 'required',
+            'gender' => 'required',
         ];
         $user = User::find($request->id);
         $userProfile = UserProfile::where('user_id', $user->id)->first();
@@ -132,6 +140,7 @@ class ProfileController extends Controller
                     'user_id' => $user->id,
                     'phone_number' => $request->phone_number,
                     'address' => $request->address,
+                    'gender' => $request->gender,
                 ]
             );
 

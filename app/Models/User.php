@@ -6,6 +6,7 @@ namespace App\Models;
 use App\Traits\Uuid;
 use App\Models\Vehycle;
 use App\Models\UserProfile;
+use Illuminate\Auth\Passwords\CanResetPassword;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
@@ -14,7 +15,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles, Uuid;
+    use HasApiTokens, HasFactory, Notifiable,CanResetPassword, HasRoles, Uuid;
 
     /**
      * The attributes that are mass assignable.
