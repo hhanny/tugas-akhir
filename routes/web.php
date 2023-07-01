@@ -41,6 +41,8 @@ Route::get('/reset-password/{token}', function (string $token) {
     return view('auth.reset-password', ['token' => $token]);
 })->middleware('guest')->name('password.reset');
 
+Route::post('/reset-password', [ForgotPasswordController::class , 'resetPassword'])->middleware('guest')->name('password.update');
+
 Route::middleware('auth')->group(function () {
     Route::get('/sign-out', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
     Route::resource('/dashboard', DashboardController::class);

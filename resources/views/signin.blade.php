@@ -137,7 +137,9 @@
 		<script src="{{ asset('landingpage/js/jquery.magnific-popup.min.js') }}"></script>
 		<script src="{{ asset('landingpage/js/main.js') }}"></script>
 		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-		<script src="{{asset('landingpage/js/sweetalert/sweetalert.min.js')}}"></script>
+		<!-- SWEET-ALERT JS -->
+		<script src="{{ asset('assets/plugins/sweet-alert/sweetalert.min.js') }}"></script>
+		<script src="{{ asset('assets/js/sweet-alert.js') }}"></script>
 
 		<script>
 			$(document).ready(function () {
@@ -145,6 +147,7 @@
 				if('{{session()->has("success")}}' == true) type = "success";
 				if('{{session()->has("warning")}}' == true) type = "warning";
 				if('{{session()->has("error")}}' == true) type = "error";
+				if('{{session()->has("status")}}' == true) type = "status";
 
 				if(type === "success"){
 					$.growl.notice1({
@@ -158,6 +161,15 @@
 					$.growl.error({
 						message: `{{ Session::get('error') }}`
 					});
+				}else if(type === "status"){
+					Swal.fire({
+						toast: true,
+						position: 'top-end',
+						title: "{{ session()->get('status') }}" ,
+						icon: 'success',
+						showConfirmButton: false,
+						timer: 3000,
+					})
 				}
 			});
 		</script>

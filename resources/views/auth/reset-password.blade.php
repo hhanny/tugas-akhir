@@ -60,16 +60,19 @@
 				<div class="">
 					<h2>Selamat datang kembali!</h2>
 					<h4 class="text-start">Reset Password Anda</h4>
-					<form>
+					<form action="{{ route('password.update') }}" method="post">
+						@csrf
 						<div class="form-group text-start">
+							<input type="hidden" name="email" value="{{ request()->email }}">
+							<input type="hidden" name="token" value="{{ request()->token }}">
 							<label for="pb">Password Baru</label>
-							<input class="form-control" placeholder="Masukan Password Baru Anda" type="password" id="pb">
+							<input type="password" name="password" class="form-control" placeholder="Masukan Password Baru Anda" type="password" id="pb">
 						</div>
 						<div class="form-group text-start">
 							<label for="kp">Konfirmasi Password</label>
-							<input class="form-control" placeholder="Masukan Ulang Password Baru Anda" type="password" id="kp">
+							<input class="form-control" type="password" name="password_confirmation" placeholder="Masukan Ulang Password Baru Anda" type="password" id="kp">
 						</div>
-						<button class="btn ripple btn-primary btn-block">Reset Password</button>
+						<button type="submit" class="btn ripple btn-primary btn-block">Reset Password</button>
 					</form>
 				</div>
 			</div>
@@ -133,28 +136,38 @@
 		<script src="{{ asset('landingpage/js/jquery.magnific-popup.min.js') }}"></script>
 		<script src="{{ asset('landingpage/js/main.js') }}"></script>
 		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-		<script src="{{asset('landingpage/js/sweetalert/sweetalert.min.js')}}"></script>
+		<!-- SWEET-ALERT JS -->
+		<script src="{{ asset('assets/plugins/sweet-alert/sweetalert.min.js') }}"></script>
+		<script src="{{ asset('assets/js/sweet-alert.js') }}"></script>
 
 		<script>
 			$(document).ready(function () {
+				$(document).ready(function () {
 				let type = false;
-				if('{{session()->has("success")}}' == true) type = "success";
-				if('{{session()->has("warning")}}' == true) type = "warning";
+				if('{{session()->has("status")}}' == true) type = "status";
 				if('{{session()->has("error")}}' == true) type = "error";
+				
 
-				if(type === "success"){
-					$.growl.notice1({
-						message: `{{ Session::get('success') }}`
-					});
-				}else if(type === "warning") {
-					$.growl.warning({
-						message: `{{ Session::get('warning') }}`
-					});
-				}else if(type === "error") {
-					$.growl.error({
-						message: `{{ Session::get('error') }}`
-					});
+				if(type === "status"){
+					Swal.fire({
+						toast: true,
+						position: 'top-end',
+						title: "{{ session()->get('status') }}" ,
+						icon: 'success',
+						showConfirmButton: false,
+						timer: 3000,
+					})
+				}else if(type === "error"){
+					Swal.fire({
+						toast: true,
+						position: 'top-end',
+						title: "{{ session()->get('error') }}" ,
+						icon: 'error',
+						showConfirmButton: false,
+						timer: 3000,
+					})
 				}
+			});
 			});
 		</script>
 
