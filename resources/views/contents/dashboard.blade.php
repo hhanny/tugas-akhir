@@ -9,7 +9,7 @@
 @section('breadcumb')
 <div class="breadcrumb-header justify-content-between">
     <div>
-        <h4 class="content-title mb-2">Hai, selamat datang kembali {{ auth()->user()->username }} !</h4>
+        <h4 class="content-title mb-2">Hai, selamat datang kembali {{ auth()->user()->username }}!</h4>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a   href="javascript:void(0);"></a></li>

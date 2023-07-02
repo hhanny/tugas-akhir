@@ -51,7 +51,7 @@
 				<img src="{{ asset('virtual/assets/img/brand/polindra.png') }}" class=" m-0 mb-3" alt="logo" width="90">
 				<h4 class="mb-1">Sistem Monitoring</h4>
 				<h4 class="mb-2.5">Barrier Pintu Parkir</h4>
-				<p class="text-justify" style="font-size: 16px">Sebuah sistem yang menyediakan informasi dan laporan terkait data parkir di kampus Politeknik Negeri Indramayu</p>	
+				<p class="" style="font-size: 16px">Sebuah sistem yang menyediakan informasi dan laporan terkait data parkir di kampus Politeknik Negeri Indramayu</p>	
 				</div>
 			</div>
 		</div>
@@ -66,11 +66,11 @@
 							<input type="hidden" name="email" value="{{ request()->email }}">
 							<input type="hidden" name="token" value="{{ request()->token }}">
 							<label for="pb">Password Baru</label>
-							<input type="password" name="password" class="form-control" placeholder="Masukan Password Baru Anda" type="password" id="pb">
+							<input type="password" name="password" class="form-control" placeholder="Masukan password baru anda" type="password" id="pb">
 						</div>
 						<div class="form-group text-start">
 							<label for="kp">Konfirmasi Password</label>
-							<input class="form-control" type="password" name="password_confirmation" placeholder="Masukan Ulang Password Baru Anda" type="password" id="kp">
+							<input class="form-control" type="password" name="password_confirmation" placeholder="Masukan ulang password baru anda" type="password" id="kp">
 						</div>
 						<button type="submit" class="btn ripple btn-primary btn-block">Reset Password</button>
 					</form>

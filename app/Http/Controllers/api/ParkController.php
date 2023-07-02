@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\api;
 
 use App\Models\Park;
+use App\Models\User;
 use App\Models\UserProfile;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Notifications\FullNotification;
+use Illuminate\Support\Facades\Notification;
 
 class ParkController extends Controller
 {
@@ -52,6 +55,14 @@ class ParkController extends Controller
     public function in(Request $request, string $id)
     {
         try {
+
+            if(Park::where([['status', '=', 'Masuk'],['time_out', '=', null],])->count() >= 3){
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Parkiran penuh!',
+                ], 400);
+            }
+
             $user = UserProfile::where('card_id', $id)->with(['user', 'user.vehycle'])->first();
             if ($user->user->vehycle->count() == 0) {
                 return response()->json([
@@ -76,11 +87,20 @@ class ParkController extends Controller
                 'status' => 'Masuk',
                 'time_in' => now()
             ]);
+
+            if(Park::where([['status', '=', 'Masuk'],['time_out', '=', null],])->count() >= 3){
+
+                $email = User::all()->pluck('email');
+                Notification::route('mail', $email)->notify(new FullNotification());
+
+            }
+
             return response()->json([
                 'status' => true,
                 'message' => 'Berhasil Parkir',
                 'data' => $data
             ], 200);
+            
         } catch (\Throwable $th) {
             return response()->json([
                 'status' => false,

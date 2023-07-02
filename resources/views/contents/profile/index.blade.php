@@ -135,10 +135,10 @@
                   <div class="col-md-9">
                     <div class="row">
                       <div class="col-md-6">
-                        <label class="rdiobox"><input id="lk" name="gender" {{ $data->user_profile->gender  == 'Laki-laki' ? 'checked' : '' }}  value="Laki-laki" type="radio"> <span>Laki-laki</span></label>
+                        <label class="rdiobox"><input id="lk" name="gender" {{ $data->user_profile != null ? $data->user_profile->gender  == 'Laki-laki' ? 'checked' : '' : '' }}  value="Laki-laki" type="radio"> <span>Laki-laki</span></label>
                       </div>
                       <div class="col-md-6">
-                        <label class="rdiobox"><input id="pr" name="gender" {{ $data->user_profile->gender  == 'Perempuan' ? 'checked' : '' }} value="Perempuan" type="radio"> <span>Perempuan</span></label>
+                        <label class="rdiobox"><input id="lk" name="gender" {{ $data->user_profile != null ? $data->user_profile->gender  == 'Perempuan' ? 'checked' : '' : '' }}  value="Perempuan" type="radio"> <span>Perempuan</span></label>
                       </div>
                     </div>
                   </div>

@@ -51,7 +51,7 @@
 							<img src="{{ asset('virtual/assets/img/brand/polindra.png') }}" class=" m-0 mb-3" alt="logo" width="90">
 							<h4 class="mb-1">Sistem Monitoring</h4>
 							<h4 class="mb-2.5">Barrier Pintu Parkir</h4>
-							<p class="text-justify" style="font-size: 16px">Sebuah sistem yang menyediakan informasi dan laporan terkait data parkir di kampus Politeknik Negeri Indramayu</p>
+							<p class="left" style="font-size: 16px">Sebuah sistem yang menyediakan informasi dan laporan terkait data parkir di kampus Politeknik Negeri Indramayu</p>
 							<!-- <a href="index.html" class="btn btn-success">Learn More</a> -->
 						</div>
 					</div>

@@ -32,11 +32,11 @@
 </head>
 	<body class="main-body app sidebar-mini ltr  login-img">
 
-			<!-- Loader -->
-			<div id="global-loader">
-				<img src="../assets/img/loaders/loader-4.svg" class="loader-img" alt="Loader">
-			</div>
-		<!-- /Loader -->
+<!-- Loader -->
+	<div id="global-loader">
+		<img src="{{ asset('virtual/assets/img/loaders/loader-4.svg') }}" class="loader-img" alt="Loader">
+	</div>
+<!-- /Loader -->
 
 		<!-- page -->
 	<div class="page">
@@ -46,29 +46,30 @@
 			<div class="main-signin-wrapper">
 				<div class="main-card-signin forgot-password d-md-flex wd-100p">
 					<div class="wd-md-50p  page-signin-style p-md-5 p-4 text-white d-none d-md-block ">
-						<div class="my-auto authentication-pages">
-							<div>
-								<img src="../assets/img/brand/logo-white.png" class=" m-0 mb-4" alt="logo">
-								<h5 class="mb-4">Responsive Modern Dashboard &amp; Admin Template</h5>
-								<p class="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-								<a href="index.html" class="btn btn-success">Learn More</a>
-							</div>
+					<div class="my-auto authentication-pages">
+						<div>
+							<img src="{{ asset('virtual/assets/img/brand/polindra.png') }}" class=" m-0 mb-3" alt="logo" width="90">
+							<h4 class="mb-1">Sistem Monitoring</h4>
+							<h4 class="mb-2.5">Barrier Pintu Parkir</h4>
+							<p class="left" style="font-size: 16px">Sebuah sistem yang menyediakan informasi dan laporan terkait data parkir di kampus Politeknik Negeri Indramayu</p>
+							<!-- <a href="index.html" class="btn btn-success">Learn More</a> -->
 						</div>
+					</div>
 					</div>
 					<div class="p-5 wd-md-50p">
 						<div class="main-signin-header">
-							<h2>Forgot Password!</h2>
-							<h4>Please Enter Your Email</h4>
+							<h2>Lupa Kata Sandi!</h2>
+							<h4>Silahkan masukan email anda </h4>
 							<form action="{{ route('password.email') }}" method="post">
 								@csrf
 								<div class="form-group">
-									<label>Email</label> <input class="form-control" placeholder="Enter your email" name="email" type="text">
+									<label>Email</label> <input class="form-control" placeholder="Masukan email anda" name="email" type="text">
 								</div>
 								<button type="submit" class="btn btn-primary btn-block">Send</button>
 							</form>
 						</div>
 						<div class="main-signup-footer mg-t-10">
-							<p>Forget it, <a href="page-signin.html"> Send me back</a> to the sign in screen.</p>
+							<p>Lupakan, kembali pada halaman<a href="sign-in"> Masuk.</a></p>
 						</div>
 					</div>
 				</div>

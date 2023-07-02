@@ -30,7 +30,7 @@ Route::post('/sign-in', [LoginController::class, 'auth'])->name('login-proccess'
 Route::get('/password/reset', function (){
     return view('contents.password.reset');
 });
-// Route::get('forgot-password', [ForgotPasswordController::class, 'index'])->name('forgot-password.index');
+
 Route::get('/forgot-password', function () {
     return view('auth.forgot-password');
 })->middleware('guest')->name('password.request');
@@ -47,32 +47,43 @@ Route::middleware('auth')->group(function () {
     Route::get('/sign-out', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
     Route::resource('/dashboard', DashboardController::class);
 
-    Route::get('/',[DashboardController::class , 'index']);
-
+    Route::get('/',[DashboardController::class , 'index'])->name('dashboard');
     
-    Route::get('admin/datatable', [AdminController::class, 'datatable'])->name('admin.datatable');
-    Route::resource('/admin', AdminController::class);
+    Route::put('/profile/{id?}/update-image', [ProfileController::class, 'updateImage'])->name('profile-image.update');
+    Route::delete('/profile/{id?}/delete-image', [ProfileController::class, 'destroyImage'])->name('profile-image.delete');
+    Route::resource('/profile', ProfileController::class);
+    
+});
+
+Route::group(['middleware' => ['role:admin']], function () {
+    
+    Route::get('/data-parkir', [ParkController::class, 'index'])->name('park.index');
+    Route::get('data-parkir/datatable', [ParkController::class, 'datatable'])->name('park.datatable');
+    Route::get('data-parkir/{id?}', [ParkController::class, 'show'])->name('park.show');
 
     Route::post('kendaraan/{id?}/update', [VehycleController::class, 'update'])->name('kendaraan-update.update');
     Route::post('kendaraan/store', [VehycleController::class, 'store'])->name('kendaraan-store.store');
     Route::get('kendaraan/datatable', [VehycleController::class, 'datatable'])->name('kendaraan.datatable');
     Route::get('kendaraan/select2', [VehycleController::class, 'select2'])->name('kendaraan.select2');
     Route::resource('/kendaraan', VehycleController::class);
+    
+});
 
+Route::group(['middleware' => ['role:mahasiswa|pegawai']], function () {
+    Route::get('/riwayat-parkir', [ParkController::class, 'parkHistory'])->name('park-history.index');
+    Route::get('riwayat-parkir/datatable', [ParkController::class, 'parkHistoryDatatable'])->name('park-history.datatable');
+    
+});
+
+Route::group(['middleware' => ['role:superAdmin']], function () {
+    Route::get('admin/datatable', [AdminController::class, 'datatable'])->name('admin.datatable');
+    Route::resource('/admin', AdminController::class);
+});
+
+Route::group(['middleware' => ['role:superAdmin|admin']], function () {
     Route::get('pegawai/datatable', [PegawaiController::class, 'datatable'])->name('pegawai.datatable');
     Route::resource('/pegawai', PegawaiController::class);
 
     Route::get('mahasiswa/datatable', [MahasiswaController::class, 'datatable'])->name('mahasiswa.datatable');
     Route::resource('/mahasiswa', MahasiswaController::class);
-    Route::get('/data-parkir', [ParkController::class, 'index'])->name('park.index');
-    Route::get('/riwayat-parkir', [ParkController::class, 'parkHistory'])->name('park-history.index');
-    Route::get('data-parkir/datatable', [ParkController::class, 'datatable'])->name('park.datatable');
-    Route::get('data-parkir/{id?}', [ParkController::class, 'show'])->name('park.show');
-    Route::get('riwayat-parkir/datatable', [ParkController::class, 'parkHistoryDatatable'])->name('park-history.datatable');
-
-    Route::put('/profile/{id?}/update-image', [ProfileController::class, 'updateImage'])->name('profile-image.update');
-    Route::delete('/profile/{id?}/delete-image', [ProfileController::class, 'destroyImage'])->name('profile-image.delete');
-    Route::resource('/profile', ProfileController::class);
-
 });
-

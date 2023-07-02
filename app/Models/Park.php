@@ -37,7 +37,7 @@ class Park extends Model
 
     protected function getNameAttribute($value)
     {
-        return $this->vehycle[0]->user->user_profile->name;
+        return $this->vehycle[0]->user->user_profile->name ?? '';
     }
     
 
