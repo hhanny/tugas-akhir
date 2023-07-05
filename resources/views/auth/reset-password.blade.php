@@ -11,7 +11,7 @@
 		<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
 		<!-- Title -->
-		<title> Reset Password </title>
+		<title> Atur Ulang Kata Sandi </title>
 
 		<!--- Favicon --->
 		<link rel="icon" href="{{ asset('virtual/assets/img/brand/pol-icon.png') }}" type="image/x-icon"/>

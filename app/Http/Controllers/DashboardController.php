@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Park;
 use App\Models\User;
+use App\Models\Vehycle;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -13,11 +15,19 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $data = Park::get();
+        if(Auth::user()->hasRole('admin')){
+            $data = Park::get();
+            $vehycles = Vehycle::get();
+        }else if(Auth::user()->hasRole('pegawai') || Auth::user()->hasRole('mahasiswa')){
+            $vehycleId = Auth::user()->vehycle[0]->id;
+            $vehycles = Auth::user()->vehycle;
+            $data = Park::where('vehycle_id', $vehycleId)->get();
+        }
+        // dd($data);
         $user = User::role('admin')->get();
         $user1 = User::role('pegawai')->get();
         $user2 = User::role('mahasiswa')->get();
-        return view('contents.dashboard', compact('data','user','user1','user2'));
+        return view('contents.dashboard', compact('data','user','user1','user2','vehycles'));
     }
 
     /**

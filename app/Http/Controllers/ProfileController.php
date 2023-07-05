@@ -108,7 +108,7 @@ class ProfileController extends Controller
     {
         $rules = [
             'name' => 'required|min:6|max:50',
-            'nip_nim' => 'required|max:10',
+            'nip_nim' => 'required|max:20',
             'phone_number' => 'required|min:11|numeric',
             'address' => 'required',
             'gender' => 'required',

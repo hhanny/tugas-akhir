@@ -81,7 +81,7 @@
                             <ul>
                                 <li>
                                     <strong class="fs-6">Terdaftar</strong>
-                                    <span class="counter fs-6 number-font">404</span>
+                                    <span class="counter fs-6 number-font">{{ $vehycles->count() }}</span>
                                 </li>
                             </ul>
                         </div>
@@ -242,7 +242,7 @@
             </div>
         </div>
         @endif
-        @if(auth()->user()->hasRole('pegawai'))
+        @if(auth()->user()->hasRole('pegawai') || auth()->user()->hasRole('mahasiswa'))
         <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
             <div class="card overflow-hidden project-card">
                 <div class="card-body py-4">
@@ -264,11 +264,11 @@
                             </svg>
                         </div>
                         <div class="project-content">
-                            <h4>Data Parkir Anda (pgw)</h4>
+                            <h4>Data Parkir Anda</h4>
                             <ul>
                                 <li>
-                                    <strong class="fs-6">Terdaftar</strong>
-                                    <span class="counter fs-6 number-font">404</span>
+                                    <strong class="fs-6">Masuk</strong>
+                                    <span class="counter fs-6 number-font">{{ $data->count() }}</span>
                                 </li>
                             </ul>
                         </div>
@@ -277,7 +277,7 @@
             </div>
         </div>
         @endif
-        @if(auth()->user()->hasRole('mahasiswa'))
+        @if(auth()->user()->hasRole('mahasiswa')|| auth()->user()->hasRole('pegawai'))
         <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
             <div class="card overflow-hidden project-card">
                 <div class="card-body py-4">
@@ -299,11 +299,11 @@
                             </svg>
                         </div>
                         <div class="project-content">
-                            <h4>Data Parkir Anda (mhs)</h4>
+                            <h4>Data Kendaraan</h4>
                             <ul>
                                 <li>
                                     <strong class="fs-6">Terdaftar</strong>
-                                    <span class="counter fs-6 number-font">404</span>
+                                    <span class="counter fs-6 number-font">{{ $vehycles->count() }}</span>
                                 </li>
                             </ul>
                         </div>

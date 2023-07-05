@@ -406,7 +406,7 @@
 
             response = response.data;
 
-            // console.log(response);
+            $('<tr>').remove();
             
             $('#foto_user').html(`<img src="{{ asset('storage/${response.user_profile.image}') }}" width="150px" height="200px" style="border-radius: 5px;" alt="">`);
             $('#name').text(response.user_profile.name);
@@ -416,10 +416,11 @@
             $('#address').text(response.user_profile.address);
             $('#no_hp').text(response.user_profile.phone_number);
 
-            response.vehycle.map(function(item){
-                $('#t-body').html(`
+
+            response.vehycle.map(function(item, index){
+                $('#t-body').append(`
                     <tr>
-                        <td>1</td>
+                        <td>${index+1}</td>
                         <td>
                             <img src="{{ asset('storage/${item.image}') }}" width="150">
                         </td>

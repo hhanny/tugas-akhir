@@ -11,7 +11,7 @@
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
 <!-- Title -->
-<title> Forgot Password </title>
+<title> Lupa Kata Sandi </title>
 
 <!--- Favicon --->
 <link rel="icon" href="{{ asset('virtual/assets/img/brand/pol-icon.png') }}" type="image/x-icon"/>

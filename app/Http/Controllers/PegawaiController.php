@@ -40,10 +40,10 @@ class PegawaiController extends Controller
             'name' => 'required|string|max:50',
             'email' => 'required|unique:users|email:dns',
             'card_id' => 'required',
-            'brand' => 'required|max:10',
-            'type' => 'required|max:10',
-            'vehycle_number' => 'required|unique:vehycles|max:10',
-            'chassis_number' => 'required|unique:vehycles|max:12',
+            'brand' => 'required|max:30',
+            'type' => 'required|max:30',
+            'vehycle_number' => 'required|unique:vehycles|max:20',
+            'chassis_number' => 'required|unique:vehycles|max:20',
             'image' => 'required|image|file|max:1024|mimes:jpeg,jpg,png,webp,svg',
         ]);
 

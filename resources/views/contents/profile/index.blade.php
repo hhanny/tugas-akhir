@@ -178,11 +178,51 @@
             </form>
             <div class="card-footer">
               <button type="button" id="btnSave" class="btn btn-primary waves-effect waves-light">Update Profile</button>
+              <!-- <button type="button" id="btnUpdatePw" class="btn btn-primary waves-effect waves-light modal-effect" data-bs-effect="effect-super-scaled" onclick="updatePassword()">Ubah Password</button> -->
+              <!-- <a class="btn btn-primary modal-effect mb-3 data-table-btn ms-4" data-bs-effect="effect-super-scaled" onclick="updatePassword()">
+                    <span class="fe fe-plus"> </span>Tambah data baru
+                </a> -->
             </div>
         </div>
         </div>
       <!-- /Col -->
       </div>
+      <!-- Modal -->
+      <!-- <div class="modal fade" id="modal_password">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content modal-content-demo">
+                <div class="modal-header">
+                    <h6 class="modal-title">Ubah Password</h6>
+                    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                        <form id="formPassword" method="POST">
+                            @csrf
+                        <div class="form-group">
+                            <input type="hidden" id="idPassword" name="idPassword">
+                            <div class="mb-3">
+                                <label for="currentPassword" class="form-label">Password saat ini</label>
+                                <input type="text" placeholder="" value="" name="currentPassword" class="form-control" id="currentPassword">
+                            </div>
+                            <div class="mb-3">
+                                <label for="newPassword" class="form-label">Password baru</label>
+                                <input type="text" placeholder="Setidaknya 8 karakter" value="" name="newPassword" class="form-control" id="newPassword">
+                            </div>
+                            <div class="mb-3">
+                                <label for="confirmPassword" class="form-label">Konfirmasi password</label>
+                                <input type="text" placeholder="Setidaknya 8 karakter" value="" name="confirmPassword" class="form-control" id="confirmPassword">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Tutup</button>
+                        <button  id="btnSave" class="btn btn-primary">Simpan</button>
+                    </div>
+            </div>
+        </div>
+      </div> -->
+    <!-- Modal Closed -->
   </div>
     <!-- row closed -->
 
@@ -462,6 +502,10 @@
             }
         })
     } 
+
+    // function updatePassword(){
+    //   $('#modal_password').show();
+    // }
 
   
 </script>

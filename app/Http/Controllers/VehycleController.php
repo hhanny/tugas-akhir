@@ -11,7 +11,7 @@ use Yajra\DataTables\Facades\DataTables;
 
 class VehycleController extends Controller
 {
-    /**
+    /*
      * Display a listing of the resource.
      */
     public function index()
@@ -35,11 +35,10 @@ class VehycleController extends Controller
         // dd($request);
         $request->validate([
             'user_id' => 'required',
-            'brand' => 'required|max:10',
-            'type' => 'required|max:10',
-            'vehycle_number' => 'required|max:10',
-            'vehycle_number' => 'required|max:12',
-            'chassis_number' => 'required|max:12',
+            'brand' => 'required|max:30',
+            'type' => 'required|max:30',
+            'vehycle_number' => 'required|max:20',
+            'chassis_number' => 'required|max:20',
             'image' => 'required|image|file|max:1024|mimes:jpeg,jpg,png,webp,svg',
         ]);
 
@@ -94,11 +93,10 @@ class VehycleController extends Controller
         // dd($request);
         // dd('update');
         $request->validate([
-            'brand' => 'required|max:10',
-            'type' => 'required|max:10',
-            'vehycle_number' => 'required|max:10',
-            'vehycle_number' => 'required|max:12',
-            'chassis_number' => 'required|max:12',
+            'brand' => 'required|max:30',
+            'type' => 'required|max:30',
+            'vehycle_number' => 'required|max:20',
+            'chassis_number' => 'required|max:20',
             'image' => 'image|file|max:1024|mimes:jpeg,jpg,png,webp,svg',
         ]);
 
