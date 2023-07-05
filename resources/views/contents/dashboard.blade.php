@@ -322,31 +322,31 @@
 
 @section('script')
     <!--- Internal Chart.bundle js --->
-    <script src="{{ asset('virtual/assets/plugins/chart.js/Chart.bundle.min.js') }}"></script>
+    <script src="{{ asset('simbapar/assets/plugins/chart.js/Chart.bundle.min.js') }}"></script>
 
     <!-- DATA TABLE JS-->
-    <script src="{{ asset('virtual/assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('virtual/assets/plugins/datatable/js/dataTables.bootstrap5.js') }}"></script>
-    <script src="{{ asset('virtual/assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ asset('virtual/assets/plugins/datatable/js/buttons.bootstrap5.min.js') }}"></script>
-    <script src="{{ asset('virtual/assets/plugins/datatable/js/jszip.min.js') }}"></script>
-    <script src="{{ asset('virtual/assets/plugins/datatable/pdfmake/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('virtual/assets/plugins/datatable/pdfmake/vfs_fonts.js') }}"></script>
-    <script src="{{ asset('virtual/assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset('virtual/assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
-    <script src="{{ asset('virtual/assets/plugins/datatable/js/buttons.colVis.min.js') }}"></script>
-    <script src="{{ asset('virtual/assets/plugins/datatable/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('virtual/assets/plugins/datatable/responsive.bootstrap5.min.js') }}"></script>
+    <script src="{{ asset('simbapar/assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('simbapar/assets/plugins/datatable/js/dataTables.bootstrap5.js') }}"></script>
+    <script src="{{ asset('simbapar/assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('simbapar/assets/plugins/datatable/js/buttons.bootstrap5.min.js') }}"></script>
+    <script src="{{ asset('simbapar/assets/plugins/datatable/js/jszip.min.js') }}"></script>
+    <script src="{{ asset('simbapar/assets/plugins/datatable/pdfmake/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('simbapar/assets/plugins/datatable/pdfmake/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('simbapar/assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('simbapar/assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('simbapar/assets/plugins/datatable/js/buttons.colVis.min.js') }}"></script>
+    <script src="{{ asset('simbapar/assets/plugins/datatable/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('simbapar/assets/plugins/datatable/responsive.bootstrap5.min.js') }}"></script>
 
-    <script src="{{ asset('virtual/assets/js/table-data.js')}}"></script>
+    <script src="{{ asset('simbapar/assets/js/table-data.js')}}"></script>
 
     <!--- Echart Plugin --->
-    <script src="{{ asset('virtual/assets/plugins/echart/echart.js') }}"></script>
-    <script src="{{ asset('virtual/assets/js/echarts.js') }}"></script>
+    <script src="{{ asset('simbapar/assets/plugins/echart/echart.js') }}"></script>
+    <script src="{{ asset('simbapar/assets/js/echarts.js') }}"></script>
 
     <!--- Select2 js --->
-    <script src="{{ asset('virtual/assets/plugins/select2/js/select2.min.js') }}" defer></script>
+    <script src="{{ asset('simbapar/assets/plugins/select2/js/select2.min.js') }}" defer></script>
 
     <!--- Index js --->
-    <script src="{{ asset('virtual/assets/js/index.js') }}"></script>
+    <script src="{{ asset('simbapar/assets/js/index.js') }}"></script>
 @endsection

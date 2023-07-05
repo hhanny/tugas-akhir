@@ -14,27 +14,27 @@
 		<title> Masuk </title>
 
 		<!--- Favicon --->
-		<link rel="icon" href="{{ asset('virtual/assets/img/brand/pol-icon.png') }}" type="image/x-icon"/>
+		<link rel="icon" href="{{ asset('simbapar/assets/img/brand/pol-icon.png') }}" type="image/x-icon"/>
 
 		<!-- Bootstrap css -->
-		<link href="{{ asset('virtual/assets/plugins/bootstrap/css/bootstrap.css') }}" rel="stylesheet" id="style"/>
+		<link href="{{ asset('simbapar/assets/plugins/bootstrap/css/bootstrap.css') }}" rel="stylesheet" id="style"/>
 
 		<!--- Icons css --->
-		<link href="{{ asset('virtual/assets/css/icons.css') }}" rel="stylesheet">
+		<link href="{{ asset('simbapar/assets/css/icons.css') }}" rel="stylesheet">
 
 		<!--- Style css --->
-		<link href="{{ asset('virtual/assets/css/style.css') }}" rel="stylesheet">
-		<link href="{{ asset('virtual/assets/css/plugins.css') }}" rel="stylesheet">
+		<link href="{{ asset('simbapar/assets/css/style.css') }}" rel="stylesheet">
+		<link href="{{ asset('simbapar/assets/css/plugins.css') }}" rel="stylesheet">
 
 		<!--- Animations css --->
-		<link href="{{ asset('virtual/assets/css/animate.css') }}" rel="stylesheet">
+		<link href="{{ asset('simbapar/assets/css/animate.css') }}" rel="stylesheet">
 
 	</head>
 	<body class="main-body bg-light  login-img">
 
 		<!-- Loader -->
 		<div id="global-loader">
-			<img src="{{ asset('virtual/assets/img/loaders/loader-4.svg') }}" class="loader-img" alt="Loader">
+			<img src="{{ asset('simbapar/assets/img/loaders/loader-4.svg') }}" class="loader-img" alt="Loader">
 		</div>
 		<!-- /Loader -->
 
@@ -48,7 +48,7 @@
 				<div class="wd-md-50p page-signin-style p-5 text-white" background-image="https://mdbootstrap.com/img/Photos/Others/images/76.jpg">
 					<div class="my-auto authentication-pages">
 						<div>
-							<img src="{{ asset('virtual/assets/img/brand/polindra.png') }}" class=" m-0 mb-3" alt="logo" width="90">
+							<img src="{{ asset('simbapar/assets/img/brand/polindra.png') }}" class=" m-0 mb-3" alt="logo" width="90">
 							<h4 class="mb-1">Sistem Monitoring</h4>
 							<h4 class="mb-2.5">Barrier Pintu Parkir</h4>
 							<p class="left" style="font-size: 16px">Sebuah sistem yang menyediakan informasi dan laporan terkait data parkir di kampus Politeknik Negeri Indramayu</p>
@@ -87,26 +87,26 @@
 		<!-- /main-signin-wrapper -->
 
 		<!--- JQuery min js --->
-		<script src="{{ asset('virtual/assets/plugins/jquery/jquery.min.js') }}"></script>
+		<script src="{{ asset('simbapar/assets/plugins/jquery/jquery.min.js') }}"></script>
 
 		<!--- Bootstrap Bundle js --->
-		<script src="{{ asset('virtual/assets/plugins/bootstrap/popper.min.js') }}"></script>
-		<script src="{{ asset('virtual/assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+		<script src="{{ asset('simbapar/assets/plugins/bootstrap/popper.min.js') }}"></script>
+		<script src="{{ asset('simbapar/assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
 
 		<!--- Ionicons js --->
-		<script src="{{ asset('virtual/assets/plugins/ionicons/ionicons.js') }}"></script>
+		<script src="{{ asset('simbapar/assets/plugins/ionicons/ionicons.js') }}"></script>
 
 		<!--- Moment js --->
-		<script src="{{ asset('virtual/assets/plugins/moment/moment.js') }}"></script>
+		<script src="{{ asset('simbapar/assets/plugins/moment/moment.js') }}"></script>
 
 		<!--- Eva-icons js --->
-		<script src="{{ asset('virtual/assets/js/eva-icons.min.js') }}"></script>
+		<script src="{{ asset('simbapar/assets/js/eva-icons.min.js') }}"></script>
 
 		<!--themecolor js-->
-		<script src="{{ asset('virtual/assets/js/themecolor.js') }}"></script>
+		<script src="{{ asset('simbapar/assets/js/themecolor.js') }}"></script>
 
 		<!--- Custom js --->
-		<script src="{{ asset('virtual/assets/js/custom.js') }}"></script>
+		<script src="{{ asset('simbapar/assets/js/custom.js') }}"></script>
 
 
 		<!-- SHOW PASSWORD JS -->

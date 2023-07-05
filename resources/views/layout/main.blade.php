@@ -12,25 +12,25 @@
 		<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
 		<!-- Title -->
-		<title> @yield('title', 'Virtual Technopark') </title>
+		<title> @yield('title', 'simbapar Technopark') </title>
 
 		<!--- Favicon --->
-		<link rel="icon" href="{{ asset('virtual/assets/img/brand/pol-icon.png') }}" type="image/x-icon"/>
+		<link rel="icon" href="{{ asset('simbapar/assets/img/brand/pol-icon.png') }}" type="image/x-icon"/>
 
 
 
 		<!-- Bootstrap css -->
-		<link href="{{ asset('virtual/assets/plugins/bootstrap/css/bootstrap.css') }}" rel="stylesheet" id="style"/>
+		<link href="{{ asset('simbapar/assets/plugins/bootstrap/css/bootstrap.css') }}" rel="stylesheet" id="style"/>
 
 		<!--- Icons css --->
-		<link href="{{ asset('virtual/assets/css/icons.css') }}" rel="stylesheet">
+		<link href="{{ asset('simbapar/assets/css/icons.css') }}" rel="stylesheet">
 
 		<!--- Style css --->
-		<link href="{{ asset('virtual/assets/css/style.css') }}" rel="stylesheet">
-		<link href="{{ asset('virtual/assets/css/plugins.css') }}" rel="stylesheet">
+		<link href="{{ asset('simbapar/assets/css/style.css') }}" rel="stylesheet">
+		<link href="{{ asset('simbapar/assets/css/plugins.css') }}" rel="stylesheet">
 
 		<!--- Animations css --->
-		<link href="{{ asset('virtual/assets/css/animate.css') }}" rel="stylesheet">
+		<link href="{{ asset('simbapar/assets/css/animate.css') }}" rel="stylesheet">
 
 		<style>
 			.ff_fileupload_wrap table.ff_fileupload_uploads button.ff_fileupload_start_upload{
@@ -45,7 +45,7 @@
 
 		<!-- Loader -->
 		<div id="global-loader">
-			<img src="{{ asset('virtual/assets/img/loaders/loader-1.svg') }}" class="loader-img" alt="Loader">
+			<img src="{{ asset('simbapar/assets/img/loaders/loader-1.svg') }}" class="loader-img" alt="Loader">
 		</div>
 		<!-- /Loader -->
 
@@ -93,41 +93,41 @@
 		<a href="#top" id="back-to-top"><i class="ti-angle-double-up"></i></a>
 
 		<!--- JQuery min js --->
-		<script src="{{ asset('virtual/assets/plugins/jquery/jquery.min.js') }}"></script>
+		<script src="{{ asset('simbapar/assets/plugins/jquery/jquery.min.js') }}"></script>
 
 		<!--- Bootstrap Bundle js --->
-		<script src="{{ asset('virtual/assets/plugins/bootstrap/popper.min.js') }}"></script>
-		<script src="{{ asset('virtual/assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+		<script src="{{ asset('simbapar/assets/plugins/bootstrap/popper.min.js') }}"></script>
+		<script src="{{ asset('simbapar/assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
 
 		<!--- Ionicons js --->
-		<script src="{{ asset('virtual/assets/plugins/ionicons/ionicons.js') }}"></script>
+		<script src="{{ asset('simbapar/assets/plugins/ionicons/ionicons.js') }}"></script>
 
 		<!--- Moment js --->
-		<script src="{{ asset('virtual/assets/plugins/moment/moment.js') }}"></script>
+		<script src="{{ asset('simbapar/assets/plugins/moment/moment.js') }}"></script>
 
-		<script src="{{ asset('virtual/assets/plugins/chart.js/Chart.bundle.min.js') }}"></script>
+		<script src="{{ asset('simbapar/assets/plugins/chart.js/Chart.bundle.min.js') }}"></script>
 
 		<!--- JQuery sparkline js --->
-		<script src="{{ asset('virtual/assets/plugins/jquery-sparkline/jquery.sparkline.min.js') }}"></script>
+		<script src="{{ asset('simbapar/assets/plugins/jquery-sparkline/jquery.sparkline.min.js') }}"></script>
         
 		
 		<!--- P-scroll js --->
-		<script src="{{ asset('virtual/assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
-		<script src="{{ asset('virtual/assets/plugins/perfect-scrollbar/p-scroll.js') }}"></script>
+		<script src="{{ asset('simbapar/assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
+		<script src="{{ asset('simbapar/assets/plugins/perfect-scrollbar/p-scroll.js') }}"></script>
 		
 		<!--- Sidebar js --->
-		<script src="{{ asset('virtual/assets/plugins/side-menu/sidemenu.js') }}"></script>
+		<script src="{{ asset('simbapar/assets/plugins/side-menu/sidemenu.js') }}"></script>
 		
 		<!--- sticky js --->
-		<script src="{{ asset('virtual/assets/js/sticky.js') }}"></script>
+		<script src="{{ asset('simbapar/assets/js/sticky.js') }}"></script>
 		
 		<!--- Right-sidebar js --->
-		<script src="{{ asset('virtual/assets/plugins/sidebar/sidebar.js') }}"></script>
-		<script src="{{ asset('virtual/assets/plugins/sidebar/sidebar-custom.js') }}"></script>
+		<script src="{{ asset('simbapar/assets/plugins/sidebar/sidebar.js') }}"></script>
+		<script src="{{ asset('simbapar/assets/plugins/sidebar/sidebar-custom.js') }}"></script>
 		
 		
 		<!--- Eva-icons js --->
-		<script src="{{ asset('virtual/assets/js/eva-icons.min.js') }}"></script>
+		<script src="{{ asset('simbapar/assets/js/eva-icons.min.js') }}"></script>
 
 		<!-- SWEET-ALERT JS -->
 		<script src="{{ asset('assets/plugins/sweet-alert/sweetalert.min.js') }}"></script>
@@ -219,13 +219,13 @@
 		@yield('script')
 
 		<!--themecolor js-->
-		<script src="{{ asset('virtual/assets/js/themecolor.js') }}"></script>
+		<script src="{{ asset('simbapar/assets/js/themecolor.js') }}"></script>
 
 		<!--swither-styles js-->
-		<script src="{{ asset('virtual/assets/js/swither-styles.js') }}"></script>
+		<script src="{{ asset('simbapar/assets/js/swither-styles.js') }}"></script>
 
 		<!--- Custom js --->
-		<script src="{{ asset('virtual/assets/js/custom.js') }}"></script>
+		<script src="{{ asset('simbapar/assets/js/custom.js') }}"></script>
 
 	</body>
 </html>

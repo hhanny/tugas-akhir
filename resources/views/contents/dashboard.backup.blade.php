@@ -592,7 +592,7 @@
                 <div class="card-body p-0">
                     <div class="activity Activity-scroll">
                         <div class="activity-list">
-                            <img src="{{ asset('virtual/assets/img/faces/6.png') }}" alt="" class="img-activity">
+                            <img src="{{ asset('simbapar/assets/img/faces/6.png') }}" alt="" class="img-activity">
                             <div class="time-activity ">
                                 <div class="item-activity">
                                     <p class="mb-0"><span class="h6 me-1">Alghi Arif Rahman</span><span
@@ -602,7 +602,7 @@
                                         class="text-muted ">30 mins ago</small>
                                 </div>
                             </div>
-                            <img src="{{ asset('virtual/assets/img/faces/3.png') }}" alt="" class="img-activity">
+                            <img src="{{ asset('simbapar/assets/img/faces/3.png') }}" alt="" class="img-activity">
                             <div class="time-activity">
                                 <div class="item-activity">
                                     <p class="mb-0"><span class="h6 me-1">Diaz Alatta</span> <span
@@ -612,7 +612,7 @@
                                     <small class="text-muted ">1 days ago</small>
                                 </div>
                             </div>
-                            <img src="{{ asset('virtual/assets/img/faces/9.png') }}" alt="" class="img-activity">
+                            <img src="{{ asset('simbapar/assets/img/faces/9.png') }}" alt="" class="img-activity">
                             <div class="time-activity">
                                 <div class="item-activity">
                                     <p class="mb-0"><span class="h6 me-1">Rifki Alfandi</span> <span
@@ -622,7 +622,7 @@
                                         class="text-muted ">3 days ago</small>
                                 </div>
                             </div>
-                            <img src="{{ asset('virtual/assets/img/faces/20.png') }}" alt="" class="img-activity">
+                            <img src="{{ asset('simbapar/assets/img/faces/20.png') }}" alt="" class="img-activity">
                             <div class="time-activity">
                                 <div class="item-activity">
                                     <p class="mb-0"><span class="h6 me-1">MangCep DevOps</span> <span
@@ -632,7 +632,7 @@
                                         ago</small>
                                 </div>
                             </div>
-                            <img src="{{ asset('virtual/assets/img/faces/20.pn') }}g" alt="" class="img-activity">
+                            <img src="{{ asset('simbapar/assets/img/faces/20.pn') }}g" alt="" class="img-activity">
                             <div class="time-activity">
                                 <div class="item-activity">
                                     <p class="mb-0"><span class="h6 me-1">Aisa Devina Muharani</span>
@@ -785,7 +785,7 @@
                             <div class="team">
                                 <a href="javascript:void(0)" class="chip">
                                     <span class="avatar cover-image"
-                                        data-bs-image-src="{{ asset('virtual/assets/img/faces/15.png') }}"></span>
+                                        data-bs-image-src="{{ asset('simbapar/assets/img/faces/15.png') }}"></span>
                                     Kemenperin
                                 </a>
                                 <i class="fab fa-facebook text-primary" aria-hidden="true"></i>
@@ -797,7 +797,7 @@
                             <div class="team">
                                 <a href="javascript:void(0)" class="chip">
                                     <span class="avatar cover-image"
-                                        data-bs-image-src="{{ asset('virtual/assets/img/faces/21.png') }}"></span> ACCI
+                                        data-bs-image-src="{{ asset('simbapar/assets/img/faces/21.png') }}"></span> ACCI
                                 </a>
                                 <i class="fab fa-facebook text-primary" aria-hidden="true"></i>
                                 <i class="fab fa-twitter text-primary" aria-hidden="true"></i>
@@ -808,7 +808,7 @@
                             <div class="team">
                                 <a href="javascript:void(0)" class="chip">
                                     <span class="avatar cover-image"
-                                        data-bs-image-src="{{ asset('virtual/assets/img/faces/22.png') }}"></span> MOVE
+                                        data-bs-image-src="{{ asset('simbapar/assets/img/faces/22.png') }}"></span> MOVE
                                 </a>
                                 <i class="fab fa-facebook text-primary" aria-hidden="true"></i>
                                 <i class="fab fa-twitter text-primary" aria-hidden="true"></i>
@@ -820,7 +820,7 @@
                             <div class="team">
                                 <a href="javascript:void(0)" class="chip">
                                     <span class="avatar cover-image"
-                                        data-bs-image-src="{{ asset('virtual/assets/img/faces/24.png') }}"></span>AGI
+                                        data-bs-image-src="{{ asset('simbapar/assets/img/faces/24.png') }}"></span>AGI
                                 </a>
                                 <i class="fab fa-facebook text-primary" aria-hidden="true"></i>
                                 <i class="fab fa-twitter text-primary" aria-hidden="true"></i>
@@ -831,13 +831,13 @@
                             <div class="team">
                                 <a href="javascript:void(0)" class="chip">
                                     <span class="avatar cover-image"
-                                        data-bs-image-src="{{ asset('virtual/assets/img/faces/23.png') }}"></span>Rice
+                                        data-bs-image-src="{{ asset('simbapar/assets/img/faces/23.png') }}"></span>Rice
                                     Bandung
                                 </a>
                                 <i class="fab fa-facebook text-primary" aria-hidden="true"></i>
                                 <i class="fab fa-twitter text-primary" aria-hidden="true"></i>
                                 <i class="fas fa-envelope text-primary" aria-hidden="true"></i>
-                                <p>Judul Event : Bimtek Virtual : <span
+                                <p>Judul Event : Bimtek simbapar : <span
                                         class="badge bg-pill bg-primary">PAID</span> / <span
                                         class="badge bg-pill bg-warning">BERBAYAR</span></p>
                             </div>
@@ -861,7 +861,7 @@
                             <div class="team">
                                 <a href="javascript:void(0)" class="chip">
                                     <span class="avatar cover-image"
-                                        data-bs-image-src="{{ asset('virtual/assets/img/faces/25.png') }}"></span> AINAKI
+                                        data-bs-image-src="{{ asset('simbapar/assets/img/faces/25.png') }}"></span> AINAKI
                                 </a>
                                 {{-- <span id="timer-outputpattern" class="mb-0 text-primary"></span> --}}
                                 <p>Judul Event : Networking System : <span
@@ -870,7 +870,7 @@
                             <div class="team">
                                 <a href="javascript:void(0)" class="chip">
                                     <span class="avatar cover-image"
-                                        data-bs-image-src="{{ asset('virtual/assets/img/faces/26.png') }}"></span> PT. WAGO
+                                        data-bs-image-src="{{ asset('simbapar/assets/img/faces/26.png') }}"></span> PT. WAGO
                                     MU. KREATI ASIA
                                 </a>
                                 <span id="timer-outputpattern1" class="mb-0 text-primary"></span>
@@ -880,7 +880,7 @@
                             <div class="team">
                                 <a href="javascript:void(0)" class="chip">
                                     <span class="avatar cover-image"
-                                        data-bs-image-src="{{ asset('virtual/assets/img/faces/27.png') }}"></span> Cimahi
+                                        data-bs-image-src="{{ asset('simbapar/assets/img/faces/27.png') }}"></span> Cimahi
                                     TechnoPark
                                 </a>
                                 <span id="timer-outputpattern2" class="mb-0 text-primary"></span>
@@ -890,7 +890,7 @@
                             <div class="team">
                                 <a href="javascript:void(0)" class="chip">
                                     <span class="avatar cover-image"
-                                        data-bs-image-src="{{ asset('virtual/assets/img/faces/15.png') }}"></span>Kemenperin
+                                        data-bs-image-src="{{ asset('simbapar/assets/img/faces/15.png') }}"></span>Kemenperin
                                 </a>
                                 <span id="timer-outputpattern3" class="mb-0 text-primary"
                                     style="margin-left: 15px;"></span>
@@ -900,7 +900,7 @@
                             <div class="team">
                                 <a href="javascript:void(0)" class="chip">
                                     <span class="avatar cover-image"
-                                        data-bs-image-src="{{ asset('virtual/assets/img/faces/23.png') }}"></span>Rice
+                                        data-bs-image-src="{{ asset('simbapar/assets/img/faces/23.png') }}"></span>Rice
                                     Bandung
                                 </a>
                                 <span id="timer-outputpattern4" class="mb-0 text-primary"></span>
@@ -993,7 +993,7 @@
                     <div class="browser-stats">
                         <div class="d-flex align-items-center item  border-bottom">
                             <div class="d-flex">
-                                <img src="{{ asset('virtual/assets/img/faces/dota.png') }}" alt="img"
+                                <img src="{{ asset('simbapar/assets/img/faces/dota.png') }}" alt="img"
                                     class="ht-30 wd-30 me-2">
                                 <div class="">
                                     <h6 class="">Dota 2 </h6>
@@ -1011,7 +1011,7 @@
                                 <div class="d-flex">
                                     <h6 class="sub-text mt-3 badge badge-pill"
                                         style="margin-left: 10px;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;border-radius: 20px;padding: 10px;">
-                                        Owner : Rice Bandung <img src="{{ asset('virtual/assets/img/faces/23.png') }}"
+                                        Owner : Rice Bandung <img src="{{ asset('simbapar/assets/img/faces/23.png') }}"
                                             alt="" class="ht-30 wd-30"
                                             style="border-radius: 50%;margin-left: 10px;"> </h6>
                                 </div>
@@ -1025,7 +1025,7 @@
                         </div>
                         <div class="d-flex align-items-center item  border-bottom">
                             <div class="d-flex">
-                                <img src="{{ asset('virtual/assets/img/faces/kotlin.png') }}" alt="img"
+                                <img src="{{ asset('simbapar/assets/img/faces/kotlin.png') }}" alt="img"
                                     class="ht-30 wd-30 me-2">
                                 <div class="">
                                     <h6 class="">Kotlin</h6>
@@ -1043,7 +1043,7 @@
                                 <div class="d-flex">
                                     <h6 class="sub-text mt-3 badge badge-pill"
                                         style="margin-left: 10px;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;border-radius: 20px;padding: 10px;">
-                                        Owner : MOVE <img src="{{ asset('virtual/assets/img/faces/22.png') }}" alt=""
+                                        Owner : MOVE <img src="{{ asset('simbapar/assets/img/faces/22.png') }}" alt=""
                                             class="ht-30 wd-30"
                                             style="border-radius: 50%;margin-left: 10px;"> </h6>
                                 </div>
@@ -1057,7 +1057,7 @@
                         </div>
                         <div class="d-flex align-items-center item  border-bottom">
                             <div class="d-flex">
-                                <img src="{{ asset('virtual/assets/img/faces/postman.png') }}" alt="img"
+                                <img src="{{ asset('simbapar/assets/img/faces/postman.png') }}" alt="img"
                                     class="ht-30 wd-30 me-2">
                                 <div class="">
                                     <h6 class="">Postman</h6>
@@ -1076,7 +1076,7 @@
                                     <h6 class="sub-text mt-3 badge badge-pill"
                                         style="margin-left: 10px;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;border-radius: 20px;padding: 10px;">
                                         Owner : PT WAGO MU. KREATI ASIA <img
-                                            src="{{ asset('virtual/assets/img/faces/26.png') }}" alt="" class="ht-30 wd-30"
+                                            src="{{ asset('simbapar/assets/img/faces/26.png') }}" alt="" class="ht-30 wd-30"
                                             style="border-radius: 50%;margin-left: 10px;"> </h6>
                                 </div>
                             </div>
@@ -1089,7 +1089,7 @@
                         </div>
                         <div class="d-flex align-items-center item  border-bottom">
                             <div class="d-flex">
-                                <img src="{{ asset('virtual/assets/img/faces/unity.png') }}" alt="img"
+                                <img src="{{ asset('simbapar/assets/img/faces/unity.png') }}" alt="img"
                                     class="ht-30 wd-30 me-2">
                                 <div class="">
                                     <h6 class="">Unity</h6>
@@ -1107,7 +1107,7 @@
                                 <div class="d-flex">
                                     <h6 class="sub-text mt-3 badge badge-pill"
                                         style="margin-left: 10px;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;border-radius: 20px;padding: 10px;">
-                                        Owner : AGI <img src="{{ asset('virtual/assets/img/faces/24.png') }}" alt=""
+                                        Owner : AGI <img src="{{ asset('simbapar/assets/img/faces/24.png') }}" alt=""
                                             class="ht-30 wd-30"
                                             style="border-radius: 50%;margin-left: 10px;"> </h6>
                                 </div>
@@ -1121,7 +1121,7 @@
                         </div>
                         <div class="d-flex align-items-center item border-bottom">
                             <div class="d-flex">
-                                <img src="{{ asset('virtual/assets/img/faces/wa.png') }}" alt="img"
+                                <img src="{{ asset('simbapar/assets/img/faces/wa.png') }}" alt="img"
                                     class="ht-30 wd-30 me-2">
                                 <div class="">
                                     <h6 class="">Whatsapp</h6>
@@ -1140,7 +1140,7 @@
                                 <div class="d-flex">
                                     <h6 class="sub-text mt-3 badge badge-pill"
                                         style="margin-left: 10px;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;border-radius: 20px;padding: 10px;">
-                                        Owner : Cimahi TechnoPark <img src="{{ asset('virtual/assets/img/faces/27.png') }}"
+                                        Owner : Cimahi TechnoPark <img src="{{ asset('simbapar/assets/img/faces/27.png') }}"
                                             alt="" class="ht-30 wd-30"
                                             style="border-radius: 50%;margin-left: 10px;"> </h6>
                                 </div>
@@ -1154,7 +1154,7 @@
                         </div>
                         <div class="d-flex align-items-center item border-bottom">
                             <div class="d-flex">
-                                <img src="{{ asset('virtual/assets/img/faces/swift.png') }}" alt="img"
+                                <img src="{{ asset('simbapar/assets/img/faces/swift.png') }}" alt="img"
                                     class="ht-30 wd-30 me-2">
                                 <div class="">
                                     <h6 class="">Swift</h6>
@@ -1174,7 +1174,7 @@
                                     <h6 class="sub-text mt-3 badge badge-pill"
                                         style="margin-left: 10px;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;border-radius: 20px;padding: 10px;">
                                         Owner : Aisa Devina Muharani <img
-                                            src="{{ asset('virtual/assets/img/faces/20.png') }}" alt="" class="ht-30 wd-30"
+                                            src="{{ asset('simbapar/assets/img/faces/20.png') }}" alt="" class="ht-30 wd-30"
                                             style="border-radius: 50%;margin-left: 10px;"> </h6>
                                 </div>
                             </div>
@@ -1187,7 +1187,7 @@
                         </div>
                         <div class="d-flex align-items-center item">
                             <div class="d-flex">
-                                <img src="{{ asset('virtual/assets/img/faces/golang.png') }}" alt="img"
+                                <img src="{{ asset('simbapar/assets/img/faces/golang.png') }}" alt="img"
                                     class="ht-30 wd-30 me-2">
                                 <div class="">
                                     <h6 class="">Golang</h6>
@@ -1205,7 +1205,7 @@
                                 <div class="d-flex">
                                     <h6 class="sub-text mt-3 badge badge-pill"
                                         style="margin-left: 10px;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;border-radius: 20px;padding: 10px;">
-                                        Owner : Alghi Arif R <img src="{{ asset('virtual/assets/img/faces/6.png') }}" alt=""
+                                        Owner : Alghi Arif R <img src="{{ asset('simbapar/assets/img/faces/6.png') }}" alt=""
                                             class="ht-30 wd-30"
                                             style="border-radius: 50%;margin-left: 10px;"> </h6>
                                 </div>
@@ -1977,31 +1977,31 @@
 
 @section('script')
     <!--- Internal Chart.bundle js --->
-    <script src="{{ asset('virtual/assets/plugins/chart.js/Chart.bundle.min.js') }}"></script>
+    <script src="{{ asset('simbapar/assets/plugins/chart.js/Chart.bundle.min.js') }}"></script>
 
     <!-- DATA TABLE JS-->
-    <script src="{{ asset('virtual/assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('virtual/assets/plugins/datatable/js/dataTables.bootstrap5.js') }}"></script>
-    <script src="{{ asset('virtual/assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ asset('virtual/assets/plugins/datatable/js/buttons.bootstrap5.min.js') }}"></script>
-    <script src="{{ asset('virtual/assets/plugins/datatable/js/jszip.min.js') }}"></script>
-    <script src="{{ asset('virtual/assets/plugins/datatable/pdfmake/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('virtual/assets/plugins/datatable/pdfmake/vfs_fonts.js') }}"></script>
-    <script src="{{ asset('virtual/assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset('virtual/assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
-    <script src="{{ asset('virtual/assets/plugins/datatable/js/buttons.colVis.min.js') }}"></script>
-    <script src="{{ asset('virtual/assets/plugins/datatable/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('virtual/assets/plugins/datatable/responsive.bootstrap5.min.js') }}"></script>
+    <script src="{{ asset('simbapar/assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('simbapar/assets/plugins/datatable/js/dataTables.bootstrap5.js') }}"></script>
+    <script src="{{ asset('simbapar/assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('simbapar/assets/plugins/datatable/js/buttons.bootstrap5.min.js') }}"></script>
+    <script src="{{ asset('simbapar/assets/plugins/datatable/js/jszip.min.js') }}"></script>
+    <script src="{{ asset('simbapar/assets/plugins/datatable/pdfmake/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('simbapar/assets/plugins/datatable/pdfmake/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('simbapar/assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('simbapar/assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('simbapar/assets/plugins/datatable/js/buttons.colVis.min.js') }}"></script>
+    <script src="{{ asset('simbapar/assets/plugins/datatable/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('simbapar/assets/plugins/datatable/responsive.bootstrap5.min.js') }}"></script>
 
-    <script src="{{ asset('virtual/assets/js/table-data.js')}}"></script>
+    <script src="{{ asset('simbapar/assets/js/table-data.js')}}"></script>
 
     <!--- Echart Plugin --->
-    <script src="{{ asset('virtual/assets/plugins/echart/echart.js') }}"></script>
-    <script src="{{ asset('virtual/assets/js/echarts.js') }}"></script>
+    <script src="{{ asset('simbapar/assets/plugins/echart/echart.js') }}"></script>
+    <script src="{{ asset('simbapar/assets/js/echarts.js') }}"></script>
 
     <!--- Select2 js --->
-    <script src="{{ asset('virtual/assets/plugins/select2/js/select2.min.js') }}" defer></script>
+    <script src="{{ asset('simbapar/assets/plugins/select2/js/select2.min.js') }}" defer></script>
 
     <!--- Index js --->
-    <script src="{{ asset('virtual/assets/js/index.js') }}"></script>
+    <script src="{{ asset('simbapar/assets/js/index.js') }}"></script>
 @endsection

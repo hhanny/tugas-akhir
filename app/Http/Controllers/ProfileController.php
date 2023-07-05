@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\UserProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -188,5 +189,36 @@ class ProfileController extends Controller
                 'message'   => 'Somthing went wrong!',
             ]);
         }
+    }
+
+    public function updatePassword(Request $request,string $id){
+
+        $request->validate([
+            'currentPassword' => 'required|min:8',
+            'password' => 'required|min:8|confirmed',
+        ]);
+
+        try {
+            if(Hash::check($request->currentPassword, Auth::user()->password)){
+                User::find($id)->update([
+                    'password' => bcrypt($request->password),
+                ]);
+                return response()->json([
+                    'status'    => true,
+                    'message'   => 'Berhasil mengubah password!',
+                ]);
+            }else{
+                return response()->json([
+                    'status'    => false,
+                    'message'   => 'Password yang anda masukan salah!',
+                ]);
+            }
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status'    => false,
+                'message'   => $th->getMessage(),
+            ]);
+        }
+
     }
 }

@@ -50,6 +50,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/',[DashboardController::class , 'index'])->name('dashboard');
     
     Route::put('/profile/{id?}/update-image', [ProfileController::class, 'updateImage'])->name('profile-image.update');
+    Route::put('/profile/{id?}/change-password', [ProfileController::class, 'updatePassword'])->name('profile-password.change');
     Route::delete('/profile/{id?}/delete-image', [ProfileController::class, 'destroyImage'])->name('profile-image.delete');
     Route::resource('/profile', ProfileController::class);
     

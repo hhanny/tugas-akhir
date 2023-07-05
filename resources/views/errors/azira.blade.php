@@ -10,32 +10,32 @@
 		<meta name="Keywords" content="admin,admin dashboard,admin dashboard template,admin panel template,admin template,admin theme,bootstrap 4 admin template,bootstrap 4 dashboard,bootstrap admin,bootstrap admin dashboard,bootstrap admin panel,bootstrap admin template,bootstrap admin theme,bootstrap dashboard,bootstrap form template,bootstrap panel,bootstrap ui kit,dashboard bootstrap 4,dashboard design,dashboard html,dashboard template,dashboard ui kit,envato templates,flat ui,html,html and css templates,html dashboard template,html5,jquery html,premium,premium quality,sidebar bootstrap 4,template admin bootstrap 4"/>
 
 		<!--- Favicon --->
-		<link rel="icon" href="{{ asset('virtual/assets/img/brand/favicon.png') }}" type="image/x-icon"/>
+		<link rel="icon" href="{{ asset('simbapar/assets/img/brand/favicon.png') }}" type="image/x-icon"/>
 
 		<!-- Bootstrap css -->
-		<link href="virtual/assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" id="style"/>
+		<link href="simbapar/assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" id="style"/>
 
 		<!-- Title -->
 		<title>Error @yield('code') | @yield('title')</title>
 
 		<!---Style css-->
-		<link href="{{ asset('virtual/assets/css/style.css') }}" rel="stylesheet">
-		<link href="{{ asset('virtual/assets/css/plugins.css') }}" rel="stylesheet">
-		<link href="{{ asset('virtual/assets/css/style-dark.css') }}" rel="stylesheet">
-		<link href="{{ asset('virtual/assets/css/style-dark.css') }}" rel="stylesheet">
+		<link href="{{ asset('simbapar/assets/css/style.css') }}" rel="stylesheet">
+		<link href="{{ asset('simbapar/assets/css/plugins.css') }}" rel="stylesheet">
+		<link href="{{ asset('simbapar/assets/css/style-dark.css') }}" rel="stylesheet">
+		<link href="{{ asset('simbapar/assets/css/style-dark.css') }}" rel="stylesheet">
 
 		<!--- Style-dark css --->
-		<link href="{{ asset('virtual/assets/css/style-dark.css') }}" rel="stylesheet">
+		<link href="{{ asset('simbapar/assets/css/style-dark.css') }}" rel="stylesheet">
 
 		<!--- Style-modes css --->
-		<link href="{{ asset('virtual/assets/css/skin-modes.css') }}" rel="stylesheet">
+		<link href="{{ asset('simbapar/assets/css/skin-modes.css') }}" rel="stylesheet">
 
 	</head>
 	<body class="main-body  login-img">
 
 		<!-- Loader -->
 		<div id="global-loader">
-			<img src="{{ asset('virtual/assets/img/loaders/loader-4.svg') }}" class="loader-img" alt="Loader">
+			<img src="{{ asset('simbapar/assets/img/loaders/loader-4.svg') }}" class="loader-img" alt="Loader">
 		</div>
 		<!-- /Loader -->
 
@@ -54,26 +54,26 @@
 		<!-- /Main-error-wrapper -->
 
 		<!--- JQuery min js --->
-		<script src="{{ asset('virtual/assets/plugins/jquery/jquery.min.js') }}"></script>
+		<script src="{{ asset('simbapar/assets/plugins/jquery/jquery.min.js') }}"></script>
 
 		<!--- Bootstrap Bundle js --->
-		<script src="{{ asset('virtual/assets/plugins/bootstrap/popper.min.js') }}"></script>
-		<script src="virtual/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+		<script src="{{ asset('simbapar/assets/plugins/bootstrap/popper.min.js') }}"></script>
+		<script src="simbapar/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 
 		<!--- Ionicons js --->
-		<script src="{{ asset('virtual/assets/plugins/ionicons/ionicons.js') }}"></script>
+		<script src="{{ asset('simbapar/assets/plugins/ionicons/ionicons.js') }}"></script>
 
 		<!--- Moment js --->
-		<script src="{{ asset('virtual/assets/plugins/moment/moment.js') }}"></script>
+		<script src="{{ asset('simbapar/assets/plugins/moment/moment.js') }}"></script>
 
 		<!--- Eva-icons js --->
-		<script src="{{ asset('virtual/assets/js/eva-icons.min.js') }}"></script>
+		<script src="{{ asset('simbapar/assets/js/eva-icons.min.js') }}"></script>
 
 		<!--themecolor js-->
-		<script src="{{ asset('virtual/assets/js/themecolor.js') }}"></script>
+		<script src="{{ asset('simbapar/assets/js/themecolor.js') }}"></script>
 
 		<!--- Custom js --->
-		<script src="{{ asset('virtual/assets/js/custom.js') }}"></script>
+		<script src="{{ asset('simbapar/assets/js/custom.js') }}"></script>
 
 	</body>
 </html>

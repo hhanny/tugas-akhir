@@ -6,9 +6,9 @@
 
             <a class="desktop-logo logo-dark active" href="index.html"><img src="{{ asset('images/SIMBAPAR-WHITE.png') }}" class="main-logo" alt="logo"></a>
 
-            <a class="logo-icon mobile-logo icon-light active" href="index.html"><img src="{{ asset('virtual/assets/img/brand/pol-icon.png') }}" alt="logo"></a>
+            <a class="logo-icon mobile-logo icon-light active" href="index.html"><img src="{{ asset('simbapar/assets/img/brand/pol-icon.png') }}" alt="logo"></a>
 
-            <a class="logo-icon mobile-logo icon-dark active" href="index.html"><img src="{{ asset('virtual/assets/img/brand/pol-icon.png') }}" alt="logo"></a>
+            <a class="logo-icon mobile-logo icon-dark active" href="index.html"><img src="{{ asset('simbapar/assets/img/brand/pol-icon.png') }}" alt="logo"></a>
 
         </div>
         <div class="main-sidemenu">

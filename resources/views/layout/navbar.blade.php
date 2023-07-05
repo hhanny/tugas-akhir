@@ -8,8 +8,13 @@
                 <a class="close-toggle"   href="javascript:void(0);"><i class="header-icons" data-eva="close-outline"></i></a>
             </div>
             <div class="responsive-logo">
-                <a href="index.html" class="header-logo"><img src="{{ asset('virtual/assets/img/brand/logo.png') }}" class="logo-11"></a>
-                <a href="index.html" class="header-logo"><img src="{{ asset('virtual/assets/img/brand/logo-white.png') }}" class="logo-1"></a>
+            <a class="header-logo" href="index.html"><img src="{{ asset('images/SIMBAPAR-BLACK.png') }}" class="logo-11" alt="logo"></a>
+
+            <a class="header-logo" href="index.html"><img src="{{ asset('images/SIMBAPAR-WHITE.png') }}" class="logo-1" alt="logo"></a>
+
+            <!-- <a class="logo-icon mobile-logo icon-light active" href="index.html"><img src="{{ asset('simbapar/assets/img/brand/pol-icon.png') }}" alt="logo"></a>
+
+            <a class="logo-icon mobile-logo icon-dark active" href="index.html"><img src="{{ asset('simbapar/assets/img/brand/pol-icon.png') }}" alt="logo"></a> -->
             </div>
             <ul class="header-megamenu-dropdown  nav">
                 <li class="nav-item">
@@ -122,7 +127,7 @@
                                 </div>
                                 <div class="main-message-list chat-scroll">
                                     <a href="mail.html" class="p-3 d-flex border-bottom">
-                                        <div class="drop-img  cover-image  " data-bs-image-src="{{ asset('virtual/assets/img/faces/3.jpg') }}">
+                                        <div class="drop-img  cover-image  " data-bs-image-src="{{ asset('simbapar/assets/img/faces/3.jpg') }}">
                                             <span class="avatar-status bg-teal"></span>
                                         </div>
 
@@ -135,7 +140,7 @@
                                         </div>
                                     </a>
                                     <a href="mail.html" class="p-3 d-flex border-bottom">
-                                        <div class="drop-img cover-image" data-bs-image-src="{{ asset('virtual/assets/img/faces/2.jpg') }}">
+                                        <div class="drop-img cover-image" data-bs-image-src="{{ asset('simbapar/assets/img/faces/2.jpg') }}">
                                             <span class="avatar-status bg-teal"></span>
                                         </div>
                                         <div class="wd-90p">
@@ -147,7 +152,7 @@
                                         </div>
                                     </a>
                                     <a href="mail.html" class="p-3 d-flex border-bottom">
-                                        <div class="drop-img cover-image" data-bs-image-src="{{ asset('virtual/assets/img/faces/9.jpg') }}">
+                                        <div class="drop-img cover-image" data-bs-image-src="{{ asset('simbapar/assets/img/faces/9.jpg') }}">
                                             <span class="avatar-status bg-teal"></span>
                                         </div>
                                         <div class="wd-90p">
@@ -159,7 +164,7 @@
                                         </div>
                                     </a>
                                     <a href="mail.html" class="p-3 d-flex border-bottom">
-                                        <div class="drop-img cover-image" data-bs-image-src="{{ asset('virtual/assets/img/faces/12.jpg') }}">
+                                        <div class="drop-img cover-image" data-bs-image-src="{{ asset('simbapar/assets/img/faces/12.jpg') }}">
                                             <span class="avatar-status bg-danger"></span>
                                         </div>
                                         <div class="wd-90p">
@@ -171,7 +176,7 @@
                                         </div>
                                     </a>
                                     <a href="mail.html" class="p-3 d-flex border-bottom">
-                                        <div class="drop-img cover-image" data-bs-image-src="{{ asset('virtual/assets/img/faces/5.jpg') }}">
+                                        <div class="drop-img cover-image" data-bs-image-src="{{ asset('simbapar/assets/img/faces/5.jpg') }}">
                                             <span class="avatar-status bg-teal"></span>
                                         </div>
                                         <div class="wd-90p">

@@ -4,7 +4,7 @@
 
 @section('css')
     {{-- Custom CSS --}}
-    <link rel="stylesheet" href="{{ asset('virtual/assets/plugins/datatable/datatables.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('simbapar/assets/plugins/datatable/datatables.min.css') }}">
     <style>
         .dataTables_wrapper .dt-buttons {
             float:none;  
@@ -178,7 +178,7 @@
             </form>
             <div class="card-footer">
               <button type="button" id="btnSave" class="btn btn-primary waves-effect waves-light">Update Profile</button>
-              <!-- <button type="button" id="btnUpdatePw" class="btn btn-primary waves-effect waves-light modal-effect" data-bs-effect="effect-super-scaled" onclick="updatePassword()">Ubah Password</button> -->
+              <button type="button" id="btnUpdatePw" class="btn btn-primary waves-effect waves-light modal-effect" data-bs-effect="effect-super-scaled" onclick="updatePassword()">Ubah Password</button>
               <!-- <a class="btn btn-primary modal-effect mb-3 data-table-btn ms-4" data-bs-effect="effect-super-scaled" onclick="updatePassword()">
                     <span class="fe fe-plus"> </span>Tambah data baru
                 </a> -->
@@ -188,7 +188,7 @@
       <!-- /Col -->
       </div>
       <!-- Modal -->
-      <!-- <div class="modal fade" id="modal_password">
+      <div class="modal fade" id="modal_password">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content modal-content-demo">
                 <div class="modal-header">
@@ -199,29 +199,29 @@
                         <form id="formPassword" method="POST">
                             @csrf
                         <div class="form-group">
-                            <input type="hidden" id="idPassword" name="idPassword">
+                            <input type="hidden" value="{{ auth()->user()->id }}" id="idPassword" name="idPassword">
                             <div class="mb-3">
                                 <label for="currentPassword" class="form-label">Password saat ini</label>
-                                <input type="text" placeholder="" value="" name="currentPassword" class="form-control" id="currentPassword">
+                                <input type="password" placeholder="" value="" name="currentPassword" class="form-control" id="currentPassword">
                             </div>
                             <div class="mb-3">
                                 <label for="newPassword" class="form-label">Password baru</label>
-                                <input type="text" placeholder="Setidaknya 8 karakter" value="" name="newPassword" class="form-control" id="newPassword">
+                                <input type="password" placeholder="Setidaknya 8 karakter" value="" name="password" class="form-control" id="newPassword">
                             </div>
                             <div class="mb-3">
                                 <label for="confirmPassword" class="form-label">Konfirmasi password</label>
-                                <input type="text" placeholder="Setidaknya 8 karakter" value="" name="confirmPassword" class="form-control" id="confirmPassword">
+                                <input type="password" placeholder="Setidaknya 8 karakter" value="" name="password_confirmation" class="form-control" id="confirmPassword">
                             </div>
                         </div>
                     </div>
                 </form>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-light" data-bs-dismiss="modal">Tutup</button>
-                        <button  id="btnSave" class="btn btn-primary">Simpan</button>
+                        <button  id="btnSavePw" class="btn btn-primary">Simpan</button>
                     </div>
             </div>
         </div>
-      </div> -->
+      </div>
     <!-- Modal Closed -->
   </div>
     <!-- row closed -->
@@ -231,26 +231,26 @@
 @section('script')
 
 <!-- DATA TABLE JS-->
-<script src="{{ asset('virtual/assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('virtual/assets/plugins/datatable/dataTables.min.js') }}"></script>
-<script src="{{ asset('virtual/assets/plugins/datatable/dataTables.responsive.min.js') }}"></script>
-<script src="{{ asset('virtual/assets/plugins/datatable/responsive.bootstrap5.min.js') }}"></script>
-<script src="{{ asset('virtual/assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
-<script src="{{ asset('virtual/assets/plugins/datatable/js/jszip.min.js') }}"></script>
-{{-- <script src="{{ asset('virtual/assets/plugins/datatable/pdfmake/pdfmake.min.js') }}"></script> --}}
-{{-- <script src="{{ asset('virtual/assets/plugins/datatable/pdfmake/vfs_fonts.js') }}"></script> --}}
-<script src="{{ asset('virtual/assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
-<script src="{{ asset('virtual/assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
-<script src="{{ asset('virtual/assets/plugins/datatable/js/dataTables.bootstrap5.js') }}"></script>
-<script src="{{ asset('virtual/assets/plugins/datatable/js/buttons.bootstrap5.min.js') }}"></script>
-<script src="{{ asset('virtual/assets/plugins/datatable/js/buttons.colVis.min.js') }}"></script>
+<script src="{{ asset('simbapar/assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('simbapar/assets/plugins/datatable/dataTables.min.js') }}"></script>
+<script src="{{ asset('simbapar/assets/plugins/datatable/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('simbapar/assets/plugins/datatable/responsive.bootstrap5.min.js') }}"></script>
+<script src="{{ asset('simbapar/assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('simbapar/assets/plugins/datatable/js/jszip.min.js') }}"></script>
+{{-- <script src="{{ asset('simbapar/assets/plugins/datatable/pdfmake/pdfmake.min.js') }}"></script> --}}
+{{-- <script src="{{ asset('simbapar/assets/plugins/datatable/pdfmake/vfs_fonts.js') }}"></script> --}}
+<script src="{{ asset('simbapar/assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('simbapar/assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
+<script src="{{ asset('simbapar/assets/plugins/datatable/js/dataTables.bootstrap5.js') }}"></script>
+<script src="{{ asset('simbapar/assets/plugins/datatable/js/buttons.bootstrap5.min.js') }}"></script>
+<script src="{{ asset('simbapar/assets/plugins/datatable/js/buttons.colVis.min.js') }}"></script>
 
 <!--moment JS -->
-<script src="{{ asset('virtual/assets/plugins/moment/moment.js') }}"></script>
+<script src="{{ asset('simbapar/assets/plugins/moment/moment.js') }}"></script>
 
-<script src="{{ asset('virtual/assets/plugins/fileuploads/js/fileupload.js') }}"></script>
+<script src="{{ asset('simbapar/assets/plugins/fileuploads/js/fileupload.js') }}"></script>
 
-<script src="{{ asset('virtual/assets/js/script.js') }}"></script>
+<script src="{{ asset('simbapar/assets/js/script.js') }}"></script>
 <script>
   $(document).ready(function(){
 
@@ -258,13 +258,102 @@
         submit();
     })
 
+    $('#btnSavePw').on('click', function () {
+      // console.log('haloooo');
+      $('#formPassword').submit();
+    })
+    
     $('#btnClose').hide();
     
     $('#form').on('submit', function(e){
-        e.preventDefault();
-
-        submit();
+      e.preventDefault();
+      
+      submit();
     })
+    
+    $('#formPassword').on('submit', function(e){
+      e.preventDefault();
+
+      var id = $('#idPassword').val();
+      const _form = this
+      const data = new FormData(_form);
+      data.append('_method', 'PUT');
+      
+      var url = "{{ route('profile-password.change',":id") }}";
+      url = url.replace(':id', id);
+    
+      $('#btnSavePw').text('Menyimpan...');
+      $('#btnSavePw').attr('disabled', true);
+
+        $.ajax({
+            url: url,
+            type: 'POST',
+            dataType: 'json',
+            data: data,
+            processData: false,
+            contentType: false,
+            processData:false,
+            success: function (data) {
+                if(data.status) {
+                    $('#modal_password').modal('hide');
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'success',
+                        title: data.message,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    table.ajax.reload();
+
+                    $('#btnSavePw').text('Simpan');
+                    $('#btnSavePw').attr('disabled', false);
+                }else{
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'error',
+                        title: 'ERROR !',
+                        text: data.message,
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                }
+                
+                $('#btnSavePw').text('Simpan');
+                $('#btnSavePw').attr('disabled',false); //set button enable 
+            }, 
+            error: function(data){
+                var error_message = "";
+                error_message += " ";
+                
+                $.each( data.responseJSON.errors, function( key, value ) {
+                    error_message +=" "+value+" ";
+                });
+
+                let errors = data.responseJSON?.errors
+                if(errors){
+                    for(const [key, value] of Object.entries(errors)){
+                        $(`[name='${key}']`).parent().append(`<sp class="text-danger text-small">${value}</sp>`)
+                        $(`[name='${key}']`).addClass('is-invalid')
+                    }
+                }
+
+                error_message +=" ";
+                Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'error',
+                        title: 'ERROR !',
+                        text: error_message,
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                $('#btnSavePw').text('Simpan');
+                $('#btnSavePw').attr('disabled', false);
+            },
+        });
+      });
   });
 
   function updateImage(){
@@ -503,9 +592,12 @@
         })
     } 
 
-    // function updatePassword(){
-    //   $('#modal_password').show();
-    // }
+    function updatePassword(){
+      $('#formPassword').find('.text-danger.text-small').remove();
+      $('#formPassword').find('input,select').removeClass('is-invalid');
+      $('#formPassword')[0].reset();
+      $('#modal_password').modal('show');
+    }
 
   
 </script>
