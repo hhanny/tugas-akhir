@@ -21,7 +21,7 @@ class DashboardController extends Controller
             $data = Park::get();
             $vehycles = Vehycle::get();
         }else if(Auth::user()->hasRole('pegawai') || Auth::user()->hasRole('mahasiswa')){
-            $vehycleId = Auth::user()->vehycle[0]->id;
+            $vehycleId = Auth::user()->vehycle[0]->id ?? "";
             $vehycles = Auth::user()->vehycle;
             $data = Park::where('vehycle_id', $vehycleId)->get();
         }
