@@ -54,7 +54,7 @@
 
 <!-- main-content-body -->
 <div class="main-content-body auth">
-    @if(auth()->user()->user_profile->nip_nim == null || auth()->user()->user_profile->gender == null || auth()->user()->user_profile->phone_number == null || auth()->user()->user_profile->address == null || auth()->user()->user_profile->image == null)
+    @if(auth()->user()->user_profile == null||auth()->user()->user_profile->nip_nim == null || auth()->user()->user_profile->gender == null || auth()->user()->user_profile->phone_number == null || auth()->user()->user_profile->address == null || auth()->user()->user_profile->image == null)
         <div class="row">
             <div class="col-12">
                 <div class="card">

@@ -19,7 +19,7 @@
 <!-- PAGE-HEADER Breadcrumbs -->
 <div class="breadcrumb-header justify-content-between">
 					<div>
-						<h4 class="content-title mb-2">Hi, welcome back {{ $data->username }}!</h4>
+						<h4 class="content-title mb-2">Hai, selamat datang kembali {{ $data->username }}!</h4>
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb">
 								<li class="breadcrumb-item"><a   href="javascript:void(0);">Profile</a></li>
@@ -58,7 +58,7 @@
         <div class="card mg-b-20">
           <div class="card-body">
             <div class="main-content-label tx-13 mg-b-25">
-              Contact
+              Kontak
             </div>
             <div class="main-profile-contact-list">
               <div class="media">

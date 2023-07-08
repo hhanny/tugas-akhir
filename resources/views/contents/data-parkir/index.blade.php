@@ -112,12 +112,12 @@
     </div>
     <!-- COL END -->
 
-    <div class="modal fade" id="modal_detail">
+    <div class="modal fade" id="modal_detail" data-bs-backdrop="static">
         <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
             <div class="modal-content modal-content-demo">
                 <div class="modal-header">
                     <h6 class="modal-title">Detail Data Pengguna Parkiran</h6>
-                    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                    <button aria-label="Close" id="closeX" class="btn-close" data-bs-dismiss="modal"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
                     <div class="row">
@@ -216,7 +216,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Tutup</button>
+                    <button type="button" id="close" class="btn btn-primary" data-bs-dismiss="modal">Tutup</button>
                 </div>
             </div>
         </div>
@@ -249,6 +249,7 @@
 
 <script>
 
+    var tableDetail;
     $(document).ready(function() {
         // Contoh Inisiator datatable severside
         var table = $("#datatable").DataTable({
@@ -379,6 +380,10 @@
             table.draw();
         });
 
+        $('#closeX, #close').click(function(){
+            tableDetail.destroy();
+        });
+
         $('#button-reset').click(function(){
             $('#year').val('').trigger('change');
             $('#month').val('').trigger('change');
@@ -406,7 +411,7 @@
             console.log(response.data.vehycle);
             response = response.data;
 
-            $('#detail').DataTable({
+            tableDetail = $('#detail').DataTable({
                 responsive: true,
                 processing: true,
                 serverSide: true,

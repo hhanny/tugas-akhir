@@ -15,6 +15,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        $data = '';
+        $vehycles = '';
         if(Auth::user()->hasRole('admin')){
             $data = Park::get();
             $vehycles = Vehycle::get();
