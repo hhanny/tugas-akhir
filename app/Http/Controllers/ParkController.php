@@ -56,4 +56,12 @@ class ParkController extends Controller
 
         return DataTables::of($data)->make();
     }
+    
+    public function detailDatatable(string $id){
+        $data = Vehycle::where('user_id', $id)->get();
+
+        // return response()->json($data);
+
+        return DataTables::of($data)->make();
+    }
 }

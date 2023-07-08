@@ -61,6 +61,7 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/data-parkir', [ParkController::class, 'index'])->name('park.index');
     Route::get('data-parkir/datatable', [ParkController::class, 'datatable'])->name('park.datatable');
     Route::get('data-parkir/{id?}', [ParkController::class, 'show'])->name('park.show');
+    Route::get('data-parkir/detail/{id?}', [ParkController::class, 'detailDatatable'])->name('detail.datatable');
 
     Route::post('kendaraan/{id?}/update', [VehycleController::class, 'update'])->name('kendaraan-update.update');
     Route::post('kendaraan/store', [VehycleController::class, 'store'])->name('kendaraan-store.store');

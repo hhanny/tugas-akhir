@@ -54,6 +54,19 @@
 
 <!-- main-content-body -->
 <div class="main-content-body auth">
+    @if(auth()->user()->user_profile->nip_nim == null || auth()->user()->user_profile->gender == null || auth()->user()->user_profile->phone_number == null || auth()->user()->user_profile->address == null || auth()->user()->user_profile->image == null)
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body p-2">
+                        <a href="{{ route('profile.index') }}">
+                            <div class="alert alert-outline-warning m-0"><b>Peringatan!</b> Segera lengkapi data diri Anda</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
     <div class="row row-sm">
     @if(auth()->user()->hasRole('admin'))
         <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">

@@ -119,15 +119,6 @@
 		<script src="{{ asset('assets/plugins/notify/js/sample.js') }}"></script>
 		<script src="{{ asset('assets/plugins/notify/js/jquery.growl.js') }}"></script>
 		<script src="{{ asset('assets/plugins/notify/js/notifIt.js') }}"></script>
-		<script src="{{ asset('landingpage/js/wow.min.js') }}"></script>
-		<script src="{{ asset('landingpage/js/paralax.min.js') }}"></script>
-		<script src="{{ asset('landingpage/js/swiper.min.js') }}"></script>
-		<script src="{{ asset('landingpage/js/time-circle.js') }}"></script>
-		<script src="{{ asset('landingpage/js/skill.bars.jquery.js') }}"></script>
-		<script src="{{ asset('landingpage/js/waypoints.min.js') }}"></script>
-		<script src="{{ asset('landingpage/js/jquery.counterup.min.js') }}"></script>
-		<script src="{{ asset('landingpage/js/jquery.magnific-popup.min.js') }}"></script>
-		<script src="{{ asset('landingpage/js/main.js') }}"></script>
 		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 		<!-- SWEET-ALERT JS -->
 		<script src="{{ asset('assets/plugins/sweet-alert/sweetalert.min.js') }}"></script>

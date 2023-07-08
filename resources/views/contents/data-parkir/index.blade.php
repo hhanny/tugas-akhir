@@ -197,7 +197,7 @@
                     <h6 class="modal-title">Data Kendaraan</h6>
                     <div class="row">
                         <div class="col-md-12">
-                            <table id="detail" class="table table-bordered text-center">
+                            <table id="detail" class="table table-bordered text-nowrap border-bottom">
                                 <thead>
                                     <tr>
                                         <th scope="col">No</th>
@@ -398,15 +398,46 @@
 
     function detail(id){
 
-        console.log(id);
         var url = "{{ route('park.show',":id") }}";
         url = url.replace(':id', id);
         
         $.get(url, function (response) {
 
+            console.log(response.data.vehycle);
             response = response.data;
 
-            $('<tr>').remove();
+            $('#detail').DataTable({
+                responsive: true,
+                processing: true,
+                serverSide: true,
+                searchable:true,
+                autoWidth: false,
+                ajax: `{{ route('detail.datatable') }}/${id}`,
+                columnDefs:[
+                    {
+                        targets: 0,
+                        render: function(data, type, full, meta) {
+                            return (meta.row + 1);
+                        }
+                    }, 
+                    {
+                        targets: 1,
+                        render: function(data, type, full, meta) {
+                            return `<img src="{{ asset('storage/${data}') }}" width="150">`;
+                        }
+                    },
+                ],
+                columns:[
+                    {data: null},
+                    {data: 'image'},
+                    {data: 'brand'},
+                    {data: 'type'},
+                    {data: 'chassis_number'},
+                    {data: 'vehycle_number'},
+                ],
+            });
+
+            // $('<tr>').remove();
             
             $('#foto_user').html(`<img src="{{ asset('storage/${response.user_profile.image}') }}" width="150px" height="200px" style="border-radius: 5px;" alt="">`);
             $('#name').text(response.user_profile.name);
@@ -417,20 +448,20 @@
             $('#no_hp').text(response.user_profile.phone_number);
 
 
-            response.vehycle.map(function(item, index){
-                $('#t-body').append(`
-                    <tr>
-                        <td>${index+1}</td>
-                        <td>
-                            <img src="{{ asset('storage/${item.image}') }}" width="150">
-                        </td>
-                        <td>${item.brand}</td>
-                        <td>${item.type}</td>
-                        <td>${item.chassis_number}</td>
-                        <td>${item.vehycle_number}</td>
-                    </tr>
-                `);
-            })
+            // response.vehycle.map(function(item, index){
+            //     $('#t-body').append(`
+            //         <tr>
+            //             <td>${index+1}</td>
+            //             <td>
+            //                 <img src="{{ asset('storage/${item.image}') }}" width="150">
+            //             </td>
+            //             <td>${item.brand}</td>
+            //             <td>${item.type}</td>
+            //             <td>${item.chassis_number}</td>
+            //             <td>${item.vehycle_number}</td>
+            //         </tr>
+            //     `);
+            // })
             $('#modal_detail').modal('show');
 
         });
