@@ -66,7 +66,7 @@
                   <i class="icon ion-md-phone-portrait"></i>
                 </div>
                 <div class="media-body">
-                  <span>Mobile</span>
+                  <span>Nomor Hp</span>
                   <div>
                     {{ $data->user_profile->phone_number ?? '' }}
                   </div>
@@ -77,7 +77,7 @@
                   <i class="icon ion-md-locate"></i>
                 </div>
                 <div class="media-body">
-                  <span>Current Address</span>
+                  <span>Alamat</span>
                   <div>
                     {{ $data->user_profile->address ?? '' }}
                   </div>
@@ -96,7 +96,7 @@
             <form class="form-horizontal" id="form" method="POST">
               @csrf
               <input type="hidden" name="id" id="id" value="{{ $data->id }}">
-              <div class="mb-4 main-content-label">Name</div>
+              <div class="mb-4 main-content-label">IDENTITAS</div>
               <div class="form-group ">
                 <div class="row">
                   <div class="col-md-3">
@@ -144,11 +144,11 @@
                   </div>
 								</div>
               </div>
-              <div class="mb-4 main-content-label">Contact Info</div>
+              <div class="mb-4 main-content-label">INFO KONTAK</div>
               <div class="form-group ">
                 <div class="row">
                   <div class="col-md-3">
-                    <label class="form-label">Email<i>(required)</i></label>
+                    <label class="form-label">Email</label>
                   </div>
                   <div class="col-md-9">
                     <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="{{ $data->email ?? ''}}">
@@ -158,7 +158,7 @@
               <div class="form-group ">
                 <div class="row">
                   <div class="col-md-3">
-                    <label class="form-label">Phone</label>
+                    <label class="form-label">Nomor Hp</label>
                   </div>
                   <div class="col-md-9">
                     <input type="text" class="form-control" id="phone_number" name="phone_number"  placeholder="phone number" value="{{ $data->user_profile->phone_number ?? '' }}">
@@ -168,7 +168,7 @@
               <div class="form-group ">
                 <div class="row">
                   <div class="col-md-3">
-                    <label class="form-label">Address</label>
+                    <label class="form-label">Alamat</label>
                   </div>
                   <div class="col-md-9">
                     <textarea class="form-control" id="address"  name="address" rows="2"  placeholder="Address">{{ $data->user_profile->address ?? '' }}</textarea>

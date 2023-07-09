@@ -443,8 +443,10 @@
             });
 
             // $('<tr>').remove();
+
+            var img = response.user_profile != null ? (response.user_profile.image != null ? 'storage/' + response.user_profile.image : 'assets/images/default-profile.jpg') : 'assets/images/default-profile.jpg';
             
-            $('#foto_user').html(`<img src="{{ asset('storage/${response.user_profile.image}') }}" width="150px" height="200px" style="border-radius: 5px;" alt="">`);
+            $('#foto_user').html(`<img src="{{ asset('${img}')}}" width="150px" height="200px" style="border-radius: 5px;" alt="">`);
             $('#name').text(response.user_profile.name);
             $('#nip_nim').text(response.user_profile.nip_nim);
             $('#gender').text(response.user_profile.gender);
