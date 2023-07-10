@@ -85,6 +85,7 @@ class ParkController extends Controller
                 'vehycle_id' => $user->user->vehycle[0]->id,
                 'image' => $request->image,
                 'status' => 'Masuk',
+                'owner' => $user->name,
                 'time_in' => now()
             ]);
 

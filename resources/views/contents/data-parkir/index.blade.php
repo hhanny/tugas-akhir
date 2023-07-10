@@ -318,8 +318,10 @@
                 {
                     targets: 7,
                     render: function(data, type, full, meta) {
-                        let owner = '';
-                            owner += `<span class="badge bg-primary me-1" href="javascript:void(0);">${data}</span>`;
+                        let owner = '-';
+                        if (data != null){
+                            owner = `<span class="badge bg-primary me-1" href="javascript:void(0);">${data}</span>`;
+                        }
                         return owner;
                     }
                 },
@@ -327,6 +329,10 @@
                     targets: -1,
                     className: 'text-center',
                     render: function(data, type, full, meta) {
+                        console.log(data.length);
+                        if (data.length == 0) {
+                            return `<span class="badge badge-pil p-1 bg-danger">Data Telah Dihapus</span>`
+                        }
                         let id = '';
                         data.map(function(item){
                             id += `
@@ -347,7 +353,7 @@
                 { data: 'week'},
                 { data: 'time_in'},
                 { data: 'time_out'}, 
-                { data: 'name' }, 
+                { data: 'owner' }, 
                 { data: 'vehycle' }, 
             ],
         });

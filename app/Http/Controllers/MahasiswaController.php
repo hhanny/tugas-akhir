@@ -39,7 +39,7 @@ class MahasiswaController extends Controller
             'username' => 'required|unique:users|min:6',
             'name' => 'required|string|max:50',
             'email' => 'required|unique:users|email:dns',
-            'card_id' => 'required',
+            'card_id' => 'required|unique:user_profiles',
             'brand' => 'required|max:30',
             'type' => 'required|max:30',
             'vehycle_number' => 'required|unique:vehycles|max:20',
@@ -114,10 +114,12 @@ class MahasiswaController extends Controller
     public function update(Request $request, $id)
     {
         $data = User::findOrFail($id);
+        $dataUser = UserProfile::where('user_id', $id)->first();
 
         $rules = [
             'username' => 'required|min:6',
-            'email' => 'required|email:dns'
+            'email' => 'required|email:dns',
+            'card_id' => 'required',
         ];
         
         if ($request->username != $data->username) {
@@ -126,11 +128,20 @@ class MahasiswaController extends Controller
         if ($request->email != $data->email) {
             $rules['email'] = 'required|unique:users|email:dns';
         }
+        if ($request->card_id != $dataUser->card_id) {
+            $rules['card_id'] = 'required|unique:user_profiles';
+        }
         
         $validatedData = $request->validate($rules);
 
         
-        User::where('id', $id)->update($validatedData);
+        User::where('id', $id)->update([
+            'username' => $validatedData['username'],
+            'email' => $validatedData['email'],
+        ]);
+        UserProfile::where('user_id', $id)->update([
+            'card_id' => $validatedData['card_id'],
+        ]);
 
         return response()->json([
             'status'    => true,

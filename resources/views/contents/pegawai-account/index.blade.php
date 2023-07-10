@@ -125,6 +125,11 @@
                             @csrf
                         <div class="form-group">
                             <input type="hidden" id="idEdit" name="id">
+                            <h6 class="title">ID KARTU</h6>
+                            <div class="mb-3">
+                                <input type="text" placeholder="Id kartu.." value="" name="card_id" class="form-control" id="card_id_edit">
+                            </div>
+                            <hr class="mt-4 bg-secondary">
                             <div class="mb-3">
                                 <label for="usernameEdit" class="form-label">Username</label>
                                 <input type="text" placeholder="Username.." value="" name="username" class="form-control" id="usernameEdit">
@@ -336,6 +341,7 @@
             $('#formEdit')[0].reset();
             $('#idEdit').val(response.id);
             $('#usernameEdit').val(response.username);
+            $('#card_id_edit').val(response.user_profile.card_id);
             $('#emailEdit').val(response.email);
             $('#modal_edit').modal('show');
             $('.modal-dialog').removeClass('modal-dialog-scrollable');
@@ -351,6 +357,7 @@
         var id          = $('#idEdit').val();
         var username       = $('#usernameEdit').val();
         var email      = $('#emailEdit').val();
+        var card_id      = $('#card_id_edit').val();
 
         var url = "{{ route('pegawai.update',":id") }}";
         url = url.replace(':id', id);
@@ -367,6 +374,7 @@
                 id: id,
                 username: username,
                 email: email,
+                card_id: card_id,
             },
             success: function (data) {
                 if(data.status) {
