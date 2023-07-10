@@ -304,8 +304,7 @@
                         showConfirmButton: false,
                         timer: 1500
                     });
-                    table.ajax.reload();
-
+                    
                     $('#btnSavePw').text('Simpan');
                     $('#btnSavePw').attr('disabled', false);
                 }else{
