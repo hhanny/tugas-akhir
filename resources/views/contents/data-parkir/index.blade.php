@@ -279,15 +279,6 @@
                         columns: [0,1,5,6,7]
                     }
                 },
-                {
-                    extend: 'pdf',
-                    className: 'btn btn-danger',
-                    text: `<i class="si si-printer me-1"></i>
-                        <span>PDF</span>`,
-                        exportOptions: {
-                        columns: [0,1,5,6,7]
-                    }
-                },
             ],
             columnDefs: [
                 {
