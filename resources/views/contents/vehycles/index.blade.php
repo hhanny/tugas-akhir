@@ -154,6 +154,7 @@
             columnDefs: [
             {
                 targets: 0,
+                orderable: false,
                 render: function(data, type, full, meta) {
                     return (meta.row + 1);
                 }
@@ -223,6 +224,8 @@
 
         $('#id').val('');
         $('#form')[0].reset();
+        $('#form').find('.text-danger.text-small').remove();
+        $('#form').find('input,select').removeClass('is-invalid');
         $('#user_id').empty().trigger('change');
         $('#user_id').attr('disabled', false);
 
@@ -239,6 +242,8 @@
         submit_method = 'edit';
 
         $('#form')[0].reset();
+        $('#form').find('.text-danger.text-small').remove();
+        $('#form').find('input,select').removeClass('is-invalid');
         var url = "{{ route('kendaraan.edit',":id") }}";
         url = url.replace(':id', id);
         

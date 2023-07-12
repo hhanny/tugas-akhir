@@ -176,7 +176,7 @@ class PegawaiController extends Controller
     }
 
     public function datatable(Request $request){
-        $data = User::role('pegawai')->get();
+        $data = User::role('pegawai')->orderBy('created_at', 'DESC')->get();
 
         return DataTables::of($data)->make();
     }

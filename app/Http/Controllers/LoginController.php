@@ -35,7 +35,7 @@ class LoginController extends Controller
     {
         Auth::logout();
 
-        Session::flash('warning', 'Logout berhasil!');
+        Session::flash('success', 'Logout berhasil!');
 
         return redirect()->route('login');
     }

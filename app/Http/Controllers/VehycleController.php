@@ -37,8 +37,8 @@ class VehycleController extends Controller
             'user_id' => 'required',
             'brand' => 'required|max:30',
             'type' => 'required|max:30',
-            'vehycle_number' => 'required|max:20',
-            'chassis_number' => 'required|max:20',
+            'vehycle_number' => 'required|unique:vehycles|max:20',
+            'chassis_number' => 'required|unique:vehycles|max:20',
             'image' => 'required|image|file|max:1024|mimes:jpeg,jpg,png,webp,svg',
         ]);
 
@@ -90,15 +90,25 @@ class VehycleController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        // dd($request);
-        // dd('update');
-        $request->validate([
+        $rules = [
             'brand' => 'required|max:30',
             'type' => 'required|max:30',
             'vehycle_number' => 'required|max:20',
             'chassis_number' => 'required|max:20',
             'image' => 'image|file|max:1024|mimes:jpeg,jpg,png,webp,svg',
-        ]);
+        ];
+
+        $vehycle = Vehycle::find($id);
+
+        if($request->vehycle_number != $vehycle->vehycle_number){
+            $rules['vehycle_number'] = 'required|unique:vehycles|max:20';
+        }
+
+        if($request->chassis_number != $vehycle->chassis_number){
+            $rules['chassis_number'] = 'required|unique:vehycles|max:20';
+        }
+
+        $request->validate($rules);
 
         try {
             $file = '';

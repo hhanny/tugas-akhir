@@ -136,28 +136,24 @@
 			$(document).ready(function () {
 				let type = false;
 				if('{{session()->has("success")}}' == true) type = "success";
-				if('{{session()->has("warning")}}' == true) type = "warning";
 				if('{{session()->has("error")}}' == true) type = "error";
-				if('{{session()->has("status")}}' == true) type = "status";
+				
 
 				if(type === "success"){
-					$.growl.notice1({
-						message: `{{ Session::get('success') }}`
-					});
-				}else if(type === "warning") {
-					$.growl.warning({
-						message: `{{ Session::get('warning') }}`
-					});
-				}else if(type === "error") {
-					$.growl.error({
-						message: `{{ Session::get('error') }}`
-					});
-				}else if(type === "status"){
 					Swal.fire({
 						toast: true,
 						position: 'top-end',
-						title: "{{ session()->get('status') }}" ,
+						title: "{{ session()->get('success') }}" ,
 						icon: 'success',
+						showConfirmButton: false,
+						timer: 3000,
+					})
+				}else if(type === "error"){
+					Swal.fire({
+						toast: true,
+						position: 'top-end',
+						title: "{{ session()->get('error') }}" ,
+						icon: 'error',
 						showConfirmButton: false,
 						timer: 3000,
 					})

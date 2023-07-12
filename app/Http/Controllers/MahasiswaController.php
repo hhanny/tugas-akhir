@@ -176,7 +176,7 @@ class MahasiswaController extends Controller
     }
 
     public function datatable(Request $request){
-        $data = User::role('mahasiswa')->get();
+        $data = User::role('mahasiswa')->orderBy('created_at', 'DESC')->get();
 
         return DataTables::of($data)->make();
     }

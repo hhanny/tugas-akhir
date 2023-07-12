@@ -149,6 +149,7 @@
             columnDefs: [
             {
                 targets: 0,
+                orderable: false,
                 render: function(data, type, full, meta) {
                     return (meta.row + 1);
                 }
