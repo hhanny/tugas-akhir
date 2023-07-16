@@ -313,6 +313,8 @@
         var df = "";
         df = $('#image').dropify();
         df = df.data('dropify');
+        df.resetPreview();
+        df.clearElement();
 
         $('#id').val('');
         $('#form').find('.text-danger.text-small').remove();

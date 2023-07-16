@@ -44,7 +44,7 @@ class MahasiswaController extends Controller
             'type' => 'required|max:30',
             'vehycle_number' => 'required|unique:vehycles|max:20',
             'chassis_number' => 'required|unique:vehycles|max:20',
-            'image' => 'required|image|file|max:1024|mimes:jpeg,jpg,png,webp,svg',
+            'image' => 'required|image|file|max:2048|mimes:jpeg,jpg,png,webp,svg',
         ]);
 
         try {
