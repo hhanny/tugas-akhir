@@ -21,4 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/park/{id?}/in', [ParkController::class, 'in']);
 Route::get('/park/{id?}/out', [ParkController::class, 'out']);
-Route::apiResource('/park', ParkController::class);
+// Route::apiResource('/park', ParkController::class);
