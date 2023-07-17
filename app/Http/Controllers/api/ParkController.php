@@ -117,11 +117,20 @@ class ParkController extends Controller
         try {
             $user = UserProfile::where('card_id', $id)->with(['user', 'user.vehycle'])->first();
 
-            $data =Park::where([
+            $data = Park::where([
                 ['vehycle_id', '=', $user->user->vehycle[0]->id],
                 ['status', '=', 'Masuk'],
                 ['time_out', '=', null]
-            ])->update([
+            ])->first();
+
+            if ($data == null) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Anda sudah keluar parkir',
+                ], 200);
+            }
+            
+            $data->update([
                 'status' => 'keluar',
                 'time_out' => now(),
             ]);
