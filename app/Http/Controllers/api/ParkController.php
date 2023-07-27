@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api;
 
 use App\Models\Park;
 use App\Models\User;
+use App\Models\AppConfig;
 use App\Models\UserProfile;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -56,7 +57,9 @@ class ParkController extends Controller
     {
         try {
 
-            if(Park::where([['status', '=', 'Masuk'],['time_out', '=', null],])->count() >= 3){
+            $maxCapacity = AppConfig::pluck('maximum_capacity')->first();
+
+            if(Park::where([['status', '=', 'Masuk'],['time_out', '=', null],])->count() >= $maxCapacity){
                 return response()->json([
                     'status' => false,
                     'message' => 'Parkiran penuh!',
@@ -89,7 +92,7 @@ class ParkController extends Controller
                 'time_in' => now()
             ]);
 
-            if(Park::where([['status', '=', 'Masuk'],['time_out', '=', null],])->count() >= 3){
+            if(Park::where([['status', '=', 'Masuk'],['time_out', '=', null],])->count() >= $maxCapacity){
 
                 $email = User::all()->pluck('email');
                 Notification::route('mail', $email)->notify(new FullNotification());

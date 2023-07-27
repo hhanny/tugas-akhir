@@ -7,9 +7,10 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VehycleController;
+use App\Http\Controllers\AppConfigController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\ForgotPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +63,8 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('data-parkir/datatable', [ParkController::class, 'datatable'])->name('park.datatable');
     Route::get('data-parkir/{id?}', [ParkController::class, 'show'])->name('park.show');
     Route::get('data-parkir/detail/{id?}', [ParkController::class, 'detailDatatable'])->name('detail.datatable');
+    Route::post('app-config/store', [AppConfigController::class, 'store'])->name('app-config.store');
+
 
     Route::post('kendaraan/{id?}/update', [VehycleController::class, 'update'])->name('kendaraan-update.update');
     Route::post('kendaraan/store', [VehycleController::class, 'store'])->name('kendaraan-store.store');
@@ -88,4 +91,5 @@ Route::group(['middleware' => ['role:superAdmin|admin']], function () {
 
     Route::get('mahasiswa/datatable', [MahasiswaController::class, 'datatable'])->name('mahasiswa.datatable');
     Route::resource('/mahasiswa', MahasiswaController::class);
+    
 });

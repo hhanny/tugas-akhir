@@ -325,6 +325,33 @@
             </div>
         </div>
         @endif
+
+        @if (auth()->user()->hasRole('admin'))
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title mb-3">Kapasitas Maksimal Parkiran</h5>
+                    <p class="card-text"><span class="text-warning">Peringatan!</span> kapasitas maksimal akan menentukan jumlah kendaraan yang dapat memasuki parkiran.</p>
+                    <form action="{{ route('app-config.store') }}" method="post">
+                        @csrf
+                        <div class="mb-3">
+                            <div class="form-group">
+                                <input type="number" class="form-control @error('maximum_capacity') is-invalid @enderror" name="maximum_capacity" id="maximum_capacity" value="{{ $appConfig->maximum_capacity ?? 0 }}">
+                                @error('maximum_capacity')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary"><i class="fe fe-save"></i> Simpan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        @endif
+        
     </div>
 </div>
 <!-- <div></div> -->
